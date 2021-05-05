@@ -1,5 +1,4 @@
 public class Bestelling {
-    private int totaalProducten;
     private double totaalPrijs;
 
     private int prijs;
@@ -10,14 +9,11 @@ public class Bestelling {
         this.prijs = prijs;
     }
 
-    public int aantalBesteldeProducten(int aantalBesteld){
-        return totaalProducten = aantalBesteld;
-    }
-
-    public boolean korting(){
-       if(totaalProducten > 100){
-            totaalPrijs = totaalProducten - 0.15;
+    public double kortingOpTotaalAantalProducten(){
+       if(aantalProducten <= 100){
+           return totaalPrijs = (aantalProducten * prijs);
+       } else {
+           return totaalPrijs = aantalProducten * (prijs - 0.15);
        }
-       return true;
     }
 }

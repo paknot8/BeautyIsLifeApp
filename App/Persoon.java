@@ -2,17 +2,20 @@ abstract class Persoon {
     private int id;
     private String naam;
     private String achternaam;
+    private String telefoonnummer;
     private String email;
     private String gebruikersnaam;
     private String wachtwoord;
 
-    public Persoon(int id, String naam, String achternaam, String email, String gebruikersnaam, String wachtwoord) {
+    public Persoon(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         this.id = id;
         this.naam = naam;
         this.achternaam = achternaam;
+        this.telefoonnummer = telefoonnummer;
         this.email = email;
         this.gebruikersnaam = gebruikersnaam;
         this.wachtwoord = wachtwoord;
+
     }
 
     public int id() {
@@ -37,6 +40,14 @@ abstract class Persoon {
 
     public void setAchternaam(String achternaam) {
         this.achternaam = achternaam;
+    }
+
+    public String getTelefoonnummer() {
+        return telefoonnummer;
+    }
+
+    public void setTelefoonnummer(String telefoonnummer) {
+        this.telefoonnummer = telefoonnummer;
     }
 
     public String getEmail() {

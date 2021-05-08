@@ -4,9 +4,9 @@ public class GebruikersData {
     public static Gebruiker gebruikersLijst;
     public static ArrayList<Gebruiker> GebruikersLijst = new ArrayList<>() {
         {
-            add(gebruikersLijst = new Gebruiker(1,"erick","ibanez", "erick@email.nl",
+            add(gebruikersLijst = new Gebruiker(1,"erick","ibanez", "06123678","erick@email.nl",
                     "erick123","123"));
-            add(gebruikersLijst = new Gebruiker(2,"bob","smit", "bob@email.nl",
+            add(gebruikersLijst = new Gebruiker(2,"bob","smit", "0612345678","bob@email.nl",
                     "bob321","321"));
         }
     };

@@ -20,12 +20,11 @@ public class GebruikerTest
     public void addNewGebruikerTest() {
         String expected = null;
         String gebNaam = null;
-        gebruiker.ad
-        for(Medewerker medewerker : MedewerkersData.MedewerkersLijst){
-            gebNaam = medewerker.getGebruikersnaam();
-            if (gebNaam.equals("bas123")) {
-                expected = "bas123";
-                gebNaam = "bas123";
+        Gebruiker.addNewGebruiker(gebruiker);
+        for(Gebruiker gebruiker : GebruikersData.GebruikersLijst){
+            gebNaam = gebruiker.getGebruikersnaam();
+            if (gebNaam.equals("tom123")) {
+                expected = "tom123";
                 break;
             }
         }

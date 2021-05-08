@@ -25,7 +25,6 @@ public class MedewerkerTest
             gebNaam = medewerker.getGebruikersnaam();
             if (gebNaam.equals("bas123")) {
                 expected = "bas123";
-                gebNaam = "bas123";
                 break;
             }
         }

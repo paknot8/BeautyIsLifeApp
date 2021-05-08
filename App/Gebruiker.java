@@ -28,4 +28,8 @@ public class Gebruiker extends Persoon{
             return;
         }
     }
+
+    public static void addNewUser(Gebruiker newGebruiker){
+        GebruikersData.GebruikersLijst.add(newGebruiker);
+    }
 }

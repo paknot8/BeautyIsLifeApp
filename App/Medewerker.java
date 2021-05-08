@@ -28,4 +28,8 @@ public class Medewerker extends Persoon{
             return;
         }
     }
+
+    public static void addNewMedewerker(Medewerker newMedewerker){
+        MedewerkersData.MedewerkersLijst.add(newMedewerker);
+    }
 }

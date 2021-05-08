@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.System.in;
 
 public class Gebruiker extends Persoon{

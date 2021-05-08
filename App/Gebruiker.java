@@ -29,7 +29,7 @@ public class Gebruiker extends Persoon{
         }
     }
 
-    public static void addNewUser(Gebruiker newGebruiker){
+    public static void addNewGebruiker(Gebruiker newGebruiker){
         GebruikersData.GebruikersLijst.add(newGebruiker);
     }
 }

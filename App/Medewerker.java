@@ -8,7 +8,7 @@ public class Medewerker extends Persoon{
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
 
-    public static void loginControleGebruiker(){
+    public static void loginControleMedewerker(){
         for(Medewerker medewerker : MedewerkersData.MedewerkersLijst){
             String tempGebruiker = medewerker.getGebruikersnaam();
             String tempWachtwoord = medewerker.getWachtwoord();

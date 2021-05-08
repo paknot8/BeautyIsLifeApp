@@ -1,16 +1,26 @@
 public class Persoon {
+    private int id;
     private String naam;
     private String achternaam;
     private String email;
     private String gebruikersnaam;
     private String wachtwoord;
 
-    public Persoon(String naam, String achternaam, String email, String gebruikersnaam, String wachtwoord) {
+    public Persoon(int id, String naam, String achternaam, String email, String gebruikersnaam, String wachtwoord) {
+        this.id = id;
         this.naam = naam;
         this.achternaam = achternaam;
         this.email = email;
         this.gebruikersnaam = gebruikersnaam;
         this.wachtwoord = wachtwoord;
+    }
+
+    public int id() {
+        return id;
+    }
+
+    public void setid(int id) {
+        this.id = id;
     }
 
     public String getNaam() {

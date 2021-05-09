@@ -8,11 +8,14 @@ public class Bestelling {
     }
 
     public double kortingOpTotaalAantalProducten(){
-        if(aantalProducten > 3 && aantalProducten < 10){
+        if(aantalProducten > 3 && aantalProducten < 10)
+        {
             return (aantalProducten * (prijs - 0.15));
-        } else if(aantalProducten > 10 && aantalProducten < 100) {
+        } else if(aantalProducten > 10 && aantalProducten < 100)
+        {
             return (aantalProducten * (prijs - 0.20));
-        } else if(aantalProducten > 100) {
+        } else if(aantalProducten > 100)
+        {
             return (aantalProducten * (prijs - 0.25));
         } else {
             return (aantalProducten * prijs);

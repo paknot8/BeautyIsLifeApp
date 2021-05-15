@@ -15,13 +15,12 @@ abstract class Persoon {
         this.email = email;
         this.gebruikersnaam = gebruikersnaam;
         this.wachtwoord = wachtwoord;
-
     }
 
-    public int id() {
+    public int getId() {
         return id;
     }
-    public void setid(int id) {
+    public void setId(int id) {
         this.id = id;
     }
     public String getNaam() {

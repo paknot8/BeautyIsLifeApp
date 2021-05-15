@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class Gebruiker extends Persoon{
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
 
     public Gebruiker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
@@ -14,9 +14,9 @@ public class Gebruiker extends Persoon{
             String tempWachtwoord = gebruiker.getWachtwoord();
 
             System.out.println("Gebruikersnaam:");
-            String inputGeb = s.nextLine();
+            String inputGeb = scanner.nextLine();
             System.out.println("Wachtwoord:");
-            String inputPass = s.nextLine();
+            String inputPass = scanner.nextLine();
 
             if(inputGeb.equals(tempGebruiker) & inputPass.equals(tempWachtwoord)){
                 System.out.println("Goed " + tempGebruiker);

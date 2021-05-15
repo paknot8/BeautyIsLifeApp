@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.System.exit;
 import static java.lang.System.in;
 
@@ -13,7 +12,7 @@ public class Main {
         if(input.equals("1")){
             Gebruiker.loginControleGebruiker();
         } else if(input.equals("2")){
-            Gebruiker.loginControleGebruiker();
+            Medewerker.loginControleMedewerker();
         } else {
             exit(0);
         }

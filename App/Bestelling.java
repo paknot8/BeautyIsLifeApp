@@ -1,6 +1,7 @@
 public class Bestelling {
-    private final int prijs;
     private final int aantalProducten;
+    private final int prijs;
+
 
     public Bestelling(int aantalProducten, int prijs) {
         this.aantalProducten = aantalProducten;

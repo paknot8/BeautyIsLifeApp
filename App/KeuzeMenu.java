@@ -3,7 +3,17 @@ import static java.lang.System.exit;
 import static java.lang.System.in;
 
 public class KeuzeMenu {
+    public void MenuSelectie(){ }
+    public void ProductFilteren(){ }
+    public void ProductZoeken(){ }
+    public void ProductInzien(){ }
+    public void BestelstatusOpvragen(){ }
+    public void MijnProfiel(){ }
+    public void KlachtSturen(){ }
+    public void KlantLijst(){ }
+
     public static void main(String[] args) {
+        // Voor testen
         Scanner s = new Scanner(in);
         System.out.println("Login als Gebruiker [1], Medewerker [2]");
 

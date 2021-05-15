@@ -1,9 +1,11 @@
-public class Bestelling {
+public class Bestelling extends Product{
+    private final int bestelNummer;
     private final int aantalProducten;
     private final int prijs;
 
-
-    public Bestelling(int aantalProducten, int prijs) {
+    public Bestelling(int productId, String productNaam, int productVoorraad, int bestelNummer, int aantalProducten, int prijs) {
+        super(productId, productNaam, productVoorraad);
+        this.bestelNummer = bestelNummer;
         this.aantalProducten = aantalProducten;
         this.prijs = prijs;
     }

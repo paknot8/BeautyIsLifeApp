@@ -4,27 +4,20 @@ import static java.lang.System.in;
 
 public class Bestelling{
     private static final Scanner s = new Scanner(in);
-
-    private Product product;
-
     private static boolean productVoorraadCheck;
     private static boolean correct;
-    public static String userInput;
-    public static int userInputAantalBesteld;
-
+    private static String userInput;
+    private static int userInputAantalBesteld;
     private static int tempProductID;
     private static String tempProductNaam;
     private static int tempProductVoorraad;
-
     private static int targetProductID;
     private static String targetProductNaam;
     private static int targetProductVoorraad;
     private static int newVoorraad;
-
     private final int bestelNummer;
     private final int aantalProducten;
     private final int prijs;
-
 
     public Bestelling(int bestelNummer, int aantalProducten, int prijs) {
         this.bestelNummer = bestelNummer;

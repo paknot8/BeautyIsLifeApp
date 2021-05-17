@@ -3,19 +3,16 @@ import static java.lang.System.in;
 
 public class RegistratieController {
     private static final Scanner s = new Scanner(in);
-    public static String userInput;
-
+    private static String userInput;
     private static String naam;
     private static String achternaam;
     private static String telefoonnummer;
     private static String email;
     private static String gebruikersnaam;
     private static String wachtwoord;
-
-    public static String tempUser;
-    public static String tempPass;
-
-    public static boolean registered;
+    private static String tempUser;
+    private static String tempPass;
+    private static boolean registered;
 
     public static void Details() {
         System.out.println("Voer in uw gegevens in...");

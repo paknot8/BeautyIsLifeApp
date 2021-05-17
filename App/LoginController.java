@@ -3,14 +3,12 @@ import static java.lang.System.in;
 
 public class LoginController {
     private static final Scanner s = new Scanner(in);
-
     public static int currentUser;
     public static String userInput;
     public static String targetUser;
     public static String targetPassword;
     public static String tempUser;
     public static String tempPass;
-
     public static String userChoice;
     public static boolean choseLogin;
     public static boolean correct;

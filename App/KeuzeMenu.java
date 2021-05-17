@@ -8,22 +8,16 @@ public class KeuzeMenu {
     public static void LoginScherm() {
         if (LoginController.chooseLogin())
         {
-            KeuzeMenu.MenuSelectie();
-            System.out.println("Ga naar keuzemenu");
+            MenuSelectie();
         }
         else {
             LoginScherm();
         }
     }
 
-    public static void MenuSelectie(){ }
-    public static void ProductFilteren(){ }
-    public static void ProductZoeken(){ }
-    public static void ProductInzien(){ }
-    public static void BestelstatusOpvragen(){ }
-    public static void MijnProfiel(){ }
-    public static void KlachtSturen(){ }
-    public static void KlantLijst(){ }
+    public static void MenuSelectie(){
+        System.out.println("U bent ingelogd en in Menu Selectie...");
+    }
 
     public static void main(String[] args) {
         LoginScherm();

@@ -8,27 +8,6 @@ public class Gebruiker extends Persoon{
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
 
-    public static void loginControleGebruiker(){
-        for(Gebruiker gebruiker : GebruikersData.GebruikersLijst){
-            String tempGebruiker = gebruiker.getGebruikersnaam();
-            String tempWachtwoord = gebruiker.getWachtwoord();
-
-            System.out.println("Gebruikersnaam:");
-            String inputGeb = scanner.nextLine();
-            System.out.println("Wachtwoord:");
-            String inputPass = scanner.nextLine();
-
-            if(inputGeb.equals(tempGebruiker) & inputPass.equals(tempWachtwoord)){
-                System.out.println("Goed " + tempGebruiker);
-                System.out.println("Goed " + tempWachtwoord);
-            } else {
-                System.out.println("Fout " + tempGebruiker);
-                System.out.println("Fout " + tempWachtwoord);
-            }
-            return;
-        }
-    }
-
     public static void addNewGebruiker(Gebruiker newGebruiker){
         GebruikersData.GebruikersLijst.add(newGebruiker);
     }

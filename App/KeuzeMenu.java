@@ -26,6 +26,9 @@ public class KeuzeMenu {
     public static void KlantLijst(){ }
 
     public static void main(String[] args) {
-        LoginScherm();
+
+        //LoginScherm();
+        Bestelling.replaceVoorraad();
+
     }
 }

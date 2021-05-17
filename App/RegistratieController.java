@@ -42,7 +42,9 @@ public class RegistratieController {
             // Inserts id by taking the arraylist size and adding +1
             id = GebruikersData.GebruikersLijst.size() + 1; //increment number
             Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
-            Gebruiker.addNewGebruiker(newGebruiker);
+
+            //Gebruiker.addNewGebruiker(newGebruiker);
+            GebruikersData.GebruikersLijst.add(newGebruiker);
 
             // Used a for-loop to check if the user now exists in the arraylist
             for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {

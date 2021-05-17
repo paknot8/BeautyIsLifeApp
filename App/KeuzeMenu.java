@@ -3,28 +3,29 @@ import static java.lang.System.exit;
 import static java.lang.System.in;
 
 public class KeuzeMenu {
-    public void MenuSelectie(){ }
-    public void ProductFilteren(){ }
-    public void ProductZoeken(){ }
-    public void ProductInzien(){ }
-    public void BestelstatusOpvragen(){ }
-    public void MijnProfiel(){ }
-    public void KlachtSturen(){ }
-    public void KlantLijst(){ }
+    private static final Scanner s = new Scanner(in);
+
+    public static void LoginScherm() {
+        if (LoginController.chooseLogin())
+        {
+            KeuzeMenu.MenuSelectie();
+            System.out.println("Ga naar keuzemenu");
+        }
+        else {
+            LoginScherm();
+        }
+    }
+
+    public static void MenuSelectie(){ }
+    public static void ProductFilteren(){ }
+    public static void ProductZoeken(){ }
+    public static void ProductInzien(){ }
+    public static void BestelstatusOpvragen(){ }
+    public static void MijnProfiel(){ }
+    public static void KlachtSturen(){ }
+    public static void KlantLijst(){ }
 
     public static void main(String[] args) {
-        // Voor testen
-        Scanner s = new Scanner(in);
-        System.out.println("Login als Gebruiker [1], Medewerker [2]");
-
-        String input = s.nextLine();
-
-        if(input.equals("1")){
-            Gebruiker.loginControleGebruiker();
-        } else if(input.equals("2")){
-            Medewerker.loginControleMedewerker();
-        } else {
-            exit(0);
-        }
+        LoginScherm();
     }
 }

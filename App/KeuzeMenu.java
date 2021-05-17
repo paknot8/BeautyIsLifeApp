@@ -20,7 +20,10 @@ public class KeuzeMenu {
     }
 
     public static void main(String[] args) {
-        LoginScherm();
-        //Bestelling.replaceVoorraad();
+        //LoginScherm();
+        Bestelling.replaceVoorraad();
+
+        System.out.println(ProductData.productenLijst.getProductId() + " "
+                + ProductData.productenLijst.getProductNaam() + " " + ProductData.productenLijst.getProductVoorraad());
     }
 }

@@ -36,24 +36,30 @@ public class Bestelling{
             tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
             tempProductID = ProductData.ProductenLijst.get(i).getProductId();
 
-            // If gelijk aan de input, verander die voorraad van die rij
             if(tempProductNaam.equals(userInput)){
-                System.out.println(tempProductID + " " + tempProductNaam + " " + tempProductVoorraad);
+                newVoorraad = tempProductVoorraad - userInputAantalBesteld;
 
+                System.out.println(tempProductID + " " + tempProductNaam + " " + newVoorraad);
+
+                Product product = new Product(tempProductID,tempProductNaam,newVoorraad);
+
+                ProductData.ProductenLijst.set(tempProductID,product);
+
+                System.out.println(ProductData.productenLijst.getProductId() + " "
+                        + ProductData.productenLijst.getProductNaam() + " " + ProductData.productenLijst.getProductVoorraad());
                 return;
             } else {
                 System.out.println("bestaat niet");
             }
-        }
 
-        //ProductData.ProductenLijst.set(1,5);
+        }
     }
 
     public static void newVoorraad(){
         newVoorraad = tempProductVoorraad - userInputAantalBesteld;
     }
 
-   /* public static boolean ProductVoorraadCheck() {
+   /*public static boolean ProductVoorraadCheck() {
         if (targetProductNaam.equals(tempProductNaam) && targetProductVoorraad == tempProductVoorraad) {
             System.out.println("Product Bestaat");
             productVoorraadCheck = true;

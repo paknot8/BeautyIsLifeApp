@@ -5,7 +5,8 @@ public class ProductData {
     public static ArrayList<Product> ProductenLijst = new ArrayList<>() {
         {
             add(productenLijst = new Product(1,"cosmetica",5));
-            add(productenLijst = new Product(2,"anti",20));
+            add(productenLijst = new Product(2,"facial",20));
+            add(productenLijst = new Product(3,"detox",0));
         }
     };
 }

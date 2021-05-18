@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import static java.lang.System.exit;
 import static java.lang.System.in;
 
 public class KeuzeMenu {
@@ -22,8 +21,9 @@ public class KeuzeMenu {
     public static void main(String[] args) {
         //LoginScherm();
         Bestelling.replaceVoorraad();
-
-        System.out.println(ProductData.productenLijst.getProductId() + " "
-                + ProductData.productenLijst.getProductNaam() + " " + ProductData.productenLijst.getProductVoorraad());
+        System.out.println("New items below:");
+        for (Product prod : ProductData.ProductenLijst) {
+            System.out.println(prod.getProductId() + prod.getProductNaam() + prod.getProductVoorraad());
+        }
     }
 }

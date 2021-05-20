@@ -67,5 +67,4 @@ abstract class Persoon {
     public void ProductInzien(){ }
     public void BestelstatusOpvragen(){ }
     public void MijnProfiel(){ }
-    public void KlachtSturen(){ }
 }

@@ -21,9 +21,12 @@ public class KeuzeMenu {
     public static void main(String[] args) {
         //LoginScherm();
         Bestelling.replaceVoorraad();
-        System.out.println("New items below:");
+        System.out.println("Voorraad Updated:");
         for (Product prod : ProductData.ProductenLijst) {
-            System.out.println(prod.getProductId() + prod.getProductNaam() + prod.getProductVoorraad());
+            System.out.println(prod.getProductId() + " " +
+                    prod.getProductNaam() + " " +
+                    prod.getProductVoorraad() + " " + "€" +
+                    prod.getProductPrijs());
         }
     }
 }

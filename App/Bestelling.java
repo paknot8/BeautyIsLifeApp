@@ -3,8 +3,14 @@ import static java.lang.System.in;
 
 public class Bestelling{
     private static final Scanner s = new Scanner(in);
+    private static String userInput;
     private static int userInputAantalBesteld;
+
+    private static int tempProductID;
+    private static String tempProductNaam;
+    private static double tempProductPrijs;
     private static int tempProductVoorraad;
+
     private static int newVoorraad;
 
     private final int bestelNummer;
@@ -19,20 +25,20 @@ public class Bestelling{
 
     public static void replaceVoorraad(){
         System.out.println("Vul product naam in:");
-        String userInput = s.nextLine();
+        userInput = s.nextLine();
         System.out.println("Vul aantal bestellingen:");
         userInputAantalBesteld = s.nextInt();
 
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
-            String tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            tempProductID = ProductData.ProductenLijst.get(i).getProductId();
+            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
-            int tempProductID = ProductData.ProductenLijst.get(i).getProductId();
 
             if(tempProductNaam.equals(userInput)){
                 newVoorraadBerekenen();
-                Product product = new Product(tempProductID, tempProductNaam,newVoorraad);
-                ProductData.ProductenLijst.set(tempProductID -1,product); // Omdat id begint met 1, -1 voor de juiste stappen van de index
-                System.out.println(ProductData.productenLijst.getProductId() + " " + ProductData.productenLijst.getProductNaam() + " " + ProductData.productenLijst.getProductVoorraad());
+                Product product = new Product(tempProductID, tempProductNaam,tempProductPrijs,newVoorraad);
+                ProductData.ProductenLijst.set(i,product); // i is de index
                 return;
             }
         }

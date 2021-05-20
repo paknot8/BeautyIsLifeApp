@@ -11,4 +11,6 @@ public class Gebruiker extends Persoon{
     public static void addNewGebruiker(Gebruiker newGebruiker){
         GebruikersData.GebruikersLijst.add(newGebruiker);
     }
+
+    public void KlachtSturen(){ }
 }

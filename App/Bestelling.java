@@ -23,7 +23,22 @@ public class Bestelling{
         this.prijs = prijs;
     }
 
-    public static void replaceVoorraad(){
+    public static void VraagBestellingPlaatsen(){
+        System.out.println("Wilt u een bestelling plaatsen? (1) ja / (0) nee");
+        userInput = s.nextLine();
+        if(userInput.equals("1")){
+            bestellingPlaatsen();
+        } else if(userInput.equals("0")) {
+            System.out.println("Terug naar Keuze Menu...\n");
+            KeuzeMenu.MenuKeuze();
+        } else {
+            System.out.println("Keuze bestaat niet, probeer opnieuw...\n");
+            VraagBestellingPlaatsen();
+        }
+    }
+
+    // Bestelling geplaats, voorraad wordt gewijzigd.
+    public static void bestellingPlaatsen(){
         System.out.println("Vul product naam in:");
         userInput = s.nextLine();
         System.out.println("Vul aantal bestellingen:");
@@ -39,7 +54,8 @@ public class Bestelling{
                 newVoorraadBerekenen();
                 Product product = new Product(tempProductID, tempProductNaam,tempProductPrijs,newVoorraad);
                 ProductData.ProductenLijst.set(i,product); // i is de index
-                return;
+                ProductController.getAllProducten();
+                KeuzeMenu.MenuKeuze();
             }
         }
     }

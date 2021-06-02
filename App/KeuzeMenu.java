@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 import static java.lang.System.*;
 import static java.lang.System.out;
 
@@ -43,7 +42,8 @@ public class KeuzeMenu{
         out.println("--- Welkom op de BeautyIsLife App ---");
         out.println("Menu");
         out.println(" 1) Klantenlijst overzicht");
-        out.println(" 2) Klantenberichten");
+        out.println(" 2) Klanten berichten");
+        out.println(" 3) Producten overzicht");
         out.println(" 0) Exit");
         out.println("Uw keuze:");
     }
@@ -57,6 +57,9 @@ public class KeuzeMenu{
             }
             case "2" -> {
                 out.println("Klantenberichten");
+            }
+            case "3" -> {
+                out.println("Producten lijst overzicht");
             }
             case "0" -> {
                 out.println("Uitloggen...");
@@ -76,6 +79,9 @@ public class KeuzeMenu{
         switch (input) {
             case "1" -> {
                 out.println("Zie catalogus");
+                ProductController.getAllProducten();
+                Bestelling.VraagBestellingPlaatsen();
+
             }
             case "2" -> {
                 out.println("Zoek item");
@@ -88,6 +94,8 @@ public class KeuzeMenu{
             }
             case "5" -> {
                 out.println("Contact");
+                Gebruiker.Contact();
+                Medewerker.getAllBerichten(); // Deze is alleen voor test purpose moet naar Medewerker
             }
             case "0" -> {
                 out.println("Uitloggen...");
@@ -101,16 +109,6 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        LoginScherm();
-
-        //LoginScherm();
-        /*Bestelling.replaceVoorraad();
-        System.out.println("Voorraad Updated:");
-        for (Product prod : ProductData.ProductenLijst) {
-            System.out.println(prod.getProductId() + " " +
-                    prod.getProductNaam() + " " +
-                    prod.getProductVoorraad() + " " + "€" +
-                    prod.getProductPrijs());
-        }*/
+        MenuKeuze();
     }
 }

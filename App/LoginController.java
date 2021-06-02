@@ -10,9 +10,10 @@ public class LoginController {
     public static String tempUser;
     public static String tempPass;
     public static String userChoice;
-    public static boolean choseLogin;
-    public static boolean correct;
-    public static boolean userPassCheck;
+    public static Boolean choseLogin;
+    public static Boolean correct;
+    public static Boolean userPassCheck;
+    public static Boolean isMedewerker;
 
     public static boolean chooseLogin() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
@@ -27,8 +28,8 @@ public class LoginController {
             }
         }
         if (!userPassCheck){
-            System.out.println("login mislukt!");
-            System.out.println("Probeer het opnieuw...");
+            System.out.println("---> login mislukt!");
+            System.out.println("Probeer het opnieuw... \n");
         }
         return choseLogin;
     }
@@ -46,6 +47,7 @@ public class LoginController {
                     currentUser = GebruikersData.GebruikersLijst.get(i).getId();
 
                     if (userAndPassCheck()) {
+                        isMedewerker = false;
                         return correct = true;
                     }
                 }
@@ -59,6 +61,7 @@ public class LoginController {
                     currentUser = MedewerkersData.MedewerkersLijst.get(i).getId();
 
                     if (userAndPassCheck()) {
+                        isMedewerker = true;
                         return correct = true;
                     }
                 }
@@ -81,6 +84,7 @@ public class LoginController {
             userPassCheck = true;
         } else if (!targetUser.equals(tempUser) && !targetPassword.equals(tempPass)){
             userPassCheck = false;
+            correct = false;
         }
         return userPassCheck;
     }

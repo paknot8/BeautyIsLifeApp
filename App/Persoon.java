@@ -7,6 +7,7 @@ abstract class Persoon {
     private String gebruikersnaam;
     private String wachtwoord;
 
+    // Long parameter fix
     public Persoon(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         this.id = id;
         this.naam = naam;

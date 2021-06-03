@@ -35,6 +35,7 @@ public class ProductController {
         }
     }
 
+    // Input voor de producten
     public static void DetailsInput() {
         boolean isNumeric = false;
         System.out.println("Voer product gegevens in:");
@@ -42,8 +43,10 @@ public class ProductController {
         productNaam = scanner.nextLine();
         while(!isNumeric) // Controle of het cijfers zijn.
             try {
-                System.out.println("Productprijs: ");   productPrijs    = scanner.nextDouble();   scanner.nextLine();
-                System.out.println("Aantal: ");         productAantal   = scanner.nextInt();      scanner.nextLine();
+                System.out.println("Druk nogmaals op ENTER om door te gaan."); // Tussen breaker, zodat endless-loop eindigd.
+                scanner.nextLine();
+                System.out.println("Productprijs: ");   productPrijs    = scanner.nextDouble();
+                System.out.println("Aantal: ");         productAantal   = scanner.nextInt();
                 isNumeric = true;//numeric value entered, so break the while loop
             } catch(InputMismatchException ime) {
                 //Display Error message
@@ -51,7 +54,7 @@ public class ProductController {
             }
     }
 
-    // Only medewerker can add a new product
+    // Alleen een Medewerker kan nieuwe producten toevoegen.
     public static void addNewProduct(){
         int id;
         DetailsInput();

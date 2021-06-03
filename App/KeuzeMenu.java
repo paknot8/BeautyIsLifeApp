@@ -34,7 +34,7 @@ public class KeuzeMenu{
         out.println(" 3) Bestelstatus inzien");
         out.println(" 4) Profiel inzien");
         out.println(" 5) Contact");
-        out.println(" 0) Exit");
+        out.println(" 0) Uitloggen");
         out.println("Uw keuze:");
     }
 
@@ -72,7 +72,7 @@ public class KeuzeMenu{
             }
             case "0" -> {
                 out.println("Uitloggen...");
-                exit(0);
+                LoginScherm();
             }
             default -> {
                 out.println("Maak opnieuw een keuze...");
@@ -87,7 +87,7 @@ public class KeuzeMenu{
         out.println(" 1) Klantenlijst overzicht");
         out.println(" 2) Klanten berichten");
         out.println(" 3) Producten overzicht");
-        out.println(" 0) Exit");
+        out.println(" 0) Uitloggen");
         out.println("Uw keuze:");
     }
 
@@ -113,7 +113,7 @@ public class KeuzeMenu{
             case "0" -> {
                 out.println("Uitloggen...");
                 out.println("U bent met succes uigelogd!");
-                exit(0);
+                LoginScherm();
             }
             default -> {
                 out.println("Maak opnieuw een keuze...");

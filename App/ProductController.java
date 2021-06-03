@@ -37,11 +37,6 @@ public class ProductController {
         }
     }
 
-    public static void NumericChecker(){
-
-
-    }
-
     public static void DetailsInput() {
         boolean isNumeric = false;
         System.out.println("Voer product gegevens in:");

@@ -60,12 +60,4 @@ abstract class Persoon {
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
     }
-
-    //
-
-    public void ProductFilteren(){ }
-    public void ProductZoeken(){ }
-    public void ProductInzien(){ }
-    public void BestelstatusOpvragen(){ }
-    public void MijnProfiel(){ }
 }

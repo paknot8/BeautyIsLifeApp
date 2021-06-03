@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class LoginController {
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     public static int currentUserID;
     public static String userInput;
     public static String targetUser;
@@ -25,7 +25,7 @@ public class LoginController {
 
     public static boolean chooseLogin() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
-        userChoice = s.nextLine();
+        userChoice = scanner.nextLine();
 
         switch (userChoice)
         {
@@ -49,7 +49,7 @@ public class LoginController {
     public static boolean LoginControle(){
         //Checks if user is gebruiker or medewerker
         System.out.println("Bent u 1) Gebruiker of 2) Medewerker? --> 0) om terug te gaan.");
-        userInput = s.nextLine();
+        userInput = scanner.nextLine();
         if (userInput.equals("1")) {
             System.out.println("Gebruiker gekozen...");
             if (inputInfo()) {
@@ -100,9 +100,9 @@ public class LoginController {
 
     public static boolean inputInfo() {
         System.out.println("Gebruikersnaam:");
-        targetUser = s.nextLine();
+        targetUser = scanner.nextLine();
         System.out.println("Wachtwoord:");
-        targetPassword = s.nextLine();
+        targetPassword = scanner.nextLine();
         return true;
     }
 

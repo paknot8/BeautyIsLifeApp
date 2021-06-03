@@ -12,23 +12,18 @@ public class Bericht {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     public String getOnderwerp() {
         return onderwerp;
     }
-
     public void setOnderwerp(String onderwerp) {
         this.onderwerp = onderwerp;
     }
-
     public String getBeschrijving() {
         return beschrijving;
     }
-
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
     }

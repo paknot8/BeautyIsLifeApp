@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class Gebruiker extends Persoon{
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     public static String onderwerp;
     public static String beschrijving;
 
@@ -27,9 +27,9 @@ public class Gebruiker extends Persoon{
     public static void ContactDetails() {
         System.out.println("--- Contact nemen met de klantenservice ---");
         System.out.println("Wat is het onderwerp:");
-        onderwerp = s.nextLine();
+        onderwerp = scanner.nextLine();
         System.out.println("Beschrijf het probleem:");
-        beschrijving = s.nextLine();
+        beschrijving = scanner.nextLine();
     }
 
     public static void Contact(){

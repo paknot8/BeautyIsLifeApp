@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class Medewerker extends Persoon {
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     private static String userInput;
 
     public Medewerker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {

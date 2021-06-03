@@ -3,13 +3,11 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class ProductController {
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     private static String userInput;
-
     public static String productNaam;
     public static double productPrijs;
     public static int productAantal;
-
     public static String tempProductNaam;
     public static double tempProductPrijs;
     public static int tempProductAantal;
@@ -25,7 +23,7 @@ public class ProductController {
 
     public static void chooseAddNewProduct(){
         System.out.println("Kies 1) Nieuwe Product toevoegen of 2) om terug te gaan.");
-        userInput = s.nextLine();
+        userInput = scanner.nextLine();
         if(userInput.equals("1")){
             addNewProduct();
         } else if(userInput.equals("2")){
@@ -41,11 +39,11 @@ public class ProductController {
         boolean isNumeric = false;
         System.out.println("Voer product gegevens in:");
         System.out.println("Productnaam: ");
-        productNaam = s.nextLine();
+        productNaam = scanner.nextLine();
         while(!isNumeric) // Controle of het cijfers zijn.
             try {
-                System.out.println("Productprijs: ");   productPrijs    = s.nextDouble();   s.nextLine();
-                System.out.println("Aantal: ");         productAantal   = s.nextInt();      s.nextLine();
+                System.out.println("Productprijs: ");   productPrijs    = scanner.nextDouble();   scanner.nextLine();
+                System.out.println("Aantal: ");         productAantal   = scanner.nextInt();      scanner.nextLine();
                 isNumeric = true;//numeric value entered, so break the while loop
             } catch(InputMismatchException ime) {
                 //Display Error message
@@ -57,7 +55,7 @@ public class ProductController {
     public static void addNewProduct(){
         int id;
         DetailsInput();
-        userInput = s.nextLine();
+        userInput = scanner.nextLine();
         // Inserts id by taking the arraylist size and adding +1
         id = ProductData.ProductenLijst.size() + 1; //increment number
         Product newProduct = new Product(id, productNaam, productPrijs, productAantal);

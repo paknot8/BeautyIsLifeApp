@@ -3,7 +3,7 @@ import static java.lang.System.*;
 import static java.lang.System.out;
 
 public class KeuzeMenu{
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     private static String input;
 
     public static void LoginScherm() {
@@ -40,7 +40,7 @@ public class KeuzeMenu{
 
     public static void MenuKeuze(){
         MenuText();
-        input = s.nextLine();
+        input = scanner.nextLine();
         switch (input) {
             case "1" -> {
                 out.println("Zie catalogus");
@@ -93,7 +93,7 @@ public class KeuzeMenu{
 
     public static void MenuKeuze_Medewerker() {
         MenuText_Medewerker();
-        input = s.nextLine();
+        input = scanner.nextLine();
         switch (input) {
             case "1" -> {
                 out.println("Klantenlijst wordt opgehaald");

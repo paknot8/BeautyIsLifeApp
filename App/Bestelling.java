@@ -3,17 +3,14 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class Bestelling{
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     private static String userInput;
     private static int userInputAantalBesteld;
-
     private static int tempProductID;
     private static String tempProductNaam;
     private static double tempProductPrijs;
     private static int tempProductVoorraad;
-
     private static int newVoorraad;
-
     private final int bestelNummer;
     private final String productNaam;
     private final int aantalGekocht;
@@ -39,6 +36,7 @@ public class Bestelling{
             add(bestellingsLijst = new Bestelling(3,"detox",1,5));
         }
     };
+
     public static void getMijnBestellingen() {
         for (Bestelling bestelling : Bestelling.BestellingsLijst)
         {
@@ -49,7 +47,7 @@ public class Bestelling{
 
     public static void VraagBestellingPlaatsen(){
         System.out.println("Wilt u een bestelling plaatsen? (1) ja / (0) nee");
-        userInput = s.nextLine();
+        userInput = scanner.nextLine();
         if(userInput.equals("1")){
             bestellingPlaatsen();
         } else if(userInput.equals("0")) {
@@ -64,9 +62,9 @@ public class Bestelling{
     // Bestelling geplaats, voorraad wordt gewijzigd.
     public static void bestellingPlaatsen(){
         System.out.println("Vul product naam in:");
-        userInput = s.nextLine();
+        userInput = scanner.nextLine();
         System.out.println("Vul aantal bestellingen:");
-        userInputAantalBesteld = s.nextInt();
+        userInputAantalBesteld = scanner.nextInt();
 
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             tempProductID = ProductData.ProductenLijst.get(i).getProductId();

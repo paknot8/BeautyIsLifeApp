@@ -2,7 +2,7 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class RegistratieController {
-    private static final Scanner s = new Scanner(in);
+    private static final Scanner scanner = new Scanner(in);
     private static String naam;
     private static String achternaam;
     private static String telefoonnummer;
@@ -15,12 +15,12 @@ public class RegistratieController {
 
     public static void Details() {
         System.out.println("Voer in uw gegevens in...");
-        System.out.println("naam: ");               naam = s.nextLine();
-        System.out.println("achternaam: ");         achternaam = s.nextLine();
-        System.out.println("wachtwoord: ");         telefoonnummer = s.nextLine();
-        System.out.println("email: ");              email = s.nextLine();
-        System.out.println("gebruikersnaam: ");     gebruikersnaam = s.nextLine();
-        System.out.println("wachtwoord: ");         wachtwoord = s.nextLine();
+        System.out.println("naam: ");               naam = scanner.nextLine();
+        System.out.println("achternaam: ");         achternaam = scanner.nextLine();
+        System.out.println("wachtwoord: ");         telefoonnummer = scanner.nextLine();
+        System.out.println("email: ");              email = scanner.nextLine();
+        System.out.println("gebruikersnaam: ");     gebruikersnaam = scanner.nextLine();
+        System.out.println("wachtwoord: ");         wachtwoord = scanner.nextLine();
     }
 
     public static void Registration() {
@@ -29,7 +29,7 @@ public class RegistratieController {
         System.out.println("Maak een keuze...");
         System.out.println("1) Gebruiker");
         System.out.println("2) Medewerker");
-        String userInput = s.nextLine();
+        String userInput = scanner.nextLine();
 
         // Checks if user chose 1 or 2
         if (userInput.equals("1")) {

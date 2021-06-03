@@ -3,7 +3,6 @@ import static java.lang.System.in;
 
 public class RegistratieController {
     private static final Scanner s = new Scanner(in);
-    private static String userInput;
     private static String naam;
     private static String achternaam;
     private static String telefoonnummer;
@@ -25,25 +24,27 @@ public class RegistratieController {
     }
 
     public static void Registration() {
+        int id;
+
         System.out.println("Maak een keuze...");
         System.out.println("1) Gebruiker");
         System.out.println("2) Medewerker");
-        userInput = s.nextLine();
+        String userInput = s.nextLine();
 
         // Checks if user chose 1 or 2
-        int id;
         if (userInput.equals("1")) {
-            // Asks user for name, surname and password
-            Details();
+            Details();  // Asks user for name, surname and password
+
             // Inserts id by taking the arraylist size and adding +1
             id = GebruikersData.GebruikersLijst.size() + 1; //increment number
             Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
             Gebruiker.addNewGebruiker(newGebruiker);
+
             // Used a for-loop to check if the user now exists in the arraylist
             for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
                 tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
                 tempPass = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
-                LoginController.currentUser = GebruikersData.GebruikersLijst.get(i).getId();
+                LoginController.currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
                 if (gebruikersnaam.equals(tempUser) && wachtwoord.equals(tempPass)) {
                     System.out.println("Gebruiker is nu Geregistreerd!");
                     registered = true;
@@ -61,7 +62,7 @@ public class RegistratieController {
             for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
                 tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
                 tempPass = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
-                LoginController.currentUser = MedewerkersData.MedewerkersLijst.get(i).getId();
+                LoginController.currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
                 if (gebruikersnaam.equals(tempUser) && wachtwoord.equals(tempPass)) {
                     System.out.println("Examinator geregistreerd");
                     registered = true;

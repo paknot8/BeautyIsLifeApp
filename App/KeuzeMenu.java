@@ -81,16 +81,24 @@ public class KeuzeMenu{
                 out.println("Zie catalogus");
                 ProductController.getAllProducten();
                 Bestelling.VraagBestellingPlaatsen();
-
             }
             case "2" -> {
                 out.println("Zoek item");
             }
             case "3" -> {
                 out.println("Bestelstatus inzien");
+                Bestelling.getMijnBestellingen();
             }
             case "4" -> {
                 out.println("Profiel inzien");
+                out.println("ID nummer: " + LoginController.currentUserID);
+                out.println("Gebruikersnaam: " + LoginController.tempUser);
+                out.println("Naam: " + LoginController.naam);
+                out.println("achternaam: " + LoginController.achternaam);
+                out.println("telefoonnummer: " + LoginController.telefoonnummer);
+                out.println("email: " + LoginController.email);
+                out.println("gebruikersnaam: " + LoginController.gebruikersnaam);
+                MenuKeuze();
             }
             case "5" -> {
                 out.println("Contact");
@@ -109,6 +117,7 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        MenuKeuze();
+        LoginScherm();
+        //MenuKeuze();
     }
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import static java.lang.System.in;
 
@@ -14,13 +15,36 @@ public class Bestelling{
     private static int newVoorraad;
 
     private final int bestelNummer;
-    private final int aantalProducten;
-    private final int prijs;
+    private final String productNaam;
+    private final int aantalGekocht;
+    private final double prijsBetaald;
 
-    public Bestelling(int bestelNummer, int aantalProducten, int prijs) {
+    public Bestelling(int bestelNummer, String productNaam, int aantalGekocht, double prijsBetaald) {
         this.bestelNummer = bestelNummer;
-        this.aantalProducten = aantalProducten;
-        this.prijs = prijs;
+        this.productNaam = productNaam;
+        this.aantalGekocht = aantalGekocht;
+        this.prijsBetaald = prijsBetaald;
+    }
+
+    public int getBestelNummer() { return bestelNummer; }
+    public String getProductNaam() { return productNaam; }
+    public int getAantalGekocht() { return aantalGekocht; }
+    public double getPrijsBetaald() { return prijsBetaald; }
+
+    public static Bestelling bestellingsLijst;
+    public static ArrayList<Bestelling> BestellingsLijst = new ArrayList<>() {
+        {
+            add(bestellingsLijst = new Bestelling(1,"facial",1,10));
+            add(bestellingsLijst = new Bestelling(2,"cosmetica",1,30));
+            add(bestellingsLijst = new Bestelling(3,"detox",1,5));
+        }
+    };
+    public static void getMijnBestellingen() {
+        for (Bestelling bestelling : Bestelling.BestellingsLijst)
+        {
+            System.out.println(bestelling.getBestelNummer() + " " + bestelling.getProductNaam() +
+                    " " + bestelling.getAantalGekocht() + " " + bestelling.getPrijsBetaald());
+        }
     }
 
     public static void VraagBestellingPlaatsen(){
@@ -70,14 +94,14 @@ public class Bestelling{
     }
 
     public double kortingOpTotaalAantalProducten(){
-        if(aantalProducten > 3 && aantalProducten < 10){
-            return (aantalProducten * (prijs - 0.15));
-        } else if(aantalProducten > 10 && aantalProducten < 100) {
-            return (aantalProducten * (prijs - 0.20));
-        } else if(aantalProducten > 100) {
-            return (aantalProducten * (prijs - 0.25));
+        if(userInputAantalBesteld > 3 && userInputAantalBesteld < 10){
+            return (userInputAantalBesteld * (tempProductPrijs - 0.15));
+        } else if(userInputAantalBesteld > 10 && userInputAantalBesteld < 100) {
+            return (userInputAantalBesteld * (tempProductPrijs - 0.20));
+        } else if(userInputAantalBesteld > 100) {
+            return (userInputAantalBesteld * (tempProductPrijs - 0.25));
         } else {
-            return (aantalProducten * prijs);
+            return (userInputAantalBesteld * tempProductPrijs);
         }
     }
 }

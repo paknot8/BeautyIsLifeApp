@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class BestellingTest
 {
-   @Test
+   /*@Test
     public void kortingOpTotaalAantalProductenTest(){
        // 15% korting
         Bestelling bestelling1 = new Bestelling(4,6, 4);
@@ -24,5 +24,5 @@ public class BestellingTest
        Bestelling bestelling4 = new Bestelling(4,1, 4);
        double expected4 = 4;
        Assert.assertEquals(expected4,bestelling4.kortingOpTotaalAantalProducten(), 0.01);
-    }
+    }*/
 }

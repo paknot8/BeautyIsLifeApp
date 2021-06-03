@@ -3,7 +3,7 @@ import static java.lang.System.in;
 
 public class LoginController {
     private static final Scanner s = new Scanner(in);
-    public static int currentUser;
+    public static int currentUserID;
     public static String userInput;
     public static String targetUser;
     public static String targetPassword;
@@ -14,6 +14,14 @@ public class LoginController {
     public static Boolean correct;
     public static Boolean userPassCheck;
     public static Boolean isMedewerker;
+
+    // Get gegevens van current user (saves for use)
+    public static String naam;
+    public static String achternaam;
+    public static String telefoonnummer;
+    public static String email;
+    public static String gebruikersnaam;
+    //private static String wachtwoord;
 
     public static boolean chooseLogin() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
@@ -26,6 +34,10 @@ public class LoginController {
                 choseLogin = false;
                 RegistratieController.Registration();
             }
+            default -> {
+                System.out.println(">>> " + userChoice + " bestaat niet, probeer opnieuw...");
+                chooseLogin();
+            }
         }
         if (!userPassCheck){
             System.out.println("---> login mislukt!");
@@ -36,7 +48,7 @@ public class LoginController {
 
     public static boolean LoginControle(){
         //Checks if user is gebruiker or medewerker
-        System.out.println("Bent u 1) Gebruiker of 2) Medewerker?");
+        System.out.println("Bent u 1) Gebruiker of 2) Medewerker? --> 0) om terug te gaan.");
         userInput = s.nextLine();
         if (userInput.equals("1")) {
             System.out.println("Gebruiker gekozen...");
@@ -44,7 +56,12 @@ public class LoginController {
                 for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
                     tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
                     tempPass = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
-                    currentUser = GebruikersData.GebruikersLijst.get(i).getId();
+                    currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
+                    naam = GebruikersData.GebruikersLijst.get(i).getNaam();
+                    achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
+                    telefoonnummer = GebruikersData.GebruikersLijst.get(i).getTelefoonnummer();
+                    email = GebruikersData.GebruikersLijst.get(i).getEmail();
+                    gebruikersnaam = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
 
                     if (userAndPassCheck()) {
                         isMedewerker = false;
@@ -58,7 +75,12 @@ public class LoginController {
                 for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
                     tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
                     tempPass = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
-                    currentUser = MedewerkersData.MedewerkersLijst.get(i).getId();
+                    currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
+                    naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
+                    achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
+                    telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).getTelefoonnummer();
+                    email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
+                    gebruikersnaam = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
 
                     if (userAndPassCheck()) {
                         isMedewerker = true;
@@ -66,6 +88,12 @@ public class LoginController {
                     }
                 }
             }
+        } else if (userInput.equals("0")) {
+            System.out.println("Terug naar beginscherm...\n");
+            chooseLogin();
+        } else {
+            System.out.println(userInput + " bestaat niet, probeer opnieuw...");
+            LoginControle();
         }
         return correct;
     }

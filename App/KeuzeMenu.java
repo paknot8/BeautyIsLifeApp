@@ -24,7 +24,7 @@ public class KeuzeMenu{
     // erick123     password: 123
 
     // medewerker
-    // bella123     password: bella123
+    // bella123     password: 321
 
     public static void MenuText(){
         out.println("--- Welkom op de BeautyIsLife App ---");
@@ -36,41 +36,6 @@ public class KeuzeMenu{
         out.println(" 5) Contact");
         out.println(" 0) Exit");
         out.println("Uw keuze:");
-    }
-
-    public static void MenuText_Medewerker(){
-        out.println("--- Welkom op de BeautyIsLife App ---");
-        out.println("Menu");
-        out.println(" 1) Klantenlijst overzicht");
-        out.println(" 2) Klanten berichten");
-        out.println(" 3) Producten overzicht");
-        out.println(" 0) Exit");
-        out.println("Uw keuze:");
-    }
-
-    public static void MenuKeuze_Medewerker() {
-        MenuText_Medewerker();
-        input = s.nextLine();
-        switch (input) {
-            case "1" -> {
-                out.println("Klantenlijst overzicht");
-            }
-            case "2" -> {
-                out.println("Klantenberichten");
-            }
-            case "3" -> {
-                out.println("Producten lijst overzicht");
-            }
-            case "0" -> {
-                out.println("Uitloggen...");
-                out.println("U bent met succes uigelogd!");
-                exit(0);
-            }
-            default -> {
-                out.println("Maak opnieuw een keuze...");
-                MenuKeuze_Medewerker();
-            }
-        }
     }
 
     public static void MenuKeuze(){
@@ -116,8 +81,51 @@ public class KeuzeMenu{
         }
     }
 
+    public static void MenuText_Medewerker(){
+        out.println("--- Welkom op de BeautyIsLife App ---");
+        out.println("Menu");
+        out.println(" 1) Klantenlijst overzicht");
+        out.println(" 2) Klanten berichten");
+        out.println(" 3) Producten overzicht");
+        out.println(" 0) Exit");
+        out.println("Uw keuze:");
+    }
+
+    public static void MenuKeuze_Medewerker() {
+        MenuText_Medewerker();
+        input = s.nextLine();
+        switch (input) {
+            case "1" -> {
+                out.println("Klantenlijst wordt opgehaald");
+                Gebruiker.getAllGebruikers();
+                out.println("\n");
+                MenuKeuze_Medewerker();
+            }
+            case "2" -> {
+                out.println("Klantenberichten");
+            }
+            case "3" -> {
+                out.println("Producten lijst overzicht");
+                ProductController.getAllProducten();
+                ProductController.chooseAddNewProduct();
+                MenuKeuze_Medewerker();
+            }
+            case "0" -> {
+                out.println("Uitloggen...");
+                out.println("U bent met succes uigelogd!");
+                exit(0);
+            }
+            default -> {
+                out.println("Maak opnieuw een keuze...");
+                MenuKeuze_Medewerker();
+            }
+        }
+    }
+
     public static void main(String[] args) {
-        LoginScherm();
-        //MenuKeuze();
+        //LoginScherm();
+        MenuKeuze_Medewerker();
+
+        //ProductController.DetailsInput();
     }
 }

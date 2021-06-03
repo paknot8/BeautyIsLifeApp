@@ -17,9 +17,4 @@ public class Medewerker extends Persoon {
             System.out.println(bericht.getId() + " " + bericht.getOnderwerp() + " " + bericht.getOnderwerp());
         }
     }
-
-    // Only medewerker can add a new product
-    public static void addNewProduct(Product naam, Product prijs, Product aantal){
-        userInput = s.nextLine();
-    }
 }

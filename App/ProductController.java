@@ -16,8 +16,8 @@ public class ProductController {
     public static void getAllProducten() {
         for (Product product : ProductData.ProductenLijst)
         {
-            System.out.println(product.getProductId() + " " + product.getProductNaam() +
-                    " " + product.getProductPrijs() + " " + product.getProductVoorraad());
+            System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
+                    " | Prijs: " + product.getProductPrijs() + " | Op voorraad: " + product.getProductVoorraad());
         }
     }
 

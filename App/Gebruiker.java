@@ -13,7 +13,6 @@ public class Gebruiker extends Persoon{
     }
 
     public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
-
     public static void addNewGebruiker(Gebruiker newGebruiker){
         GebruikersData.GebruikersLijst.add(newGebruiker);
     }
@@ -50,5 +49,4 @@ public class Gebruiker extends Persoon{
             }
         }
     }
-
 }

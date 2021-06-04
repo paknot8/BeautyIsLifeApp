@@ -35,7 +35,7 @@ public class Bestelling{
     public static void getMijnBestellingen(){
         for(Bestelling bestelling : BestellingsData.BestellingsLijst) {
             if(bestelling.getUserID() == LoginController.currentUserID){
-                System.out.println("Bestellnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
+                System.out.println("Bestelnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
                         " | Product: " + bestelling.getProductNaam() + " | Aantal: " + bestelling.getAantalGekocht() +
                         " | Prijs: €" + bestelling.getPrijsBetaald());
             }

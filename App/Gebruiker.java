@@ -46,7 +46,7 @@ public class Gebruiker extends Persoon{
 
     public static void Contact(){
         ContactDetails();
-        int id = MedewerkersData.BerichtenLijst.size() + 1; //increment number
+        int id = BerichtenData.BerichtenLijst.size() + 1; //increment number
         Bericht newBericht = new Bericht(id,onderwerp,beschrijving);
         Medewerker.addNewBericht(newBericht);
     }

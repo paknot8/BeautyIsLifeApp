@@ -10,10 +10,11 @@ public class Medewerker extends Persoon {
     }
 
     public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
-    public static void addNewBericht(Bericht newBericht){ MedewerkersData.BerichtenLijst.add(newBericht); }
+
+    public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
 
     public static void getAllBerichten() {
-        for (Bericht bericht : MedewerkersData.BerichtenLijst) {
+        for (Bericht bericht : BerichtenData.BerichtenLijst) {
             System.out.println(bericht.getId() + " " + bericht.getOnderwerp() + " " + bericht.getOnderwerp());
         }
     }

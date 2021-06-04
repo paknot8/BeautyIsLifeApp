@@ -63,26 +63,6 @@ public class Gebruiker extends Persoon{
             }
         }
     }
-/*
-
-    public static void zoekProduct(){
-        System.out.println("Vul product in:");
-        userInput = scanner.nextLine();
-        for (Product product : ProductData.ProductenLijst){
-            out.println(product.getProductNaam());
-            tempSearchedList.add(product.getProductNaam());
-        }
-        if(tempSearchedList.contains(userInput)){
-            out.println("Het gezochte product: ( \" + userInput + \" ) is gevonden!\n");
-            tempSearchedList.clear();
-        } else {
-            out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
-            tempSearchedList.clear();
-            zoekProduct();
-        }
-    }
-*/
-
 
     public static void zoekProduct(){
         System.out.println("Vul product in:");
@@ -92,14 +72,17 @@ public class Gebruiker extends Persoon{
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
-            if (userInput.equals(tempProductNaam)) {
-                out.println("Het gezochte product: ( " + userInput + " ) is gevonden!\n");
-                tempSearchedList.clear();
-            } else {
-                out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
-                tempSearchedList.clear();
-                zoekProduct();
-            }
+            tempSearchedList.add(tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam());
+        }
+        if (tempSearchedList.contains(userInput)) {
+            out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
+            out.println("Productnr: " + tempProductid + " | Product: " + tempProductNaam +
+                    " | Prijs " + tempProductPrijs + " | Aantal op voorraad: " + tempProductVoorraad);
+            tempSearchedList.clear();
+        } else {
+            out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
+            tempSearchedList.clear();
+            zoekProduct();
         }
     }
 }

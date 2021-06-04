@@ -1,10 +1,11 @@
 public class Bericht {
-    private int id;
+    private int id, userID;
     private String onderwerp;
     private String beschrijving;
 
-    public Bericht(int id, String onderwerp, String beschrijving) {
+    public Bericht(int id, int userID, String onderwerp, String beschrijving) {
         this.id = id;
+        this.userID = userID;
         this.onderwerp = onderwerp;
         this.beschrijving = beschrijving;
     }
@@ -15,6 +16,8 @@ public class Bericht {
     public void setId(int id) {
         this.id = id;
     }
+    public int getUserID() { return userID; }
+    public void setUserID(int userID) { this.userID = userID; }
     public String getOnderwerp() {
         return onderwerp;
     }

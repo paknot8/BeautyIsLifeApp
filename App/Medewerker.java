@@ -21,7 +21,8 @@ public class Medewerker extends Persoon {
     public static void getAllBerichten() {
         for (Bericht bericht : BerichtenData.BerichtenLijst)
         {
-            System.out.println("ID: " + bericht.getId() + " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
+            System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
+                    " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
         }
     }
 

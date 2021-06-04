@@ -40,7 +40,16 @@ public class Gebruiker extends Persoon{
     public static void Contact(){
         ContactDetails();
         int id = BerichtenData.BerichtenLijst.size() + 1; //increment number
-        Bericht newBericht = new Bericht(id,onderwerp,beschrijving);
+        Bericht newBericht = new Bericht(id,LoginController.currentUserID,onderwerp,beschrijving);
         Gebruiker.addNewBericht(newBericht);
     }
+    public static void getMijnBerichten(){
+        for(Bericht bericht : BerichtenData.BerichtenLijst) {
+            if(bericht.getUserID() == LoginController.currentUserID){
+                System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
+                        " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
+            }
+        }
+    }
+
 }

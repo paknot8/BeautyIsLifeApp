@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.lang.System.out;
@@ -27,7 +28,7 @@ public class KeuzeMenu{
     // bella123     password: 321
 
     public static void MenuText(){
-        out.println("--- Welkom op de BeautyIsLife App ---");
+        out.println("\n--- Welkom op de BeautyIsLife App ---");
         out.println("Menu");
         out.println(" 1) Zie catalogus");
         out.println(" 2) Zoek item");
@@ -46,6 +47,7 @@ public class KeuzeMenu{
                 out.println("Zie catalogus");
                 ProductController.getAllProducten();
                 Bestelling.VraagBestellingPlaatsen();
+                MenuKeuze();
             }
             case "2" -> {
                 out.println("Zoek item");
@@ -61,9 +63,11 @@ public class KeuzeMenu{
                 MenuKeuze();
             }
             case "5" -> {
-                out.println("Contact");
+                out.println("Neem Contact");
                 Gebruiker.Contact();
-                Medewerker.getAllBerichten(); // Deze is alleen voor test purpose moet naar Medewerker
+                Gebruiker.getMijnBerichten();
+                out.println(" \n ");
+                MenuKeuze();
             }
             case "0" -> {
                 out.println("Uitloggen...");
@@ -97,7 +101,9 @@ public class KeuzeMenu{
                 MenuKeuze_Medewerker();
             }
             case "2" -> {
-                out.println("Klantenberichten");
+                out.println("Alle klantenberichten inzien");
+                Medewerker.getAllBerichten();
+                MenuKeuze_Medewerker();
             }
             case "3" -> {
                 out.println("Producten lijst overzicht");

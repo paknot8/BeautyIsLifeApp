@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import static java.lang.System.in;
+import static java.lang.System.out;
 
 public class Gebruiker extends Persoon{
     private static final Scanner scanner = new Scanner(in);
@@ -22,6 +23,17 @@ public class Gebruiker extends Persoon{
 
     public static void addNewGebruiker(Gebruiker newGebruiker){
         GebruikersData.GebruikersLijst.add(newGebruiker);
+    }
+
+    public static void mijnProfiel(){
+        out.println("Profiel inzien");
+        out.println("ID nummer: " + LoginController.currentUserID);
+        out.println("Gebruikersnaam: " + LoginController.tempUser);
+        out.println("Naam: " + LoginController.naam);
+        out.println("achternaam: " + LoginController.achternaam);
+        out.println("telefoonnummer: " + LoginController.telefoonnummer);
+        out.println("email: " + LoginController.email);
+        out.println("gebruikersnaam: " + LoginController.gebruikersnaam);
     }
 
     public static void ContactDetails() {

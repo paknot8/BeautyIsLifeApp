@@ -51,18 +51,12 @@ public class KeuzeMenu{
                 out.println("Zoek item");
             }
             case "3" -> {
-                out.println("Bestelstatus inzien");
+                out.println("Mijn bestelstatus inzien");
                 Bestelling.getMijnBestellingen();
+                MenuKeuze();
             }
             case "4" -> {
-                out.println("Profiel inzien");
-                out.println("ID nummer: " + LoginController.currentUserID);
-                out.println("Gebruikersnaam: " + LoginController.tempUser);
-                out.println("Naam: " + LoginController.naam);
-                out.println("achternaam: " + LoginController.achternaam);
-                out.println("telefoonnummer: " + LoginController.telefoonnummer);
-                out.println("email: " + LoginController.email);
-                out.println("gebruikersnaam: " + LoginController.gebruikersnaam);
+                Gebruiker.mijnProfiel();
                 MenuKeuze();
             }
             case "5" -> {
@@ -124,7 +118,7 @@ public class KeuzeMenu{
 
     public static void main(String[] args) {
         //LoginScherm();
-        MenuKeuze_Medewerker();
+        MenuKeuze();
 
         //ProductController.DetailsInput();
     }

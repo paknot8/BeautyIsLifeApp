@@ -77,4 +77,29 @@ public class ProductController {
             }
         }
     }
+
+    //# MOET NOG GEDAAN
+    // Alleen een Medewerker kan producten wijzigen.
+    public static void wijzigProduct(){
+        int id;
+        DetailsInput();
+        userInput = scanner.nextLine();
+        // Inserts id by taking the arraylist size and adding +1
+        id = ProductData.ProductenLijst.size() + 1; //increment number
+        Product newProduct = new Product(id, productNaam, productPrijs, productAantal);
+        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
+            tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
+
+            if (productNaam.equals(tempProductNaam)) {
+                System.out.println("Product bestaat al, vul een nieuw product in! \n");
+                addNewProduct();
+            } else {
+                ProductData.ProductenLijst.add(newProduct);
+                System.out.println("Nieuwe product is succesvol toegevoegd in de maggazijn.\n");
+                break;
+            }
+        }
+    }
 }

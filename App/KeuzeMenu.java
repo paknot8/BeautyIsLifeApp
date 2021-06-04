@@ -109,7 +109,7 @@ public class KeuzeMenu{
                 MenuKeuze_Medewerker();
             }
             case "3" -> {
-                out.println("Producten lijst overzicht");
+                out.println("Productenlijst overzicht");
                 ProductController.getAllProducten();
                 ProductController.chooseAddNewProduct();
                 MenuKeuze_Medewerker();
@@ -127,7 +127,7 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        //LoginScherm();
+        LoginScherm();
         MenuKeuze();
 
         //ProductController.DetailsInput();

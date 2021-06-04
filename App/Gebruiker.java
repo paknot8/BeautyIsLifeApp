@@ -64,6 +64,15 @@ public class Gebruiker extends Persoon{
         }
     }
 
+    public static void controleProductExist(){
+        if (tempProductNaam.equals(userInput)) {
+            out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
+            out.println("Productnr: " + tempProductid + " | Product: " + tempProductNaam +
+                    " | Prijs " + tempProductPrijs + " | Aantal op voorraad: " + tempProductVoorraad);
+            Bestelling.singleBestellingPlaatsen(); // Vraagt of gebruiker wilt bestellen ja of nee
+        }
+    }
+
     public static void zoekProduct(){
         System.out.println("Vul product in:");
         userInput = scanner.nextLine();
@@ -73,15 +82,10 @@ public class Gebruiker extends Persoon{
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
             tempSearchedList.add(tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam());
+            controleProductExist();
         }
-        if (tempSearchedList.contains(userInput)) {
-            out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
-            out.println("Productnr: " + tempProductid + " | Product: " + tempProductNaam +
-                    " | Prijs " + tempProductPrijs + " | Aantal op voorraad: " + tempProductVoorraad);
-            tempSearchedList.clear();
-        } else {
+        if(!tempSearchedList.contains(userInput)) {
             out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
-            tempSearchedList.clear();
             zoekProduct();
         }
     }

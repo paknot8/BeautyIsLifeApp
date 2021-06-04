@@ -50,50 +50,53 @@ public class LoginController {
         //Checks if user is gebruiker or medewerker
         System.out.println("Bent u 1) Gebruiker of 2) Medewerker? --> 0) om terug te gaan.");
         userInput = scanner.nextLine();
-        if (userInput.equals("1")) {
-            System.out.println("Gebruiker gekozen...");
-            if (inputInfo()) {
-                for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-                    tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-                    tempPass = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
-                    currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
-                    naam = GebruikersData.GebruikersLijst.get(i).getNaam();
-                    achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
-                    telefoonnummer = GebruikersData.GebruikersLijst.get(i).getTelefoonnummer();
-                    email = GebruikersData.GebruikersLijst.get(i).getEmail();
-                    gebruikersnaam = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-
-                    if (userAndPassCheck()) {
-                        isMedewerker = false;
-                        return correct = true;
+        switch (userInput) {
+            case "1" -> {
+                System.out.println("Gebruiker gekozen...");
+                if (inputInfo()) {
+                    for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+                        tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+                        tempPass = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
+                        currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
+                        naam = GebruikersData.GebruikersLijst.get(i).getNaam();
+                        achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
+                        telefoonnummer = GebruikersData.GebruikersLijst.get(i).getTelefoonnummer();
+                        email = GebruikersData.GebruikersLijst.get(i).getEmail();
+                        gebruikersnaam = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+                        if (userAndPassCheck()) {
+                            isMedewerker = false;
+                            return correct = true;
+                        }
                     }
                 }
             }
-        } else if (userInput.equals("2")) {
-            System.out.println("Medewerker gekozen...");
-            if(inputInfo()) {
-                for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
-                    tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-                    tempPass = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
-                    currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
-                    naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
-                    achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
-                    telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).getTelefoonnummer();
-                    email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
-                    gebruikersnaam = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-
-                    if (userAndPassCheck()) {
-                        isMedewerker = true;
-                        return correct = true;
+            case "2" -> {
+                System.out.println("Medewerker gekozen...");
+                if (inputInfo()) {
+                    for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
+                        tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
+                        tempPass = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
+                        currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
+                        naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
+                        achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
+                        telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).getTelefoonnummer();
+                        email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
+                        gebruikersnaam = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
+                        if (userAndPassCheck()) {
+                            isMedewerker = true;
+                            return correct = true;
+                        }
                     }
                 }
             }
-        } else if (userInput.equals("0")) {
-            System.out.println("Terug naar beginscherm...\n");
-            chooseLogin();
-        } else {
-            System.out.println(userInput + " bestaat niet, probeer opnieuw...");
-            LoginControle();
+            case "0" -> {
+                System.out.println("Terug naar beginscherm...\n");
+                chooseLogin();
+            }
+            default -> {
+                System.out.println(userInput + " bestaat niet, probeer opnieuw...");
+                LoginControle();
+            }
         }
         return correct;
     }

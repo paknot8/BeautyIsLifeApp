@@ -12,7 +12,7 @@ public class LoginController {
     public static String userChoice;
     public static Boolean choseLogin;
     public static Boolean correct;
-    public static Boolean userPassCheck;
+    public static Boolean userPassCheck = false;
     public static Boolean isMedewerker;
 
     // Get gegevens van current user (saves for use)
@@ -113,6 +113,8 @@ public class LoginController {
         } else if (!targetUser.equals(tempUser) && !targetPassword.equals(tempPass)){
             userPassCheck = false;
             correct = false;
+        } else {
+            System.out.println("Fout probeer opnieuw...\n");
         }
         return userPassCheck;
     }

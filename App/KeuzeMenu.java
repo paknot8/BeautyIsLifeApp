@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.lang.System.out;
@@ -8,6 +7,7 @@ public class KeuzeMenu{
     private static String input;
 
     public static void LoginScherm() {
+        out.println("\n--- Welkom op de BeautyIsLife App ---");
         if (LoginController.chooseLogin())
         {
             if(LoginController.isMedewerker){
@@ -28,7 +28,6 @@ public class KeuzeMenu{
     // bella123     password: 321
 
     public static void MenuText(){
-        out.println("\n--- Welkom op de BeautyIsLife App ---");
         out.println("Menu");
         out.println(" 1) Zie catalogus");
         out.println(" 2) Zoek item");
@@ -81,8 +80,8 @@ public class KeuzeMenu{
     }
 
     public static void MenuText_Medewerker(){
-        out.println("--- Welkom op de BeautyIsLife App ---");
-        out.println("Menu");
+        out.println(" \n ");
+        out.println("Hallo, " + LoginController.naam + " " + LoginController.achternaam);
         out.println(" 1) Klantenlijst overzicht");
         out.println(" 2) Klanten berichten");
         out.println(" 3) Producten overzicht");
@@ -124,8 +123,8 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        //LoginScherm();
-        MenuKeuze();
+        LoginScherm();
+        //MenuKeuze();
 
         //ProductController.DetailsInput();
     }

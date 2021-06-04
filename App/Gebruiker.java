@@ -19,14 +19,13 @@ public class Gebruiker extends Persoon{
     }
 
     public static void mijnProfiel(){
-        out.println("Profiel inzien");
-        out.println("ID nummer: " + LoginController.currentUserID);
-        out.println("Gebruikersnaam: " + LoginController.tempUser);
-        out.println("Naam: " + LoginController.naam);
-        out.println("achternaam: " + LoginController.achternaam);
-        out.println("telefoonnummer: " + LoginController.telefoonnummer);
-        out.println("email: " + LoginController.email);
-        out.println("gebruikersnaam: " + LoginController.gebruikersnaam);
+        out.println("--- Mijn Profiel ---");
+        out.println("Mijn id nummer: | " + LoginController.currentUserID);
+        out.println("Gebruikersnaam: | " + LoginController.tempUser);
+        out.println("Voornaam: | " + LoginController.naam);
+        out.println("Achternaam: | " + LoginController.achternaam);
+        out.println("Telefoonnummer: | " + LoginController.telefoonnummer);
+        out.println("Emailadres: | " + LoginController.email);
     }
 
     public static void ContactDetails() {

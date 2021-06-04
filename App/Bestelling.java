@@ -11,37 +11,35 @@ public class Bestelling{
     private static double tempProductPrijs;
     private static int tempProductVoorraad;
     private static int newVoorraad;
+
+    // Constructor Data
     private final int bestelNummer;
+    private final int userID;
     private final String productNaam;
     private final int aantalGekocht;
     private final double prijsBetaald;
 
-    public Bestelling(int bestelNummer, String productNaam, int aantalGekocht, double prijsBetaald) {
+    public Bestelling(int bestelNummer, int userID, String productNaam, int aantalGekocht, double prijsBetaald) {
         this.bestelNummer = bestelNummer;
+        this.userID = userID;
         this.productNaam = productNaam;
         this.aantalGekocht = aantalGekocht;
         this.prijsBetaald = prijsBetaald;
     }
 
     public int getBestelNummer() { return bestelNummer; }
+    public int getUserID() { return userID; }
     public String getProductNaam() { return productNaam; }
     public int getAantalGekocht() { return aantalGekocht; }
     public double getPrijsBetaald() { return prijsBetaald; }
 
-    public static Bestelling bestellingsLijst;
-    public static ArrayList<Bestelling> BestellingsLijst = new ArrayList<>() {
-        {
-            add(bestellingsLijst = new Bestelling(1,"facial",1,10));
-            add(bestellingsLijst = new Bestelling(2,"cosmetica",1,30));
-            add(bestellingsLijst = new Bestelling(3,"detox",1,5));
-        }
-    };
-
-    public static void getMijnBestellingen() {
-        for (Bestelling bestelling : Bestelling.BestellingsLijst)
-        {
-            System.out.println(bestelling.getBestelNummer() + " " + bestelling.getProductNaam() +
-                    " " + bestelling.getAantalGekocht() + " " + bestelling.getPrijsBetaald());
+    public static void getMijnBestellingen(){
+        for(Bestelling bestelling : BestellingsData.BestellingsLijst) {
+            if(bestelling.getUserID() == LoginController.currentUserID){
+                System.out.println("Bestellnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
+                        " | Product: " + bestelling.getProductNaam() + " | Aantal: " + bestelling.getAantalGekocht() +
+                        " | Prijs: €" + bestelling.getPrijsBetaald());
+            }
         }
     }
 

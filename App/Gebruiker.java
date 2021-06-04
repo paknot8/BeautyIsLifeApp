@@ -12,14 +12,7 @@ public class Gebruiker extends Persoon{
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
 
-    public static void getAllGebruikers() {
-        for (Gebruiker gebruiker : GebruikersData.GebruikersLijst)
-        {
-            System.out.println(gebruiker.getId() + ", " + gebruiker.getGebruikersnaam() +
-                    ", " + gebruiker.getNaam() + ", " + gebruiker.getAchternaam() + ", " +
-                    gebruiker.getTelefoonnummer() + ", " + gebruiker.getEmail());
-        }
-    }
+    public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
 
     public static void addNewGebruiker(Gebruiker newGebruiker){
         GebruikersData.GebruikersLijst.add(newGebruiker);
@@ -48,6 +41,6 @@ public class Gebruiker extends Persoon{
         ContactDetails();
         int id = BerichtenData.BerichtenLijst.size() + 1; //increment number
         Bericht newBericht = new Bericht(id,onderwerp,beschrijving);
-        Medewerker.addNewBericht(newBericht);
+        Gebruiker.addNewBericht(newBericht);
     }
 }

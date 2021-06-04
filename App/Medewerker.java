@@ -9,13 +9,21 @@ public class Medewerker extends Persoon {
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
 
-    public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
-
-    public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
-
-    public static void getAllBerichten() {
-        for (Bericht bericht : BerichtenData.BerichtenLijst) {
-            System.out.println(bericht.getId() + " " + bericht.getOnderwerp() + " " + bericht.getOnderwerp());
+    public static void getAllGebruikers() {
+        for (Gebruiker gebruiker : GebruikersData.GebruikersLijst)
+        {
+            System.out.println(gebruiker.getId() + ", " + gebruiker.getGebruikersnaam() +
+                    ", " + gebruiker.getNaam() + ", " + gebruiker.getAchternaam() + ", " +
+                    gebruiker.getTelefoonnummer() + ", " + gebruiker.getEmail());
         }
     }
+
+    public static void getAllBerichten() {
+        for (Bericht bericht : BerichtenData.BerichtenLijst)
+        {
+            System.out.println("ID: " + bericht.getId() + " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
+        }
+    }
+
+    public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
 }

@@ -49,6 +49,7 @@ public class KeuzeMenu{
             }
             case "2" -> {
                 out.println("Zoek item");
+                MenuKeuze();
             }
             case "3" -> {
                 out.println("Mijn bestelstatus inzien");
@@ -91,7 +92,7 @@ public class KeuzeMenu{
         switch (input) {
             case "1" -> {
                 out.println("Klantenlijst wordt opgehaald");
-                Gebruiker.getAllGebruikers();
+                Medewerker.getAllGebruikers();
                 out.println("\n");
                 MenuKeuze_Medewerker();
             }

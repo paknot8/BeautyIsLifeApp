@@ -28,16 +28,15 @@ public class Gebruiker extends Persoon{
 
     public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
 
-
     /// TODO: Gebruiker moet dit nog kunnen wijzigen
     public static void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
-        out.println("Mijn id nummer: | " + LoginController.currentUserID);
-        out.println("Gebruikersnaam: | " + LoginController.username);
-        out.println("Voornaam: | " + LoginController.naam);
-        out.println("Achternaam: | " + LoginController.achternaam);
-        out.println("Telefoonnummer: | " + LoginController.telefoonnummer);
-        out.println("Emailadres: | " + LoginController.email);
+        out.println("ID nummer       | " + LoginController.currentUserID);
+        out.println("Gebruikersnaam  | " + LoginController.username);
+        out.println("Voornaam        | " + LoginController.naam);
+        out.println("Achternaam      | " + LoginController.achternaam);
+        out.println("Telefoonnummer  | " + LoginController.telefoonnummer);
+        out.println("Emailadres      | " + LoginController.email);
     }
 
     public static void ContactDetails() {

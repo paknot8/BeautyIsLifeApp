@@ -23,20 +23,16 @@ public class LoginController {
     private static LoginController singleton;
     private final Gebruiker loggedInUser;
 
-    private LoginController(){
-        loggedInUser = null;
-    }
+    private LoginController(){ loggedInUser = null; }
 
     public static LoginController getInstance(){
         if (singleton == null) {
-            singleton = new LoginController ();
+            singleton = new LoginController();
         }
         return singleton;
     }
 
-    private boolean userIsAuthenticated() {
-        return loggedInUser != null;
-    }
+    private boolean userIsAuthenticated() { return loggedInUser != null; }
 
     public boolean isAuthenticated(){
         if (userIsAuthenticated()) {

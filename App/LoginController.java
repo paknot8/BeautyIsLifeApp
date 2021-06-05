@@ -6,32 +6,24 @@ public class LoginController {
     public static int currentUserID;
     public static String targetUserName;
     public static String targetPassword;
-    public static String tempUser;
-    private static String tempPass;
     public static String userChoice;
     public static Boolean correct;
     public static Boolean userPassCheck = false;
     public static Boolean isMedewerker = false;
 
     // Get gegevens van current user (saves for use)
+    public static String username;
+    private static String password;
     public static String naam;
     public static String achternaam;
     public static String telefoonnummer;
     public static String email;
-    public static String gebruikersnaam;
 
+    // Singleton
     private static LoginController singleton;
     private final Gebruiker loggedInUser;
 
     private LoginController(){
-        /*
-        ArrayList<Gebruiker> users = new ArrayList<>();
-        users.add(loggedInUser = new Gebruiker(1,"erick","ibanez", "06123678","erick@email.nl",
-                "erick123","123"));
-        users.add(loggedInUser = new Gebruiker(2,"bob","smit", "0612345678","bob@email.nl",
-                "bob123","321"));
-                */
-
         loggedInUser = null;
     }
 
@@ -58,7 +50,6 @@ public class LoginController {
     private static void chooseLogin() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
         userChoice = scanner.nextLine();
-
         switch (userChoice)
         {
             case "1" -> LoginControle();
@@ -82,41 +73,13 @@ public class LoginController {
             case "1" -> {
                 System.out.println("Gebruiker gekozen...");
                 if (inputInfo()) {
-                    for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-                        tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-                        tempPass = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
-                        currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
-                        naam = GebruikersData.GebruikersLijst.get(i).getNaam();
-                        achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
-                        telefoonnummer = GebruikersData.GebruikersLijst.get(i).getTelefoonnummer();
-                        email = GebruikersData.GebruikersLijst.get(i).getEmail();
-                        gebruikersnaam = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-                        if (userAndPassCheck()) {
-                            isMedewerker = false;
-                            correct = true;
-                            return;
-                        }
-                    }
+                    GebruikersDataLoop();
                 }
             }
             case "2" -> {
                 System.out.println("Medewerker gekozen...");
                 if (inputInfo()) {
-                    for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
-                        tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-                        tempPass = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
-                        currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
-                        naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
-                        achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
-                        telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).getTelefoonnummer();
-                        email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
-                        gebruikersnaam = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-                        if (userAndPassCheck()) {
-                            isMedewerker = true;
-                            correct = true;
-                            return;
-                        }
-                    }
+                    MedewerkersDataLoop();
                 }
             }
             case "0" -> {
@@ -130,6 +93,40 @@ public class LoginController {
         }
     }
 
+    private static void GebruikersDataLoop(){
+        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+            username = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+            password = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
+            currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
+            naam = GebruikersData.GebruikersLijst.get(i).getNaam();
+            achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
+            telefoonnummer = GebruikersData.GebruikersLijst.get(i).getTelefoonnummer();
+            email = GebruikersData.GebruikersLijst.get(i).getEmail();
+            if (userAndPassCheck()) {
+                isMedewerker = false;
+                correct = true;
+                return;
+            }
+        }
+    }
+
+    private static void MedewerkersDataLoop(){
+        for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
+            username = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
+            password = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
+            currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
+            naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
+            achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
+            telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).getTelefoonnummer();
+            email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
+            if (userAndPassCheck()) {
+                isMedewerker = true;
+                correct = true;
+                return;
+            }
+        }
+    }
+
     private static boolean inputInfo() {
         System.out.println("Gebruikersnaam:");
         targetUserName = scanner.nextLine();
@@ -139,11 +136,11 @@ public class LoginController {
     }
 
     private static boolean userAndPassCheck() {
-        if (targetUserName.equals(tempUser) && targetPassword.equals(tempPass)) {
+        if (targetUserName.equals(username) && targetPassword.equals(password)) {
             System.out.println(">>> login geslaagd!");
             System.out.println("\nHallo, " + naam + " " + achternaam);
             userPassCheck = true;
-        } else if (!targetUserName.equals(tempUser) && !targetPassword.equals(tempPass)){
+        } else if (!targetUserName.equals(username) && !targetPassword.equals(password)){
             userPassCheck = false;
             correct = false;
         } else {

@@ -61,7 +61,12 @@ public class ProductController {
         userInput = scanner.nextLine();
         // Inserts id by taking the arraylist size and adding +1
         id = ProductData.ProductenLijst.size() + 1; //increment number
-        Product newProduct = new Product(id, productNaam, productPrijs, productAantal);
+        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
+        productLoop(newProduct);
+    }
+
+    // extract method gebruik voor duplicate code and long methods
+    private static void productLoop(Product newProduct) {
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
@@ -78,7 +83,7 @@ public class ProductController {
         }
     }
 
-    //# MOET NOG GEDAAN
+    /// TODO: MOET NOG GEDAAN (Wijzgigen van Producten)
     // Alleen een Medewerker kan producten wijzigen.
     public static void wijzigProduct(){
         int id;
@@ -86,20 +91,7 @@ public class ProductController {
         userInput = scanner.nextLine();
         // Inserts id by taking the arraylist size and adding +1
         id = ProductData.ProductenLijst.size() + 1; //increment number
-        Product newProduct = new Product(id, productNaam, productPrijs, productAantal);
-        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-            tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
-
-            if (productNaam.equals(tempProductNaam)) {
-                System.out.println("Product bestaat al, vul een nieuw product in! \n");
-                addNewProduct();
-            } else {
-                ProductData.ProductenLijst.add(newProduct);
-                System.out.println("Nieuwe product is succesvol toegevoegd in de maggazijn.\n");
-                break;
-            }
-        }
+        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
+        productLoop(newProduct);
     }
 }

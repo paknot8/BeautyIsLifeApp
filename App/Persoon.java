@@ -63,8 +63,8 @@ abstract class Persoon {
         this.wachtwoord = wachtwoord;
     }
 
-    public void getBerichten() {}
-    public void controleProductExist(){}
-    public void zoekProduct() {}
-    public void getBestellingen() {}
+    abstract void getBerichten();
+    abstract void controleProductExist();
+    abstract void zoekProduct();
+    abstract void getBestellingen();
 }

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import static java.lang.System.in;
 
@@ -5,15 +6,14 @@ public class LoginController {
     private static final Scanner scanner = new Scanner(in);
     public static int currentUserID;
     public static String userInput;
-    public static String targetUser;
+    public static String targetUserName;
     public static String targetPassword;
     public static String tempUser;
     public static String tempPass;
     public static String userChoice;
-    public static Boolean choseLogin;
     public static Boolean correct;
     public static Boolean userPassCheck = false;
-    public static Boolean isMedewerker;
+    public static Boolean isMedewerker = false;
 
     // Get gegevens van current user (saves for use)
     public static String naam;
@@ -21,33 +21,60 @@ public class LoginController {
     public static String telefoonnummer;
     public static String email;
     public static String gebruikersnaam;
-    //private static String wachtwoord;
 
-    public static boolean chooseLogin() {
+    private static LoginController singleton;
+    private Gebruiker loggedInUser;
+
+    private LoginController(){
+        ArrayList<Gebruiker> users = new ArrayList<>();
+        users.add(loggedInUser = new Gebruiker(1,"erick","ibanez", "06123678","erick@email.nl",
+                "erick123","123"));
+        users.add(loggedInUser = new Gebruiker(2,"bob","smit", "0612345678","bob@email.nl",
+                "bob123","321"));
+        loggedInUser = null;
+    }
+
+    public static LoginController getInstance(){
+        if (singleton == null) {
+            singleton = new LoginController ();
+        }
+        return singleton;
+    }
+
+    private boolean userIsAuthenticated() {
+        return loggedInUser != null;
+    }
+
+    public boolean isAuthenticated(){
+        if (userIsAuthenticated()) {
+            return true;
+        } else {
+            chooseLogin();
+        }
+        return true;
+    }
+
+    public static void chooseLogin() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
         userChoice = scanner.nextLine();
 
         switch (userChoice)
         {
-            case "1" -> choseLogin = LoginControle();
-            case "2" -> {
-                choseLogin = false;
-                RegistratieController.Registration();
-            }
+            case "1" -> LoginControle();
+            case "2" -> RegistratieController.Registration();
             default -> {
                 System.out.println(">>> " + userChoice + " bestaat niet, probeer opnieuw...");
-                chooseLogin();
+                LoginControle();
             }
         }
         if (!userPassCheck){
             System.out.println("---> login mislukt!");
             System.out.println("Probeer het opnieuw... \n");
+            chooseLogin();
         }
-        return choseLogin;
     }
 
-    public static boolean LoginControle(){
-        //Checks if user is gebruiker or medewerker
+    public static void LoginControle(){
         System.out.println("Bent u 1) Gebruiker of 2) Medewerker? --> 0) om terug te gaan.");
         userInput = scanner.nextLine();
         switch (userInput) {
@@ -65,7 +92,8 @@ public class LoginController {
                         gebruikersnaam = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
                         if (userAndPassCheck()) {
                             isMedewerker = false;
-                            return correct = true;
+                            correct = true;
+                            return;
                         }
                     }
                 }
@@ -84,7 +112,8 @@ public class LoginController {
                         gebruikersnaam = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
                         if (userAndPassCheck()) {
                             isMedewerker = true;
-                            return correct = true;
+                            correct = true;
+                            return;
                         }
                     }
                 }
@@ -95,25 +124,24 @@ public class LoginController {
             }
             default -> {
                 System.out.println(userInput + " bestaat niet, probeer opnieuw...");
-                LoginControle();
+                chooseLogin();
             }
         }
-        return correct;
     }
 
     public static boolean inputInfo() {
         System.out.println("Gebruikersnaam:");
-        targetUser = scanner.nextLine();
+        targetUserName = scanner.nextLine();
         System.out.println("Wachtwoord:");
         targetPassword = scanner.nextLine();
         return true;
     }
 
     public static boolean userAndPassCheck() {
-        if (targetUser.equals(tempUser) && targetPassword.equals(tempPass)) {
+        if (targetUserName.equals(tempUser) && targetPassword.equals(tempPass)) {
             System.out.println("login geslaagd!");
             userPassCheck = true;
-        } else if (!targetUser.equals(tempUser) && !targetPassword.equals(tempPass)){
+        } else if (!targetUserName.equals(tempUser) && !targetPassword.equals(tempPass)){
             userPassCheck = false;
             correct = false;
         } else {

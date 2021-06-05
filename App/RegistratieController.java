@@ -25,7 +25,6 @@ public class RegistratieController {
 
     public static void Registration() {
         int id;
-
         System.out.println("Maak een keuze...");
         System.out.println("1) Gebruiker");
         System.out.println("2) Medewerker");

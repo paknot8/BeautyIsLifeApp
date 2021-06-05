@@ -8,7 +8,7 @@ public class KeuzeMenu{
 
     public static void LoginScherm() {
         out.println("\n--- Welkom op de BeautyIsLife App ---");
-        if (LoginController.chooseLogin())
+        if (LoginController.getInstance().isAuthenticated())
         {
             if(LoginController.isMedewerker){
                 MenuKeuze_Medewerker();
@@ -20,7 +20,6 @@ public class KeuzeMenu{
             LoginScherm();
         }
     }
-
     // gebruiker
     // erick123     password: 123
 
@@ -128,8 +127,5 @@ public class KeuzeMenu{
 
     public static void main(String[] args) {
         LoginScherm();
-        MenuKeuze();
-
-        //ProductController.DetailsInput();
     }
 }

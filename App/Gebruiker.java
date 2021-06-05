@@ -33,7 +33,7 @@ public class Gebruiker extends Persoon{
     public static void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
         out.println("Mijn id nummer: | " + LoginController.currentUserID);
-        out.println("Gebruikersnaam: | " + LoginController.tempUser);
+        out.println("Gebruikersnaam: | " + LoginController.targetUserName);
         out.println("Voornaam: | " + LoginController.naam);
         out.println("Achternaam: | " + LoginController.achternaam);
         out.println("Telefoonnummer: | " + LoginController.telefoonnummer);

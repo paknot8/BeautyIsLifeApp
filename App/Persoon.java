@@ -8,6 +8,7 @@ abstract class Persoon {
     private String wachtwoord;
 
     // Long parameter fix
+    // Door aparte classe te maken
     public Persoon(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         this.id = id;
         this.naam = naam;

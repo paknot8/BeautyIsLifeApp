@@ -18,6 +18,8 @@ abstract class Persoon {
         this.wachtwoord = wachtwoord;
     }
 
+    public Persoon(){}
+
     public int getId() {
         return id;
     }
@@ -60,4 +62,9 @@ abstract class Persoon {
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
     }
+
+    public void getBerichten() {}
+    public void controleProductExist(){}
+    public void zoekProduct() {}
+    public void getBestellingen() {}
 }

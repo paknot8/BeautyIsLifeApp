@@ -32,16 +32,6 @@ public class Bestelling{
     public int getAantalGekocht() { return aantalGekocht; }
     public double getPrijsBetaald() { return prijsBetaald; }
 
-    public static void getMijnBestellingen(){
-        for(Bestelling bestelling : BestellingsData.BestellingsLijst) {
-            if(bestelling.getUserID() == LoginController.currentUserID){
-                System.out.println("Bestelnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
-                        " | Product: " + bestelling.getProductNaam() + " | Aantal: " + bestelling.getAantalGekocht() +
-                        " | Prijs: €" + bestelling.getPrijsBetaald());
-            }
-        }
-    }
-
     public static void VraagBestellingPlaatsen(){
         System.out.println("Wilt u een bestelling plaatsen? (1) ja / (0) nee");
         userInput = scanner.nextLine();

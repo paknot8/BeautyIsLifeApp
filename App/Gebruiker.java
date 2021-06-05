@@ -24,10 +24,9 @@ public class Gebruiker extends Persoon{
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
 
+    public Gebruiker(){}
+
     public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
-    public static void addNewGebruiker(Gebruiker newGebruiker){
-        GebruikersData.GebruikersLijst.add(newGebruiker);
-    }
 
     public static void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
@@ -54,7 +53,19 @@ public class Gebruiker extends Persoon{
         Gebruiker.addNewBericht(newBericht);
     }
 
-    public static void getMijnBerichten(){
+    @Override
+    public void getBestellingen(){
+        for(Bestelling bestelling : BestellingsData.BestellingsLijst) {
+            if(bestelling.getUserID() == LoginController.currentUserID){
+                System.out.println("Bestelnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
+                        " | Product: " + bestelling.getProductNaam() + " | Aantal: " + bestelling.getAantalGekocht() +
+                        " | Prijs: €" + bestelling.getPrijsBetaald());
+            }
+        }
+    }
+
+    @Override
+    public void getBerichten() {
         for(Bericht bericht : BerichtenData.BerichtenLijst) {
             if(bericht.getUserID() == LoginController.currentUserID){
                 System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
@@ -63,7 +74,8 @@ public class Gebruiker extends Persoon{
         }
     }
 
-    public static void controleProductExist(){
+    @Override
+    public void controleProductExist(){
         if (tempProductNaam.equals(userInput)) {
             out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
             out.println("Productnr: " + tempProductid + " | Product: " + tempProductNaam +
@@ -72,7 +84,8 @@ public class Gebruiker extends Persoon{
         }
     }
 
-    public static void zoekProduct(){
+    @Override
+    public void zoekProduct(){
         System.out.println("Vul product in:");
         userInput = scanner.nextLine();
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {

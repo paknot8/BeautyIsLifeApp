@@ -55,7 +55,7 @@ public class RegistratieController {
     private static void GebruikersDataLoop(){
         id = GebruikersData.GebruikersLijst.size() + 1; //increment number
         Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
-        Gebruiker.addNewGebruiker(newGebruiker);
+        Medewerker.addNewGebruiker(newGebruiker);
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
             LoginController.currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
@@ -66,7 +66,7 @@ public class RegistratieController {
     private static void MedewerkersDataLoop(){
         id = MedewerkersData.MedewerkersLijst.size() + 1;
         Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
-        MedewerkersData.MedewerkersLijst.add(newMedewerker);
+        Medewerker.addNewMedewerker(newMedewerker);
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
             tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
             LoginController.currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();

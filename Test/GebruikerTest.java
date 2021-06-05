@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class GebruikerTest
 {
-    // Data
+    /*// Data
     Gebruiker gebruiker = new Gebruiker(3,"tom","kramer",
             "0612345678","tom@email.nl","tom123","123");
 
@@ -27,5 +27,5 @@ public class GebruikerTest
             }
         }
         Assert.assertEquals(expected,gebNaam);
-    }
+    }*/
 }

@@ -6,6 +6,10 @@ public class KeuzeMenu{
     private static final Scanner scanner = new Scanner(in);
     private static String input;
 
+    // Objecten initiliseren accessable in KeuzeMenu
+    static Medewerker medewerkerKeuze = new Medewerker();
+    static Gebruiker gebruikerKeuze = new Gebruiker();
+
     public static void LoginScherm() {
         out.println("\n--- Welkom op de BeautyIsLife App ---");
         if (LoginController.getInstance().isAuthenticated()) {
@@ -48,12 +52,12 @@ public class KeuzeMenu{
             }
             case "2" -> {
                 out.println("Zoek item");
-                Gebruiker.zoekProduct();
+                gebruikerKeuze.zoekProduct();
                 MenuKeuze();
             }
             case "3" -> {
                 out.println("Mijn bestellingen inzien");
-                Bestelling.getMijnBestellingen();
+                gebruikerKeuze.getBestellingen();
                 MenuKeuze();
             }
             case "4" -> {
@@ -62,7 +66,7 @@ public class KeuzeMenu{
             }
             case "5" -> {
                 out.println("Mijn berichten");
-                Gebruiker.getMijnBerichten();
+                gebruikerKeuze.getBerichten();
                 MenuKeuze();
             }
             case "6" -> {
@@ -85,7 +89,9 @@ public class KeuzeMenu{
         out.println("--- Admin Menu ---");
         out.println(" 1) Klantenlijst overzicht");
         out.println(" 2) Klanten berichten");
-        out.println(" 3) Producten overzicht");
+        out.println(" 3) Zoek Producten");
+        out.println(" 4) Producten overzicht");
+        out.println(" 4) Klanten Bestellings overzicht");
         out.println(" 0) Uitloggen");
         out.println("Uw keuze:");
     }
@@ -96,20 +102,29 @@ public class KeuzeMenu{
         switch (input) {
             case "1" -> {
                 out.println("Klantenlijst wordt opgehaald");
-                Medewerker.getAllGebruikers();
+                Medewerker.getGebruikers();
                 out.println("\n");
                 MenuKeuze_Medewerker();
             }
             case "2" -> {
                 out.println("Alle klantenberichten inzien");
-                Medewerker.getAllBerichten();
+                medewerkerKeuze.getBerichten();
                 MenuKeuze_Medewerker();
+            } case "3" -> {
+                out.println("Zoek item");
+                medewerkerKeuze.zoekProduct();
+                MenuKeuze();
             }
-            case "3" -> {
+            case "4" -> {
                 out.println("Productenlijst overzicht");
                 ProductController.getAllProducten();
                 ProductController.chooseAddNewProduct();
                 MenuKeuze_Medewerker();
+            }
+            case "5" -> {
+                out.println("Alle bestellingen inzien");
+                medewerkerKeuze.getBestellingen();
+                MenuKeuze();
             }
             case "0" -> {
                 out.println("Uitloggen...");

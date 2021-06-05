@@ -3,11 +3,14 @@ import static java.lang.System.in;
 
 public class LoginController {
     private static final Scanner scanner = new Scanner(in);
+
+    // user inputs
+    public static String userChoice;
     public static int currentUserID;
     public static String targetUserName;
     public static String targetPassword;
-    public static String userChoice;
-    public static Boolean correct;
+
+    // Controle checks
     public static Boolean userPassCheck = false;
     public static Boolean isMedewerker = false;
 
@@ -22,8 +25,12 @@ public class LoginController {
     // Singleton
     private static LoginController singleton;
     private final Gebruiker loggedInUser;
+    private final Medewerker loggedInMedewerker;
 
-    private LoginController(){ loggedInUser = null; }
+    private LoginController(){
+        loggedInUser = null;
+        loggedInMedewerker = null;
+    }
 
     public static LoginController getInstance(){
         if (singleton == null) {
@@ -32,7 +39,9 @@ public class LoginController {
         return singleton;
     }
 
-    private boolean userIsAuthenticated() { return loggedInUser != null; }
+    private boolean userIsAuthenticated() {
+        return loggedInUser != null & loggedInMedewerker != null;
+    }
 
     public boolean isAuthenticated(){
         if (userIsAuthenticated()) {
@@ -49,7 +58,7 @@ public class LoginController {
         switch (userChoice)
         {
             case "1" -> LoginControle();
-            case "2" -> RegistratieController.Registration();
+            case "2" -> RegistratieController.getInstance().isAuthenticated();
             default -> {
                 System.out.println(">>> " + userChoice + " bestaat niet, probeer opnieuw...");
                 LoginControle();
@@ -71,18 +80,15 @@ public class LoginController {
                 if (inputInfo()) {
                     GebruikersDataLoop();
                 }
-            }
-            case "2" -> {
+            } case "2" -> {
                 System.out.println("Medewerker gekozen...");
                 if (inputInfo()) {
                     MedewerkersDataLoop();
                 }
-            }
-            case "0" -> {
+            } case "0" -> {
                 System.out.println("Terug naar beginscherm...\n");
                 chooseLogin();
-            }
-            default -> {
+            } default -> {
                 System.out.println(userInput + " bestaat niet, probeer opnieuw...");
                 chooseLogin();
             }
@@ -100,7 +106,6 @@ public class LoginController {
             email = GebruikersData.GebruikersLijst.get(i).getEmail();
             if (userAndPassCheck()) {
                 isMedewerker = false;
-                correct = true;
                 return;
             }
         }
@@ -117,7 +122,6 @@ public class LoginController {
             email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
             if (userAndPassCheck()) {
                 isMedewerker = true;
-                correct = true;
                 return;
             }
         }
@@ -138,11 +142,9 @@ public class LoginController {
             userPassCheck = true;
         } else if (!targetUserName.equals(username) && !targetPassword.equals(password)){
             userPassCheck = false;
-            correct = false;
         } else {
             System.out.println("Fout probeer opnieuw...\n");
             userPassCheck = false;
-            correct = false;
         }
         return userPassCheck;
     }

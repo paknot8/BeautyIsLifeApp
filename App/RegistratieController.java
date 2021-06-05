@@ -13,7 +13,7 @@ public class RegistratieController {
     private static String tempUser;
 
     private static void Details() {
-        System.out.println("Voer in uw gegevens in...");
+        System.out.println("Voer uw gegevens in...");
         System.out.println("naam: ");               naam = scanner.nextLine();
         System.out.println("achternaam: ");         achternaam = scanner.nextLine();
         System.out.println("wachtwoord: ");         telefoonnummer = scanner.nextLine();
@@ -37,7 +37,7 @@ public class RegistratieController {
 
     private static void GebruikersDataLoop(){
         id = GebruikersData.GebruikersLijst.size() + 1; //increment number
-        Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email.toLowerCase(), gebruikersnaam.toLowerCase(), wachtwoord);
+        Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
         Gebruiker.addNewGebruiker(newGebruiker);
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
@@ -48,7 +48,7 @@ public class RegistratieController {
 
     private static void MedewerkersDataLoop(){
         id = MedewerkersData.MedewerkersLijst.size() + 1;
-        Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email.toLowerCase(), gebruikersnaam.toLowerCase(), wachtwoord);
+        Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
         MedewerkersData.MedewerkersLijst.add(newMedewerker);
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
             tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
@@ -61,6 +61,7 @@ public class RegistratieController {
         if (!gebruikersnaam.equals(tempUser)) {
             System.out.println("U bent nu geregistreerd!");
             LoginController.userPassCheck = true;
+            KeuzeMenu.LoginScherm();
         } else {
             System.out.println("Gebruikersnaam: " + gebruikersnaam + " bestaat al!, probeer opnieuw...");
             Registration();

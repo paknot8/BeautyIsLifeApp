@@ -145,6 +145,8 @@ public class LoginController {
             correct = false;
         } else {
             System.out.println("Fout probeer opnieuw...\n");
+            userPassCheck = false;
+            correct = false;
         }
         return userPassCheck;
     }

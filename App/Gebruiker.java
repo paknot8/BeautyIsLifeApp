@@ -28,6 +28,8 @@ public class Gebruiker extends Persoon{
 
     public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
 
+
+    /// TODO: Gebruiker moet dit nog kunnen wijzigen
     public static void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
         out.println("Mijn id nummer: | " + LoginController.currentUserID);

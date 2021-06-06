@@ -61,7 +61,7 @@ public class KeuzeMenu{
                 MenuKeuze();
             }
             case "4" -> {
-                Gebruiker.mijnProfiel();
+                gebruikerKeuze.mijnProfiel();
                 MenuKeuze();
             }
             case "5" -> {
@@ -71,7 +71,7 @@ public class KeuzeMenu{
             }
             case "6" -> {
                 out.println("Neem Contact");
-                Gebruiker.Contact();
+                gebruikerKeuze.Contact();
                 MenuKeuze();
             }
             case "0" -> {
@@ -102,7 +102,7 @@ public class KeuzeMenu{
         switch (input) {
             case "1" -> {
                 out.println("Klantenlijst wordt opgehaald");
-                Medewerker.getGebruikers();
+                medewerkerKeuze.getGebruikers();
                 out.println("\n");
                 MenuKeuze_Medewerker();
             }

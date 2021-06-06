@@ -45,11 +45,12 @@ public class ProductController {
             try {
                 System.out.println("Druk nogmaals op ENTER om door te gaan."); // Tussen breaker, zodat endless-loop eindigd.
                 scanner.nextLine();
-                System.out.println("Productprijs: ");   productPrijs    = scanner.nextDouble();
-                System.out.println("Aantal: ");         productAantal   = scanner.nextInt();
-                isNumeric = true;//numeric value entered, so break the while loop
+                System.out.println("Productprijs: ");
+                productPrijs = scanner.nextDouble();
+                System.out.println("Aantal: ");
+                productAantal = scanner.nextInt();
+                isNumeric = true; //numeric value entered, so break the while loop
             } catch(InputMismatchException ime) {
-                //Display Error message
                 System.out.println("Invoer mag alleen cijfers bevatten, begin opnieuw.");
             }
     }

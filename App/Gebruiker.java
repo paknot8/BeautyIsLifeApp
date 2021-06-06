@@ -28,7 +28,7 @@ public class Gebruiker extends Persoon{
     public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
 
     /// TODO: Gebruiker moet dit nog kunnen wijzigen
-    public static void mijnProfiel(){
+    public void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
         out.println("ID nummer       | " + LoginController.currentUserID);
         out.println("Gebruikersnaam  | " + LoginController.username);
@@ -38,7 +38,7 @@ public class Gebruiker extends Persoon{
         out.println("Emailadres      | " + LoginController.email);
     }
 
-    public static void ContactDetails() {
+    private static void ContactDetails(){
         System.out.println("--- Contact nemen met de klantenservice ---");
         System.out.println("Wat is het onderwerp:");
         onderwerp = scanner.nextLine();
@@ -46,7 +46,7 @@ public class Gebruiker extends Persoon{
         beschrijving = scanner.nextLine();
     }
 
-    public static void Contact(){
+    public void Contact(){
         ContactDetails();
         int id = BerichtenData.BerichtenLijst.size() + 1; //increment number
         Bericht newBericht = new Bericht(id,LoginController.currentUserID,onderwerp,beschrijving);

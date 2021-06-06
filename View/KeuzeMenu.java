@@ -29,7 +29,7 @@ public class KeuzeMenu{
     // medewerker
     // bella123     password: 321
 
-    public static void MenuText(){
+    private static void MenuText(){
         out.println("--- Menu ---");
         out.println(" 1) Zie catalogus");
         out.println(" 2) Zoek item");
@@ -86,7 +86,7 @@ public class KeuzeMenu{
         }
     }
 
-    public static void MenuText_Medewerker(){
+    private static void MenuText_Medewerker(){
         out.println("--- Admin Menu ---");
         out.println(" 1) Klantenlijst overzicht");
         out.println(" 2) Klanten berichten");

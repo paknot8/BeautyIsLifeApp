@@ -8,8 +8,10 @@ public class Medewerker extends Persoon {
     private static final Scanner scanner = new Scanner(in);
     private static String userInput;
 
+    // tempList
     public static ArrayList<String> tempSearchedList = new ArrayList<>() {};
 
+    // temps
     public static int tempProductid;
     public static String tempProductNaam;
     public static double tempProductPrijs;
@@ -28,6 +30,9 @@ public class Medewerker extends Persoon {
                     gebruiker.getTelefoonnummer() + ", " + gebruiker.getEmail());
         }
     }
+
+    public static void addNewGebruiker(Gebruiker newGebruiker){ GebruikersData.GebruikersLijst.add(newGebruiker); }
+    public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
 
     @Override
     public void getBestellingen(){
@@ -77,7 +82,4 @@ public class Medewerker extends Persoon {
             zoekProduct();
         }
     }
-
-    public static void addNewGebruiker(Gebruiker newGebruiker){ GebruikersData.GebruikersLijst.add(newGebruiker); }
-    public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
 }

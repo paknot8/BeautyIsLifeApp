@@ -11,8 +11,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Interfaces" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Model" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Notification" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Producten" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/View" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/InterfaceProducten" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

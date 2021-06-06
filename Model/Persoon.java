@@ -1,4 +1,4 @@
-abstract class Persoon {
+public abstract class Persoon {
     private int id;
     private String naam;
     private String achternaam;
@@ -62,8 +62,8 @@ abstract class Persoon {
         this.wachtwoord = wachtwoord;
     }
 
-    abstract void getBerichten();
-    abstract void controleProductExist();
-    abstract void zoekProduct();
-    abstract void getBestellingen();
+    public abstract void getBerichten();
+    public abstract void controleProductExist();
+    public abstract void zoekProduct();
+    public abstract void getBestellingen();
 }

@@ -21,9 +21,7 @@ public class Bericht {
     public String getOnderwerp() {
         return onderwerp;
     }
-    public void setOnderwerp(String onderwerp) {
-        this.onderwerp = onderwerp;
-    }
+    public void setOnderwerp(String onderwerp) { this.onderwerp = onderwerp; }
     public String getBeschrijving() {
         return beschrijving;
     }

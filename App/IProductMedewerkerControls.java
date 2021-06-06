@@ -1,4 +1,5 @@
 public interface IProductMedewerkerControls extends IProduct{
-    void chooseAddNewProduct();
+    void addProduct();
     void wijzigProduct();
+    void verwijderProduct();
 }

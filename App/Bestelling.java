@@ -5,7 +5,6 @@ public class Bestelling{
     private static final Scanner scanner = new Scanner(in);
     private static String userInput;
     private static int userInputAantalBesteld;
-    private static int tempProductID;
     private static String tempProductNaam;
     private static double tempProductPrijs;
     private static int tempProductVoorraad;
@@ -74,7 +73,7 @@ public class Bestelling{
 
     public static void loopProductenLijst(){
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
-            tempProductID = ProductData.ProductenLijst.get(i).getProductId();
+            int tempProductID = ProductData.ProductenLijst.get(i).getProductId();
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
@@ -97,7 +96,7 @@ public class Bestelling{
 
     // aantal bestelde producten min voorraad
     public static void newVoorraadBerekenen(){
-        if(tempProductVoorraad > 0) {
+        if(tempProductVoorraad > 0){
             newVoorraad = tempProductVoorraad - userInputAantalBesteld;
             if(newVoorraad < 0){
                 System.out.println(">>> Het aantal dat u wilt bestellen hebben wij niet op voorraad, voer een ander aantal in.");

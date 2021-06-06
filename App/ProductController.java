@@ -16,28 +16,45 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
     public static double tempProductPrijs;
     public static int tempProductAantal;
 
-    // Get all data from list
-    @Override // Interface
+    @Override // Get all data from list
     public void getProducten() {
-        for (Product product : ProductData.ProductenLijst)
-        {
+        for (Product product : ProductData.ProductenLijst) {
             System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
                     " | Prijs: " + product.getProductPrijs() + " | Op voorraad: " + product.getProductVoorraad());
         }
     }
 
-    @Override // Interface
-    public void chooseAddNewProduct(){
+    /// TODO: Wijzigen van de rij van het product
+    @Override
+    public void wijzigProduct(){
+        int id;
+        DetailsInput();
+        userInput = scanner.nextLine();
+        // Inserts id by taking the arraylist size and adding +1
+        id = ProductData.ProductenLijst.size() + 1; //increment number
+        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
+        productLoop(newProduct);
+    }
+
+
+    /// TODO: Verwijderen van de rij van het product
+    @Override
+    public void verwijderProduct(){
+
+    }
+
+    @Override
+    public void addProduct(){
         System.out.println("Kies 1) Nieuwe Product toevoegen of 0) om terug te gaan.");
         userInput = scanner.nextLine();
         if(userInput.equals("1")){
-            addNewProduct();
+            insertProduct();
         } else if(userInput.equals("2")){
             System.out.println("Terug gaan naar Hoofdmenu...\n");
             KeuzeMenu.MenuKeuze_Medewerker();
         } else {
             System.out.println("Probeer opnieuw...\n");
-            chooseAddNewProduct();
+            addProduct();
         }
     }
 
@@ -70,7 +87,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
 
             if (productNaam.equals(tempProductNaam)) {
                 System.out.println("Product bestaat al, vul een nieuw product in! \n");
-                addNewProduct();
+                insertProduct();
             } else {
                 ProductData.ProductenLijst.add(newProduct);
                 System.out.println("Nieuwe product is succesvol toegevoegd in de maggazijn.\n");
@@ -79,20 +96,8 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
         }
     }
 
-    // Alleen een Medewerker kan nieuwe producten toevoegen.
-    private static void addNewProduct(){
-        int id;
-        DetailsInput();
-        userInput = scanner.nextLine();
-        // Inserts id by taking the arraylist size and adding +1
-        id = ProductData.ProductenLijst.size() + 1; //increment number
-        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
-        productLoop(newProduct);
-    }
-
-    /// TODO: MOET NOG GEDAAN (Wijzgigen van Producten)
-    // Alleen een Medewerker kan producten wijzigen.
-    public void wijzigProduct(){
+    // Product toevoegen
+    private static void insertProduct(){
         int id;
         DetailsInput();
         userInput = scanner.nextLine();

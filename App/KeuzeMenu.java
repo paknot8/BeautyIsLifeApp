@@ -119,7 +119,7 @@ public class KeuzeMenu{
             case "4" -> {
                 out.println("Productenlijst overzicht");
                 productControl.getProducten();
-                productControl.chooseAddNewProduct();
+                productControl.addProduct();
                 MenuKeuze_Medewerker();
             }
             case "5" -> {

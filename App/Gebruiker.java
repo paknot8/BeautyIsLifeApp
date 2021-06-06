@@ -19,8 +19,7 @@ public class Gebruiker extends Persoon{
     public static double tempProductPrijs;
     public static int tempProductVoorraad;
 
-    public Gebruiker(int id, String naam, String achternaam, String telefoonnummer,
-                     String email, String gebruikersnaam, String wachtwoord) {
+    public Gebruiker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
 

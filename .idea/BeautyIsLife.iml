@@ -6,9 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/Data" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/Berichten" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Bestellingen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Controllers" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Interfaces" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Model" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Notification" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Producten" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/View" isTestSource="false" />
     </content>

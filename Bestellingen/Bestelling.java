@@ -45,7 +45,7 @@ public class Bestelling{
         }
     }
 
-    public static void singleBestellingPlaatsen(){
+    public static void gezochteProductBestellingPlaatsen(){
         System.out.println("Wilt u " + Gebruiker.tempProductNaam + " bestellen? 1) ja 0) nee");
         userInput = scanner.nextLine();
         if(userInput.equals("1")){
@@ -58,7 +58,7 @@ public class Bestelling{
             KeuzeMenu.MenuKeuze();
         } else {
             System.out.println("Foutieve invoer, probeer opnieuw...");
-            singleBestellingPlaatsen();
+            gezochteProductBestellingPlaatsen();
         }
     }
 
@@ -90,7 +90,7 @@ public class Bestelling{
     public static void addToMijnBestelLijst(){
         int incrementedID = BestellingsData.BestellingsLijst.size() + 1;
         Bestelling bestelling = new Bestelling(incrementedID,LoginController.currentUserID,tempProductNaam,
-                userInputAantalBesteld,kortingOpTotaalAantalProducten());
+                userInputAantalBesteld, korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,tempProductPrijs));
         BestellingsData.BestellingsLijst.add(bestelling);
     }
 
@@ -109,7 +109,7 @@ public class Bestelling{
         }
     }
 
-    public static double kortingOpTotaalAantalProducten(){
+    /*public static double kortingOpTotaalAantalProducten(){
         if(userInputAantalBesteld > 3 && userInputAantalBesteld < 10){
             System.out.println("U krijgt 15% korting!");
             return ((userInputAantalBesteld * tempProductPrijs) * 0.85);
@@ -122,5 +122,5 @@ public class Bestelling{
         } else {
             return (userInputAantalBesteld * tempProductPrijs);
         }
-    }
+    }*/
 }

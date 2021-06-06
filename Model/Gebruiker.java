@@ -113,7 +113,7 @@ public class Gebruiker extends Persoon{
             out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
             out.println("Productnr: " + tempProductid + " | Product: " + tempProductNaam +
                     " | Prijs " + tempProductPrijs + " | Aantal op voorraad: " + tempProductVoorraad);
-            Bestelling.singleBestellingPlaatsen(); // Vraagt of gebruiker wilt bestellen ja of nee
+            Bestelling.gezochteProductBestellingPlaatsen(); // Vraagt of gebruiker wilt bestellen ja of nee
         }
     }
 

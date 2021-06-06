@@ -22,8 +22,7 @@ public class Medewerker extends Persoon {
     public Medewerker(){}
 
     public void getGebruikers() {
-        for (Gebruiker gebruiker : GebruikersData.GebruikersLijst)
-        {
+        for (Gebruiker gebruiker : GebruikersData.GebruikersLijst) {
             System.out.println(gebruiker.getId() + ", " + gebruiker.getGebruikersnaam() +
                     ", " + gebruiker.getNaam() + ", " + gebruiker.getAchternaam() + ", " +
                     gebruiker.getTelefoonnummer() + ", " + gebruiker.getEmail());

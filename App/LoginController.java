@@ -47,12 +47,12 @@ public class LoginController {
         if (userIsAuthenticated()) {
             return true;
         } else {
-            chooseLogin();
+            Login();
         }
         return true;
     }
 
-    private static void chooseLogin() {
+    private static void Login() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
         userChoice = scanner.nextLine();
         switch (userChoice)
@@ -67,7 +67,7 @@ public class LoginController {
         if (!userPassCheck){
             System.out.println("---> login mislukt!");
             System.out.println("Probeer het opnieuw... \n");
-            chooseLogin();
+            Login();
         }
     }
 
@@ -87,10 +87,10 @@ public class LoginController {
                 }
             } case "0" -> {
                 System.out.println("Terug naar beginscherm...\n");
-                chooseLogin();
+                Login();
             } default -> {
                 System.out.println(userInput + " bestaat niet, probeer opnieuw...");
-                chooseLogin();
+                Login();
             }
         }
     }

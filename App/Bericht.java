@@ -10,6 +10,8 @@ public class Bericht {
         this.beschrijving = beschrijving;
     }
 
+    public Bericht(){}
+
     public int getId() {
         return id;
     }
@@ -28,4 +30,6 @@ public class Bericht {
     public void setBeschrijving(String beschrijving) {
         this.beschrijving = beschrijving;
     }
+
+    public void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
 }

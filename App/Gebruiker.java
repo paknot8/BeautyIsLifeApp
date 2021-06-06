@@ -25,8 +25,6 @@ public class Gebruiker extends Persoon{
 
     public Gebruiker(){}
 
-    public static void addNewBericht(Bericht newBericht){ BerichtenData.BerichtenLijst.add(newBericht); }
-
     /// TODO: Gebruiker moet dit nog kunnen wijzigen
     public void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
@@ -50,7 +48,7 @@ public class Gebruiker extends Persoon{
         ContactDetails();
         int id = BerichtenData.BerichtenLijst.size() + 1; //increment number
         Bericht newBericht = new Bericht(id,LoginController.currentUserID,onderwerp,beschrijving);
-        Gebruiker.addNewBericht(newBericht);
+        Bericht.addNewBericht(newBericht);
     }
 
     @Override

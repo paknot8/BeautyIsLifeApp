@@ -71,6 +71,7 @@ public class Bestelling{
         loopProductenLijst();
     }
 
+    // Door de lijst van producten gaan
     public static void loopProductenLijst(){
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             int tempProductID = ProductData.ProductenLijst.get(i).getProductId();
@@ -90,7 +91,8 @@ public class Bestelling{
     public static void addToMijnBestelLijst(){
         int incrementedID = BestellingsData.BestellingsLijst.size() + 1;
         Bestelling bestelling = new Bestelling(incrementedID,LoginController.currentUserID,tempProductNaam,
-                userInputAantalBesteld, korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,tempProductPrijs));
+                userInputAantalBesteld, Korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,tempProductPrijs));
+        PaymentProcessor.betaalMethod();
         BestellingsData.BestellingsLijst.add(bestelling);
     }
 
@@ -108,19 +110,4 @@ public class Bestelling{
             System.out.println("Product niet op voorraad.");
         }
     }
-
-    /*public static double kortingOpTotaalAantalProducten(){
-        if(userInputAantalBesteld > 3 && userInputAantalBesteld < 10){
-            System.out.println("U krijgt 15% korting!");
-            return ((userInputAantalBesteld * tempProductPrijs) * 0.85);
-        } else if(userInputAantalBesteld > 10 && userInputAantalBesteld < 100) {
-            System.out.println("U krijgt 20% korting!");
-            return ((userInputAantalBesteld * tempProductPrijs) * 0.80);
-        } else if(userInputAantalBesteld > 100) {
-            System.out.println("U krijgt 25% korting!");
-            return ((userInputAantalBesteld * tempProductPrijs) * 0.75);
-        } else {
-            return (userInputAantalBesteld * tempProductPrijs);
-        }
-    }*/
 }

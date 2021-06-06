@@ -36,7 +36,6 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
         productLoop(newProduct);
     }
 
-
     /// TODO: Verwijderen van de rij van het product
     @Override
     public void verwijderProduct(){
@@ -60,10 +59,14 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
 
     // Input voor de producten
     private static void DetailsInput() {
-        boolean isNumeric = false;
         System.out.println("Voer product gegevens in:");
         System.out.println("Productnaam: ");
         productNaam = scanner.nextLine();
+        isNumeric();
+    }
+
+    private static void isNumeric(){
+        boolean isNumeric = false;
         while(!isNumeric) // Controle of het cijfers zijn.
             try {
                 System.out.println("Druk nogmaals op ENTER om door te gaan."); // Tussen breaker, zodat endless-loop eindigd.
@@ -77,6 +80,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
                 System.out.println("Invoer mag alleen cijfers bevatten, begin opnieuw.");
             }
     }
+
 
     // extract method gebruik voor duplicate code and long methods
     private static void productLoop(Product newProduct) {

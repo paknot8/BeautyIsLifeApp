@@ -98,6 +98,10 @@ public class Gebruiker extends Persoon{
                         " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
             }
         }
+        getEmails();
+    }
+
+    public static void getEmails(){
         out.println("--- Mijn Emails ---");
         for(Email email : BerichtenData.EmailLijst) {
             if(email.getUserID() == LoginController.currentUserID){

@@ -5,9 +5,8 @@ import java.util.Scanner;
 // deze zorgt voor het afhandelen van de betalingen
 public class PaymentProcessor
 {
-    private static final Scanner scanner = new Scanner(System.in);
-
     public static void betaalMethod(){
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Met welke betaalmethode wilt u betalen?");
         System.out.println("0) Terug - 1) Ideal - 2) contant - 3) bankoverschrijven");
         String userInput = scanner.nextLine();

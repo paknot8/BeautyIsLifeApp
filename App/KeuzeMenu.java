@@ -9,6 +9,7 @@ public class KeuzeMenu{
     // Objecten initiliseren accessable in KeuzeMenu
     static Medewerker medewerkerKeuze = new Medewerker();
     static Gebruiker gebruikerKeuze = new Gebruiker();
+    static ProductController productControl = new ProductController();
 
     public static void LoginScherm() {
         out.println("\n--- Welkom op de BeautyIsLife App ---");
@@ -46,7 +47,7 @@ public class KeuzeMenu{
         switch (input) {
             case "1" -> {
                 out.println("Zie catalogus");
-                ProductController.getAllProducten();
+                productControl.getProducten();
                 Bestelling.VraagBestellingPlaatsen();
                 MenuKeuze();
             }
@@ -117,8 +118,8 @@ public class KeuzeMenu{
             }
             case "4" -> {
                 out.println("Productenlijst overzicht");
-                ProductController.getAllProducten();
-                ProductController.chooseAddNewProduct();
+                productControl.getProducten();
+                productControl.chooseAddNewProduct();
                 MenuKeuze_Medewerker();
             }
             case "5" -> {
@@ -139,6 +140,6 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        LoginScherm();
+        //LoginScherm();
     }
 }

@@ -2,7 +2,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import static java.lang.System.in;
 
-public class ProductController {
+// Interface Segregation
+// Seperatie gedaan tussen Medewerker methods en General Methods
+// Zo klein mogelijk de interface implementeren, zodat je weinig veranderingen hoeft te doen.
+// voor uitbreidingen voor de toekomst.
+public class ProductController implements IProductMedewerkerControls, IProduct {
     private static final Scanner scanner = new Scanner(in);
     private static String userInput;
     public static String productNaam;
@@ -13,7 +17,8 @@ public class ProductController {
     public static int tempProductAantal;
 
     // Get all data from list
-    public static void getAllProducten() {
+    @Override // Interface
+    public void getProducten() {
         for (Product product : ProductData.ProductenLijst)
         {
             System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
@@ -21,8 +26,9 @@ public class ProductController {
         }
     }
 
-    public static void chooseAddNewProduct(){
-        System.out.println("Kies 1) Nieuwe Product toevoegen of 2) om terug te gaan.");
+    @Override // Interface
+    public void chooseAddNewProduct(){
+        System.out.println("Kies 1) Nieuwe Product toevoegen of 0) om terug te gaan.");
         userInput = scanner.nextLine();
         if(userInput.equals("1")){
             addNewProduct();
@@ -36,7 +42,7 @@ public class ProductController {
     }
 
     // Input voor de producten
-    public static void DetailsInput() {
+    private static void DetailsInput() {
         boolean isNumeric = false;
         System.out.println("Voer product gegevens in:");
         System.out.println("Productnaam: ");
@@ -53,17 +59,6 @@ public class ProductController {
             } catch(InputMismatchException ime) {
                 System.out.println("Invoer mag alleen cijfers bevatten, begin opnieuw.");
             }
-    }
-
-    // Alleen een Medewerker kan nieuwe producten toevoegen.
-    public static void addNewProduct(){
-        int id;
-        DetailsInput();
-        userInput = scanner.nextLine();
-        // Inserts id by taking the arraylist size and adding +1
-        id = ProductData.ProductenLijst.size() + 1; //increment number
-        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
-        productLoop(newProduct);
     }
 
     // extract method gebruik voor duplicate code and long methods
@@ -84,9 +79,20 @@ public class ProductController {
         }
     }
 
+    // Alleen een Medewerker kan nieuwe producten toevoegen.
+    private static void addNewProduct(){
+        int id;
+        DetailsInput();
+        userInput = scanner.nextLine();
+        // Inserts id by taking the arraylist size and adding +1
+        id = ProductData.ProductenLijst.size() + 1; //increment number
+        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
+        productLoop(newProduct);
+    }
+
     /// TODO: MOET NOG GEDAAN (Wijzgigen van Producten)
     // Alleen een Medewerker kan producten wijzigen.
-    public static void wijzigProduct(){
+    public void wijzigProduct(){
         int id;
         DetailsInput();
         userInput = scanner.nextLine();

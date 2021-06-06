@@ -9,6 +9,7 @@ import static java.lang.System.in;
 public class ProductController implements IProductMedewerkerControls, IProduct {
     private static final Scanner scanner = new Scanner(in);
     private static String userInput;
+    //
     public static String productNaam;
     public static double productPrijs;
     public static int productAantal;

@@ -63,7 +63,7 @@ public class Bestelling{
     }
 
     // Bestelling geplaats, voorraad wordt gewijzigd.
-    public static void bestellingPlaatsen(){
+    private static void bestellingPlaatsen(){
         System.out.println("Vul productnaam in:");
         userInput = scanner.nextLine();
         System.out.println("Vul aantal bestellingen:");
@@ -72,7 +72,7 @@ public class Bestelling{
     }
 
     // Door de lijst van producten gaan
-    public static void loopProductenLijst(){
+    private static void loopProductenLijst(){
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             int tempProductID = ProductData.ProductenLijst.get(i).getProductId();
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
@@ -88,16 +88,16 @@ public class Bestelling{
         }
     }
 
-    public static void addToMijnBestelLijst(){
+    private static void addToMijnBestelLijst(){
         int incrementedID = BestellingsData.BestellingsLijst.size() + 1;
         Bestelling bestelling = new Bestelling(incrementedID,LoginController.currentUserID,tempProductNaam,
                 userInputAantalBesteld, Korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,tempProductPrijs));
-        PaymentProcessor.betaalMethod();
+        PaymentProcessor.betaalMethode();
         BestellingsData.BestellingsLijst.add(bestelling);
     }
 
     // aantal bestelde producten min voorraad
-    public static void newVoorraadBerekenen(){
+    private static void newVoorraadBerekenen(){
         if(tempProductVoorraad > 0){
             newVoorraad = tempProductVoorraad - userInputAantalBesteld;
             if(newVoorraad < 0){

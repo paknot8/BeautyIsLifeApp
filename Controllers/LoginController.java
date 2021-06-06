@@ -11,8 +11,8 @@ public class LoginController {
     public static String targetPassword;
 
     // Controle checks
-    public static Boolean userPassCheck = false;
-    public static Boolean isMedewerker = false;
+    public static boolean userPassCheck = false;
+    public static boolean isMedewerker = false;
 
     // Get gegevens van current user (saves for use)
     public static String username;

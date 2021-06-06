@@ -10,6 +10,7 @@ public class Gebruiker extends Persoon{
     // Berichten
     public static String onderwerp;
     public static String beschrijving;
+    public static String email;
 
     // Zoeken naar product
     public static ArrayList<String> tempSearchedList = new ArrayList<>() {};
@@ -18,6 +19,9 @@ public class Gebruiker extends Persoon{
     public static String tempProductNaam;
     public static double tempProductPrijs;
     public static int tempProductVoorraad;
+
+    public static PrivatePrivateMessage newBericht;
+    public static Email newEmail;
 
     public Gebruiker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
@@ -36,19 +40,42 @@ public class Gebruiker extends Persoon{
         out.println("Emailadres      | " + LoginController.email);
     }
 
-    private static void ContactDetails(){
-        System.out.println("--- Contact nemen met de klantenservice ---");
+    public static void ContactInvoer(){
         System.out.println("Wat is het onderwerp:");
         onderwerp = scanner.nextLine();
         System.out.println("Beschrijf het probleem:");
         beschrijving = scanner.nextLine();
     }
 
+    private static void ContactDetails(String keuze){
+        if(keuze.equals("1")) {
+            ContactInvoer();
+        } else if(keuze.equals("2")){
+            ContactInvoer();
+            email = scanner.nextLine();
+        } else {
+            ContactDetails(keuze);
+        }
+    }
+
     public void Contact(){
-        ContactDetails();
-        int id = BerichtenData.BerichtenLijst.size() + 1; //increment number
-        Bericht newBericht = new Bericht(id,LoginController.currentUserID,onderwerp,beschrijving);
-        Bericht.addNewBericht(newBericht);
+        int id;
+        System.out.println("--- Contact nemen met de klantenservice ---");
+        System.out.println("Wilt u een 1) Bericht of een 2) Email sturen?");
+        userInput = scanner.nextLine();
+        ContactDetails(userInput);
+        if(userInput.equals("1")){
+            id = BerichtenData.PrivatemessageLijst.size() + 1; //increment number
+            newBericht = new PrivatePrivateMessage(id,LoginController.currentUserID,onderwerp,beschrijving);
+            newBericht.addBericht(newBericht);
+        } else if(userInput.equals("2")) {
+            id = BerichtenData.EmailLijst.size() + 1; //increment number
+            newEmail = new Email(id,LoginController.currentUserID,onderwerp,beschrijving,email);
+            newEmail.addEmail(newEmail);
+        } else {
+            out.println("Bestaat niet, terug naar Menu");
+            KeuzeMenu.MenuKeuze();
+        }
     }
 
     @Override
@@ -64,10 +91,18 @@ public class Gebruiker extends Persoon{
 
     @Override
     public void getBerichten() {
-        for(Bericht bericht : BerichtenData.BerichtenLijst) {
+        out.println("--- Mijn Berichten ---");
+        for(Bericht bericht : BerichtenData.PrivatemessageLijst) {
             if(bericht.getUserID() == LoginController.currentUserID){
                 System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
                         " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
+            }
+        }
+        out.println("--- Mijn Emails ---");
+        for(Email email : BerichtenData.EmailLijst) {
+            if(email.getUserID() == LoginController.currentUserID){
+                System.out.println("Emailnr: " + email.getId() + " | Gebruikerid: " + email.getUserID() +
+                        " | Onderwerp: " + email.getOnderwerp() + " | Beschrijving: " + email.getBeschrijving());
             }
         }
     }

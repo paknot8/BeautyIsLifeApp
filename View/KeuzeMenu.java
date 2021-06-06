@@ -140,6 +140,6 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        //LoginScherm();
+        LoginScherm();
     }
 }

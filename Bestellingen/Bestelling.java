@@ -32,6 +32,7 @@ public class Bestelling{
     public int getAantalGekocht() { return aantalGekocht; }
     public double getPrijsBetaald() { return prijsBetaald; }
 
+    // Vragen voor het bestellen
     public static void VraagBestellingPlaatsen(){
         System.out.println("Wilt u een bestelling plaatsen? (1) ja / (0) nee");
         userInput = scanner.nextLine();
@@ -46,27 +47,32 @@ public class Bestelling{
         }
     }
 
-    public static void gezochteProductBestellingPlaatsen(){
-        System.out.println("Wilt u " + Gebruiker.tempProductNaam + " bestellen? 1) ja 0) nee");
+    // na zoek resultaat bestelling kunnen plaatsen
+    public static void gezochteProductBestellingPlaatsen(String productNaam){
+        System.out.println("Wilt u " + productNaam + " bestellen? 1) ja 0) nee");
         userInput = scanner.nextLine();
-        if(userInput.equals("1")){
-            System.out.println("Hoeveel wilt u van " + Gebruiker.tempProductNaam + " bestellen?");
-            userInput = Gebruiker.tempProductNaam;
-            userInputAantalBesteld = scanner.nextInt();
-            loopProductenLijst();
-        } else if(userInput.equals("0")) {
-            System.out.println("Terug gaan naar Menu...");
-            KeuzeMenu.MenuKeuze();
-        } else {
-            System.out.println("Foutieve invoer, probeer opnieuw...");
-            gezochteProductBestellingPlaatsen();
+        switch (userInput) {
+            case "1" -> {
+                System.out.println("Hoeveel wilt u van " + productNaam + " bestellen?");
+                userInput = productNaam;
+                userInputAantalBesteld = scanner.nextInt();
+                loopProductenLijst();
+            }
+            case "0" -> {
+                System.out.println("Terug gaan naar Menu...");
+                KeuzeMenu.MenuKeuze();
+            }
+            default -> {
+                System.out.println("Foutieve invoer, probeer opnieuw...");
+                gezochteProductBestellingPlaatsen(productNaam);
+            }
         }
     }
 
-    // Bestelling geplaats, voorraad wordt gewijzigd.
+    // Bestelling geplaatst, voorraad wordt gewijzigd.
     private static void bestellingPlaatsen(){
         boolean isNumeric = false;
-        while(!isNumeric) // Controle of het cijfers zijn.
+        while(!isNumeric){ // Controle of het cijfers zijn.
             try {
                 System.out.println("Vul productnaam in:");
                 userInput = scanner.nextLine();
@@ -77,6 +83,7 @@ public class Bestelling{
                 System.out.println("Invoer voor het aantal mag alleen cijfers bevatten, begin opnieuw.");
                 scanner.nextLine();
             }
+        }
         loopProductenLijst();
     }
 
@@ -87,7 +94,6 @@ public class Bestelling{
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
-
             if(tempProductNaam.equals(userInput)){
                 newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
                 Product product = new Product(tempProductID, tempProductNaam,tempProductPrijs,newVoorraad);
@@ -97,6 +103,7 @@ public class Bestelling{
         }
     }
 
+    // Voegt in bestellijst toe.
     private static void addToMijnBestelLijst(){
         int incrementedID = BestellingsData.BestellingsLijst.size() + 1;
         Bestelling bestelling = new Bestelling(incrementedID,LoginController.getInstance().currentUserID,tempProductNaam,

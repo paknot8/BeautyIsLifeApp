@@ -40,21 +40,21 @@ public class Gebruiker extends Persoon{
         out.println("Emailadres      | " + LoginController.getInstance().email);
     }
 
-    public static void ContactInvoer(){
+    public void ContactInvoer(){
         System.out.println("Wat is het onderwerp:");
         onderwerp = scanner.nextLine();
         System.out.println("Beschrijf het probleem:");
         beschrijving = scanner.nextLine();
     }
 
-    private static void ContactDetails(String keuze){
-        if(keuze.equals("1")) {
-            ContactInvoer();
-        } else if(keuze.equals("2")){
-            ContactInvoer();
-            email = scanner.nextLine();
-        } else {
-            ContactDetails(keuze);
+    private void ContactDetails(String keuze){
+        switch (keuze) {
+            case "1" -> ContactInvoer();
+            case "2" -> {
+                ContactInvoer();
+                email = scanner.nextLine();
+            }
+            default -> ContactDetails(keuze);
         }
     }
 
@@ -64,17 +64,21 @@ public class Gebruiker extends Persoon{
         System.out.println("Wilt u een 1) Bericht of een 2) Email sturen?");
         userInput = scanner.nextLine();
         ContactDetails(userInput);
-        if(userInput.equals("1")){
-            id = BerichtenData.PrivatemessageLijst.size() + 1; //increment number
-            newBericht = new PrivatePrivateMessage(id,LoginController.getInstance().currentUserID,onderwerp,beschrijving);
-            newBericht.addBericht(newBericht);
-        } else if(userInput.equals("2")) {
-            id = BerichtenData.EmailLijst.size() + 1; //increment number
-            newEmail = new Email(id,LoginController.getInstance().currentUserID,onderwerp,beschrijving,email);
-            newEmail.addEmail(newEmail);
-        } else {
-            out.println("Bestaat niet, terug naar Menu");
-            KeuzeMenu.MenuKeuze();
+        switch (userInput) {
+            case "1" -> {
+                id = BerichtenData.PrivatemessageLijst.size() + 1; //increment number
+                newBericht = new PrivatePrivateMessage(id, LoginController.getInstance().currentUserID, onderwerp, beschrijving);
+                newBericht.addBericht(newBericht);
+            }
+            case "2" -> {
+                id = BerichtenData.EmailLijst.size() + 1; //increment number
+                newEmail = new Email(id, LoginController.getInstance().currentUserID, onderwerp, beschrijving, email);
+                newEmail.addEmail(newEmail);
+            }
+            default -> {
+                out.println("Bestaat niet, terug naar Menu");
+                KeuzeMenu.MenuKeuze();
+            }
         }
     }
 
@@ -101,7 +105,7 @@ public class Gebruiker extends Persoon{
         getEmails();
     }
 
-    public static void getEmails(){
+    public void getEmails(){
         out.println("--- Mijn Emails ---");
         for(Email email : BerichtenData.EmailLijst) {
             if(email.getUserID() == LoginController.getInstance().currentUserID){
@@ -111,7 +115,7 @@ public class Gebruiker extends Persoon{
         }
     }
 
-    @Override
+    /*@Override
     public void controleProductExist(){
         if (tempProductNaam.equals(userInput)) {
             out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
@@ -121,9 +125,9 @@ public class Gebruiker extends Persoon{
         }
     }
 
-    @Override
+    Override
     public void zoekProduct(){
-        System.out.println("Vul product in:");
+        System.out.println("Productnaam :");
         userInput = scanner.nextLine();
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             tempProductid = ProductData.ProductenLijst.get(i).getProductId();
@@ -137,5 +141,5 @@ public class Gebruiker extends Persoon{
             out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
             zoekProduct();
         }
-    }
+    }*/
 }

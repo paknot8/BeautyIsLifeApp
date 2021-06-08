@@ -57,7 +57,7 @@ public class Medewerker extends Persoon {
         }
     }
 
-    @Override
+    /*@Override
     public void controleProductExist(){
         if (tempProductNaam.equals(userInput)) {
             out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
@@ -82,5 +82,5 @@ public class Medewerker extends Persoon {
             out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
             zoekProduct();
         }
-    }
+    }*/
 }

@@ -43,12 +43,15 @@ public class RegistratieController {
         System.out.println("Maak een keuze...");
         System.out.println("1) Gebruiker, 2) Medewerker");
         String userInput = scanner.nextLine();
-        if (userInput.equals("1")) {
-            Details();
-            GebruikersDataLoop();
-        } else if (userInput.equals("2")) {
-            Details();
-            MedewerkersDataLoop();
+        switch (userInput) {
+            case "1" -> {
+                Details();
+                GebruikersDataLoop();
+            }
+            case "2" -> {
+                Details();
+                MedewerkersDataLoop();
+            }
         }
     }
 

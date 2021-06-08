@@ -1,4 +1,3 @@
-import javax.print.MultiDocPrintService;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.lang.System.out;
@@ -13,12 +12,11 @@ public class KeuzeMenu{
     static ProductController productControl = new ProductController();
 
     /* --- Inlog Data voor Testing: ---
-    > Gebruiker       password:
-    erick123        123
+        > Gebruiker       password:
+        erick123        123
 
-    > Medewerker
-    bella123        321
-
+        > Medewerker
+        bella123        321
      */
 
     public static void LoginScherm() {
@@ -35,7 +33,7 @@ public class KeuzeMenu{
     }
 
     private static void MenuText(){
-        out.println("--- Menu ---");
+        out.println("\n--- Menu ---");
         out.println(" 1) Zie catalogus");
         out.println(" 2) Zoek item");
         out.println(" 3) Bestellingen inzien");
@@ -58,7 +56,7 @@ public class KeuzeMenu{
             }
             case "2" -> {
                 out.println("Zoek item");
-                gebruikerKeuze.zoekProduct();
+                productControl.zoekProduct();
                 MenuKeuze();
             }
             case "3" -> {
@@ -92,7 +90,7 @@ public class KeuzeMenu{
     }
 
     private static void MenuText_Medewerker(){
-        out.println("--- Admin Menu ---");
+        out.println("\n--- Admin Menu ---");
         out.println(" 1) Klantenlijst overzicht");
         out.println(" 2) Klanten berichten");
         out.println(" 3) Zoek Producten");
@@ -118,7 +116,7 @@ public class KeuzeMenu{
                 MenuKeuze_Medewerker();
             } case "3" -> {
                 out.println("Zoek item");
-                medewerkerKeuze.zoekProduct();
+                productControl.zoekProduct();
                 MenuKeuze_Medewerker();
             }
             case "4" -> {
@@ -156,8 +154,6 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        //MenuKeuze_Medewerker();
-        //MenuKeuze();
         LoginScherm();
     }
 }

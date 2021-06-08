@@ -52,7 +52,7 @@ public class LoginController {
         return true;
     }
 
-    private static void Login() {
+    private void Login() {
         System.out.println("Wilt u: 1) inloggen of 2) registreren");
         userChoice = scanner.nextLine();
         switch (userChoice)
@@ -71,7 +71,7 @@ public class LoginController {
         }
     }
 
-    private static void LoginControle(){
+    private void LoginControle(){
         System.out.println("Bent u 1) Gebruiker of 2) Medewerker? --> 0) om terug te gaan.");
         String userInput = scanner.nextLine();
         switch (userInput) {
@@ -95,7 +95,7 @@ public class LoginController {
         }
     }
 
-    private static void GebruikersDataLoop(){
+    private void GebruikersDataLoop(){
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             username = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
             password = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
@@ -111,7 +111,7 @@ public class LoginController {
         }
     }
 
-    private static void MedewerkersDataLoop(){
+    private void MedewerkersDataLoop(){
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
             username = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
             password = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
@@ -127,7 +127,7 @@ public class LoginController {
         }
     }
 
-    private static boolean inputInfo() {
+    private boolean inputInfo() {
         System.out.println("Gebruikersnaam:");
         targetUserName = scanner.nextLine();
         System.out.println("Wachtwoord:");
@@ -135,7 +135,7 @@ public class LoginController {
         return true;
     }
 
-    private static boolean userAndPassCheck() {
+    private boolean userAndPassCheck() {
         if (targetUserName.equals(username) && targetPassword.equals(password)) {
             System.out.println(">>> login geslaagd!");
             System.out.println("\nHallo, " + naam + " " + achternaam);

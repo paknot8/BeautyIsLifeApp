@@ -1,4 +1,6 @@
 import java.util.Scanner;
+
+import static java.lang.System.exit;
 import static java.lang.System.in;
 
 public class LoginController {
@@ -53,10 +55,11 @@ public class LoginController {
     }
 
     private void Login() {
-        System.out.println("Wilt u: 1) inloggen of 2) registreren");
+        System.out.println("Wilt u: 1) inloggen of 2) registreren | 0) Exit Application");
         userChoice = scanner.nextLine();
         switch (userChoice)
         {
+            case "0" -> exit(0);
             case "1" -> LoginControle();
             case "2" -> RegistratieController.getInstance().isAuthenticated();
             default -> {

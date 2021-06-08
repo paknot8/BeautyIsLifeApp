@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import static java.lang.System.in;
 
@@ -64,10 +65,18 @@ public class Bestelling{
 
     // Bestelling geplaats, voorraad wordt gewijzigd.
     private static void bestellingPlaatsen(){
-        System.out.println("Vul productnaam in:");
-        userInput = scanner.nextLine();
-        System.out.println("Vul aantal bestellingen:");
-        userInputAantalBesteld = scanner.nextInt();
+        boolean isNumeric = false;
+        while(!isNumeric) // Controle of het cijfers zijn.
+            try {
+                System.out.println("Vul productnaam in:");
+                userInput = scanner.nextLine();
+                System.out.println("Vul aantal bestellingen:");
+                userInputAantalBesteld = scanner.nextInt();
+                isNumeric = true;
+            } catch(InputMismatchException ime) {
+                System.out.println("Invoer voor het aantal mag alleen cijfers bevatten, begin opnieuw.");
+                scanner.nextLine();
+            }
         loopProductenLijst();
     }
 

@@ -12,6 +12,15 @@ public class KeuzeMenu{
     static Gebruiker gebruikerKeuze = new Gebruiker();
     static ProductController productControl = new ProductController();
 
+    /* --- Inlog Data voor Testing: ---
+    > Gebruiker       password:
+    erick123        123
+
+    > Medewerker
+    bella123        321
+
+     */
+
     public static void LoginScherm() {
         out.println("\n--- Welkom op de BeautyIsLife App ---");
         if (LoginController.getInstance().isAuthenticated()) {
@@ -24,11 +33,6 @@ public class KeuzeMenu{
             LoginScherm();
         }
     }
-    // gebruiker
-    // erick123     password: 123
-
-    // medewerker
-    // bella123     password: 321
 
     private static void MenuText(){
         out.println("--- Menu ---");
@@ -152,7 +156,8 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        MenuKeuze_Medewerker();
-        //LoginScherm();
+        //MenuKeuze_Medewerker();
+        //MenuKeuze();
+        LoginScherm();
     }
 }

@@ -39,7 +39,7 @@ public class RegistratieController {
         }
     }
 
-    private static void Registration() {
+    private void Registration() {
         System.out.println("Maak een keuze...");
         System.out.println("1) Gebruiker, 2) Medewerker");
         String userInput = scanner.nextLine();
@@ -52,7 +52,7 @@ public class RegistratieController {
         }
     }
 
-    private static void GebruikersDataLoop(){
+    private void GebruikersDataLoop(){
         id = GebruikersData.GebruikersLijst.size() + 1; //increment number
         Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
         Medewerker.addNewGebruiker(newGebruiker);
@@ -63,7 +63,7 @@ public class RegistratieController {
         }
     }
 
-    private static void MedewerkersDataLoop(){
+    private void MedewerkersDataLoop(){
         id = MedewerkersData.MedewerkersLijst.size() + 1;
         Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
         Medewerker.addNewMedewerker(newMedewerker);
@@ -74,7 +74,7 @@ public class RegistratieController {
         }
     }
 
-    private static void userCheckExist(){
+    private void userCheckExist(){
         if (!gebruikersnaam.equals(tempUser)) {
             System.out.println("U bent nu geregistreerd!");
             LoginController.getInstance().userPassCheck = true;
@@ -85,7 +85,7 @@ public class RegistratieController {
         }
     }
 
-    private static void Details() {
+    private void Details() {
         System.out.println("Voer uw gegevens in...");
         System.out.println("gebruikersnaam: ");     gebruikersnaam = scanner.nextLine();
         System.out.println("wachtwoord: ");         wachtwoord = scanner.nextLine();

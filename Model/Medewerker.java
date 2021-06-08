@@ -5,7 +5,7 @@ import static java.lang.System.out;
 public class Medewerker extends Persoon implements IProduct
 {
     private static final Scanner scanner = new Scanner(System.in);
-    static ProductController productControl = new ProductController();
+    private static final ProductController productControl = new ProductController();
 
     public Medewerker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
@@ -23,6 +23,7 @@ public class Medewerker extends Persoon implements IProduct
 
     public static void addNewGebruiker(Gebruiker newGebruiker){ GebruikersData.GebruikersLijst.add(newGebruiker); }
     public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
+    public static void addNewProduct(Product newProduct){ ProductData.ProductenLijst.add(newProduct); }
 
     @Override // Get all data from producten
     public void getProducten() {

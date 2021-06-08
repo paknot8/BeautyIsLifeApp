@@ -7,9 +7,9 @@ public class KeuzeMenu{
     private static String input;
 
     // Objecten initiliseren accessable in KeuzeMenu
-    static Medewerker medewerkerKeuze = new Medewerker();
-    static Gebruiker gebruikerKeuze = new Gebruiker();
-    static ProductController productControl = new ProductController();
+    private static final Medewerker medewerkerKeuze = new Medewerker();
+    private static final Gebruiker gebruikerKeuze = new Gebruiker();
+    private static final ProductController productControl = new ProductController();
 
     /* --- Inlog Data voor Testing: ---
         > Gebruiker       password:

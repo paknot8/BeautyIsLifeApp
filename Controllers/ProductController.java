@@ -162,7 +162,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
                 System.out.println("Product bestaat al, vul een nieuw product in! \n");
                 insertProduct();
             } else {
-                ProductData.ProductenLijst.add(newProduct);
+                Medewerker.addNewProduct(newProduct);
                 System.out.println("Nieuwe product is succesvol toegevoegd in de maggazijn.\n");
                 break;
             }

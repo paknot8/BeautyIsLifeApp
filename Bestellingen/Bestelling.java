@@ -36,14 +36,16 @@ public class Bestelling{
     public static void VraagBestellingPlaatsen(){
         System.out.println("Wilt u een bestelling plaatsen? (1) ja / (0) nee");
         userInput = scanner.nextLine();
-        if(userInput.equals("1")){
-            bestellingPlaatsen();
-        } else if(userInput.equals("0")) {
-            System.out.println("Terug naar Keuze Menu...\n");
-            KeuzeMenu.MenuKeuze();
-        } else {
-            System.out.println("Foutieve invoer, probeer het nogmaals...");
-            VraagBestellingPlaatsen();
+        switch (userInput) {
+            case "1" -> bestellingPlaatsen();
+            case "0" -> {
+                System.out.println("Terug naar Keuze Menu...\n");
+                KeuzeMenu.MenuKeuze();
+            }
+            default -> {
+                System.out.println("Foutieve invoer, probeer het nogmaals...");
+                VraagBestellingPlaatsen();
+            }
         }
     }
 

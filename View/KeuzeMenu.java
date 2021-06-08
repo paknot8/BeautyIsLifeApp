@@ -114,7 +114,7 @@ public class KeuzeMenu{
             } case "3" -> {
                 out.println("Zoek item");
                 medewerkerKeuze.zoekProduct();
-                MenuKeuze();
+                MenuKeuze_Medewerker();
             }
             case "4" -> {
                 out.println("Productenlijst overzicht");
@@ -125,7 +125,7 @@ public class KeuzeMenu{
             case "5" -> {
                 out.println("Alle bestellingen inzien");
                 medewerkerKeuze.getBestellingen();
-                MenuKeuze();
+                MenuKeuze_Medewerker();
             }
             case "0" -> {
                 out.println("Uitloggen...");

@@ -12,9 +12,9 @@ public class PaymentProcessor
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "0" -> KeuzeMenu.MenuKeuze();
-            case "1" -> System.out.println("U heeft Ideal betaald €" + Korting.newPrijs); // External API van de betaalmethode Ideal
-            case "2" -> System.out.println("U heeft Contant betaald €" + Korting.newPrijs); // External API van de betaalmethode Contant Betalen
-            case "3" -> System.out.println("U heeft succesvol €" + Korting.newPrijs + " overgeschreven."); // External API van de betaalmethode bank overschrijven
+            case "1" -> System.out.println("U heeft Ideal betaald €" + Korting.newPrijs); // External ophalen van de betaalmethode Ideal
+            case "2" -> System.out.println("U heeft Contant betaald €" + Korting.newPrijs); // External ophalen van de betaalmethode Contant Betalen
+            case "3" -> System.out.println("U heeft succesvol €" + Korting.newPrijs + " overgeschreven."); // External ophalen van de betaalmethode bank overschrijven
             default -> betaalMethode();
         }
     }

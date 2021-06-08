@@ -1,7 +1,7 @@
 // Single Responsbility Principe
 // Deze class berekent de korting van het aantal gekochte producten
 // return een het totaal prijs met de korting erop.
-// dit is ook meteen een Observer Pattern, want het stuurt een bericht daarna door "notificatie"
+// dit is ook meteen een ( Observer Pattern ), want het stuurt een bericht daarna door "notificatie"
 // hoeveel korting de klant krijgt.
 public class Korting
 {

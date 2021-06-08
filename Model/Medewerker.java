@@ -50,6 +50,7 @@ public class Medewerker extends Persoon {
             System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
                     " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
         }
+        out.println("--- Emails ---");
         for (Email email : BerichtenData.EmailLijst) {
             System.out.println("Emailnr: " + email.getId() + " | Gebruikerid: " + email.getUserID() +
                     " | Onderwerp: " + email.getOnderwerp() + " | Beschrijving: " + email.getBeschrijving());

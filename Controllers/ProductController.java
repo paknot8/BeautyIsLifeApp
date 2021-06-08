@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import static java.lang.System.in;
@@ -9,10 +10,14 @@ import static java.lang.System.in;
 public class ProductController implements IProductMedewerkerControls, IProduct {
     private static final Scanner scanner = new Scanner(in);
     private static String userInput;
-    //
+    private static boolean succesControl = false;
+
+    public static int id;
     public static String productNaam;
     public static double productPrijs;
     public static int productAantal;
+
+    public static int tempProductID;
     public static String tempProductNaam;
     public static double tempProductPrijs;
     public static int tempProductAantal;
@@ -28,19 +33,54 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
     /// TODO: Wijzigen van de rij van het product
     @Override
     public void wijzigProduct(){
-        int id;
         DetailsInput();
-        userInput = scanner.nextLine();
-        // Inserts id by taking the arraylist size and adding +1
-        id = ProductData.ProductenLijst.size() + 1; //increment number
-        Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
-        productLoop(newProduct);
+        System.out.println("--- Product wijzigen: ---");
+        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
+            tempProductID = ProductData.ProductenLijst.get(i).getProductId();
+            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
+            tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
+
+            if (tempProductNaam.equals(productNaam)) {
+                Product wijzigProduct = new Product(i, productNaam.toLowerCase(), productPrijs, productAantal);
+                ProductData.ProductenLijst.set(i,wijzigProduct); // i is de index, waar het product wordt gewijzigd
+                System.out.println("Product succesvol gewijzigd in de maggazijn.");
+                succesControl = true;
+                break;
+            } else {
+                succesControl = false;
+            }
+        }
+        if(!succesControl){
+            System.out.println("Niet succesvol, probeer nogmaals...\n");
+        }
     }
 
-    /// TODO: Verwijderen van de rij van het product
     @Override
     public void verwijderProduct(){
+        System.out.println("Voer productnaam in om te verwijderen:");
+        productNaam = scanner.nextLine();
+        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
+            tempProductID = ProductData.ProductenLijst.get(i).getProductId();
+            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
+            tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
 
+            if (tempProductNaam.equals(productNaam)){
+                ProductData.ProductenLijst.remove(i);
+                System.out.println("Product succesvol verwijderd van de maggazijn.");
+                System.out.println("ID: " + tempProductID + " | Productnaam: " + tempProductNaam + " | Prijs: " +
+                        tempProductPrijs + " | Aantal: " + tempProductAantal);
+                succesControl = true;
+                break;
+            } else {
+                succesControl = false;
+            }
+        }
+        if(!succesControl){
+            System.out.println("Niet succesvol, product bestaat niet, probeer nogmaals...");
+            verwijderProduct();
+        }
     }
 
     @Override
@@ -49,7 +89,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
         userInput = scanner.nextLine();
         if(userInput.equals("1")){
             insertProduct();
-        } else if(userInput.equals("2")){
+        } else if(userInput.equals("0")){
             System.out.println("Terug gaan naar Hoofdmenu...\n");
             KeuzeMenu.MenuKeuze_Medewerker();
         } else {
@@ -60,8 +100,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
 
     // Input voor de producten
     private static void DetailsInput() {
-        System.out.println("Voer product gegevens in:");
-        System.out.println("Productnaam: ");
+        System.out.println("Voer productnaam in:");
         productNaam = scanner.nextLine();
         isNumeric();
     }
@@ -70,9 +109,9 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
         boolean isNumeric = false;
         while(!isNumeric) // Controle of het cijfers zijn.
             try {
-                System.out.println("Druk nogmaals op ENTER om door te gaan."); // Tussen breaker, zodat endless-loop eindigd.
+                //System.out.println("Druk nogmaals op ENTER om door te gaan."); // Tussen breaker, zodat endless-loop eindigd.
                 scanner.nextLine();
-                System.out.println("Productprijs: ");
+                System.out.println("Prijs: ");
                 productPrijs = scanner.nextDouble();
                 System.out.println("Aantal: ");
                 productAantal = scanner.nextInt();
@@ -85,7 +124,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
 
     // extract method gebruik voor duplicate code and long methods
     private static void productLoop(Product newProduct) {
-        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
@@ -103,10 +142,8 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
 
     // Product toevoegen
     private static void insertProduct(){
-        int id;
         DetailsInput();
         userInput = scanner.nextLine();
-        // Inserts id by taking the arraylist size and adding +1
         id = ProductData.ProductenLijst.size() + 1; //increment number
         Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
         productLoop(newProduct);

@@ -1,3 +1,4 @@
+import javax.print.MultiDocPrintService;
 import java.util.Scanner;
 import static java.lang.System.*;
 import static java.lang.System.out;
@@ -92,7 +93,7 @@ public class KeuzeMenu{
         out.println(" 2) Klanten berichten");
         out.println(" 3) Zoek Producten");
         out.println(" 4) Producten overzicht");
-        out.println(" 4) Klanten Bestellings overzicht");
+        out.println(" 5) Klanten Bestellings overzicht");
         out.println(" 0) Uitloggen");
         out.println("Uw keuze:");
     }
@@ -119,7 +120,18 @@ public class KeuzeMenu{
             case "4" -> {
                 out.println("Productenlijst overzicht");
                 productControl.getProducten();
-                productControl.addProduct();
+                out.println("0) terug | 1) Product Toevoegen | 2) Product Wijzigen | 3) Product Verwijderen");
+                input = scanner.nextLine();
+                switch (input) {
+                    case "0" -> MenuText_Medewerker();
+                    case "1" -> productControl.addProduct();
+                    case "2" -> productControl.wijzigProduct();
+                    case "3" -> productControl.verwijderProduct();
+                    default -> {
+                        out.println("Onbekende invoer, probeer nogmaals");
+                        MenuText_Medewerker();
+                    }
+                }
                 MenuKeuze_Medewerker();
             }
             case "5" -> {
@@ -140,6 +152,7 @@ public class KeuzeMenu{
     }
 
     public static void main(String[] args) {
-        LoginScherm();
+        MenuKeuze_Medewerker();
+        //LoginScherm();
     }
 }

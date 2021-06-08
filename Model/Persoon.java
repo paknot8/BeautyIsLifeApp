@@ -63,7 +63,5 @@ public abstract class Persoon {
     }
 
     public abstract void getBerichten();
-    /*public abstract void controleProductExist();
-    public abstract void zoekProduct();*/
     public abstract void getBestellingen();
 }

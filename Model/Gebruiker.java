@@ -5,20 +5,11 @@ import static java.lang.System.out;
 
 public class Gebruiker extends Persoon{
     private static final Scanner scanner = new Scanner(in);
-    private static String userInput;
 
     // Berichten
     public static String onderwerp;
     public static String beschrijving;
     public static String email;
-
-    // Zoeken naar product
-    public static ArrayList<String> tempSearchedList = new ArrayList<>() {};
-
-    public static int tempProductid;
-    public static String tempProductNaam;
-    public static double tempProductPrijs;
-    public static int tempProductVoorraad;
 
     public static PrivatePrivateMessage newBericht;
     public static Email newEmail;
@@ -62,7 +53,7 @@ public class Gebruiker extends Persoon{
         int id;
         System.out.println("--- Contact nemen met de klantenservice ---");
         System.out.println("Wilt u een 1) Bericht of een 2) Email sturen?");
-        userInput = scanner.nextLine();
+        String userInput = scanner.nextLine();
         ContactDetails(userInput);
         switch (userInput) {
             case "1" -> {
@@ -114,32 +105,4 @@ public class Gebruiker extends Persoon{
             }
         }
     }
-
-    /*@Override
-    public void controleProductExist(){
-        if (tempProductNaam.equals(userInput)) {
-            out.println("Het gezochte product: ( " + userInput + " ) is gevonden!");
-            out.println("Productnr: " + tempProductid + " | Product: " + tempProductNaam +
-                    " | Prijs " + tempProductPrijs + " | Aantal op voorraad: " + tempProductVoorraad);
-            Bestelling.gezochteProductBestellingPlaatsen(); // Vraagt of gebruiker wilt bestellen ja of nee
-        }
-    }
-
-    Override
-    public void zoekProduct(){
-        System.out.println("Productnaam :");
-        userInput = scanner.nextLine();
-        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
-            tempProductid = ProductData.ProductenLijst.get(i).getProductId();
-            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-            tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
-            tempSearchedList.add(tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam());
-            controleProductExist();
-        }
-        if(!tempSearchedList.contains(userInput)) {
-            out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
-            zoekProduct();
-        }
-    }*/
 }

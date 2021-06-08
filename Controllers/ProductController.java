@@ -11,7 +11,6 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
     private static String userInput;
     private static boolean succesControl = false;
 
-    public static int id;
     public static String productNaam;
     public static double productPrijs;
     public static int productAantal;
@@ -29,7 +28,6 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
         }
     }
 
-    /// TODO: Wijzigen van de rij van het product
     @Override
     public void wijzigProduct(){
         System.out.println("--- Product wijzigen: ---");
@@ -39,7 +37,6 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
-
             if (tempProductNaam.equals(productNaam)) {
                 Product wijzigProduct = new Product(i+1, productNaam.toLowerCase(), productPrijs, productAantal);
                 ProductData.ProductenLijst.set(i,wijzigProduct); // i is de index, waar het product wordt gewijzigd
@@ -138,7 +135,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
     private static void insertProduct(){
         DetailsInput();
         userInput = scanner.nextLine();
-        id = ProductData.ProductenLijst.size() + 1; //increment number
+        int id = ProductData.ProductenLijst.size() + 1; //increment number
         Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);
         productLoop(newProduct);
     }

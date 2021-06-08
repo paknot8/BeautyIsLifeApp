@@ -1,11 +1,12 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-import static java.lang.System.in;
 import static java.lang.System.out;
 
-public class Medewerker extends Persoon
+public class Medewerker extends Persoon implements IProduct
 {
+    private static final Scanner scanner = new Scanner(System.in);
+    static ProductController productControl = new ProductController();
+
     public Medewerker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
         super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
     }
@@ -22,6 +23,26 @@ public class Medewerker extends Persoon
 
     public static void addNewGebruiker(Gebruiker newGebruiker){ GebruikersData.GebruikersLijst.add(newGebruiker); }
     public static void addNewMedewerker(Medewerker newMedewerker){ MedewerkersData.MedewerkersLijst.add(newMedewerker); }
+
+    @Override // Get all data from producten
+    public void getProducten() {
+        for (Product product : ProductData.ProductenLijst) {
+            System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
+                    " | Prijs: " + product.getProductPrijs() + " | Op voorraad: " + product.getProductVoorraad());
+        }
+        out.println("0) terug | 1) Product Toevoegen | 2) Product Wijzigen | 3) Product Verwijderen");
+        String userInput = scanner.nextLine();
+        switch (userInput) {
+            case "0" -> KeuzeMenu.MenuKeuze_Medewerker();
+            case "1" -> productControl.addProduct();
+            case "2" -> productControl.wijzigProduct();
+            case "3" -> productControl.verwijderProduct();
+            default -> {
+                out.println("Onbekende invoer, probeer nogmaals");
+                KeuzeMenu.MenuKeuze_Medewerker();
+            }
+        }
+    }
 
     @Override
     public void getBestellingen(){

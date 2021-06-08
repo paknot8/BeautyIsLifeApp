@@ -8,7 +8,7 @@ import static java.lang.System.out;
 // Seperatie gedaan tussen Medewerker methods en General Methods
 // Zo klein mogelijk de interface implementeren, zodat je weinig veranderingen hoeft te doen.
 // voor uitbreidingen voor de toekomst.
-public class ProductController implements IProductMedewerkerControls, IProduct {
+public class ProductController implements IProductMedewerkerControls, IProductZoekFunctie{
     private static final Scanner scanner = new Scanner(in);
     private static String userInput;
     private static boolean succesControl = false;
@@ -23,6 +23,14 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
     public static int tempProductAantal;
 
     public static ArrayList<String> tempSearchedList = new ArrayList<>() {};
+
+    @Override // Get all data from producten ( General Use)
+    public void getProducten() {
+        for (Product product : ProductData.ProductenLijst) {
+            System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
+                    " | Prijs: " + product.getProductPrijs() + " | Op voorraad: " + product.getProductVoorraad());
+        }
+    }
 
     @Override
     public void controleProductExist(){
@@ -51,14 +59,6 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
         if(!tempSearchedList.contains(userInput)) {
             out.println("Het gezochte product: ( " + userInput + " ) is niet gevonden, probeer het nogmaals...\n");
             zoekProduct();
-        }
-    }
-
-    @Override // Get all data from list
-    public void getProducten() {
-        for (Product product : ProductData.ProductenLijst) {
-            System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
-                    " | Prijs: " + product.getProductPrijs() + " | Op voorraad: " + product.getProductVoorraad());
         }
     }
 

@@ -11,8 +11,6 @@ public class Product {
         this.productVoorraad = productVoorraad;
     }
 
-    public Product(){}
-
     public int getProductId() { return productId; }
     public void setProductId(int productId) {
         this.productId = productId;

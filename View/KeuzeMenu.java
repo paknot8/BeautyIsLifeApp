@@ -122,18 +122,6 @@ public class KeuzeMenu{
             case "4" -> {
                 out.println("Productenlijst overzicht");
                 productControl.getProducten();
-                out.println("0) terug | 1) Product Toevoegen | 2) Product Wijzigen | 3) Product Verwijderen");
-                input = scanner.nextLine();
-                switch (input) {
-                    case "0" -> MenuText_Medewerker();
-                    case "1" -> productControl.addProduct();
-                    case "2" -> productControl.wijzigProduct();
-                    case "3" -> productControl.verwijderProduct();
-                    default -> {
-                        out.println("Onbekende invoer, probeer nogmaals");
-                        MenuText_Medewerker();
-                    }
-                }
                 MenuKeuze_Medewerker();
             }
             case "5" -> {

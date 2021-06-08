@@ -58,7 +58,7 @@ public class RegistratieController {
         Medewerker.addNewGebruiker(newGebruiker);
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-            LoginController.currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
+            LoginController.getInstance().currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
             userCheckExist();
         }
     }
@@ -69,7 +69,7 @@ public class RegistratieController {
         Medewerker.addNewMedewerker(newMedewerker);
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
             tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-            LoginController.currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
+            LoginController.getInstance().currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
             userCheckExist();
         }
     }
@@ -77,7 +77,7 @@ public class RegistratieController {
     private static void userCheckExist(){
         if (!gebruikersnaam.equals(tempUser)) {
             System.out.println("U bent nu geregistreerd!");
-            LoginController.userPassCheck = true;
+            LoginController.getInstance().userPassCheck = true;
             KeuzeMenu.LoginScherm();
         } else {
             System.out.println("Gebruikersnaam: " + gebruikersnaam + " bestaat al!, probeer opnieuw...");

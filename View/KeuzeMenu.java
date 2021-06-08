@@ -14,7 +14,7 @@ public class KeuzeMenu{
     public static void LoginScherm() {
         out.println("\n--- Welkom op de BeautyIsLife App ---");
         if (LoginController.getInstance().isAuthenticated()) {
-            if(LoginController.isMedewerker){
+            if(LoginController.getInstance().isMedewerker){
                 MenuKeuze_Medewerker();
             } else {
                 MenuKeuze();

@@ -90,7 +90,7 @@ public class Bestelling{
 
     private static void addToMijnBestelLijst(){
         int incrementedID = BestellingsData.BestellingsLijst.size() + 1;
-        Bestelling bestelling = new Bestelling(incrementedID,LoginController.currentUserID,tempProductNaam,
+        Bestelling bestelling = new Bestelling(incrementedID,LoginController.getInstance().currentUserID,tempProductNaam,
                 userInputAantalBesteld, Korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,tempProductPrijs));
         PaymentProcessor.betaalMethode();
         BestellingsData.BestellingsLijst.add(bestelling);

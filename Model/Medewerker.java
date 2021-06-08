@@ -38,7 +38,7 @@ public class Medewerker extends Persoon {
     public void getBestellingen(){
         for(Bestelling bestelling : BestellingsData.BestellingsLijst) {
                 System.out.println("Bestelnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
-                        " | Besteld door: " + LoginController.naam + " " + LoginController.achternaam +
+                        " | Besteld door: " + LoginController.getInstance().naam + " " + LoginController.getInstance().achternaam +
                         " | Product: " + bestelling.getProductNaam() + " | Aantal: " + bestelling.getAantalGekocht() +
                         " | Prijs: €" + bestelling.getPrijsBetaald());
         }

@@ -5,22 +5,22 @@ public class LoginController {
     private static final Scanner scanner = new Scanner(in);
 
     // user inputs
-    public static String userChoice;
-    public static int currentUserID;
-    public static String targetUserName;
-    public static String targetPassword;
+    public String userChoice;
+    public int currentUserID;
+    public String targetUserName;
+    public String targetPassword;
 
     // Controle checks
-    public static boolean userPassCheck = false;
-    public static boolean isMedewerker = false;
+    public boolean userPassCheck = false;
+    public boolean isMedewerker = false;
 
     // Get gegevens van current user (saves for use)
-    public static String username;
-    private static String password;
-    public static String naam;
-    public static String achternaam;
-    public static String telefoonnummer;
-    public static String email;
+    public String username;
+    private String password;
+    public String naam;
+    public String achternaam;
+    public String telefoonnummer;
+    public String email;
 
     // Singleton
     private static LoginController singleton;

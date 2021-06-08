@@ -32,12 +32,12 @@ public class Gebruiker extends Persoon{
     /// TODO: Gebruiker moet dit nog kunnen wijzigen
     public void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
-        out.println("ID nummer       | " + LoginController.currentUserID);
-        out.println("Gebruikersnaam  | " + LoginController.username);
-        out.println("Voornaam        | " + LoginController.naam);
-        out.println("Achternaam      | " + LoginController.achternaam);
-        out.println("Telefoonnummer  | " + LoginController.telefoonnummer);
-        out.println("Emailadres      | " + LoginController.email);
+        out.println("ID nummer       | " + LoginController.getInstance().currentUserID);
+        out.println("Gebruikersnaam  | " + LoginController.getInstance().targetUserName);
+        out.println("Voornaam        | " + LoginController.getInstance().naam);
+        out.println("Achternaam      | " + LoginController.getInstance().achternaam);
+        out.println("Telefoonnummer  | " + LoginController.getInstance().telefoonnummer);
+        out.println("Emailadres      | " + LoginController.getInstance().email);
     }
 
     public static void ContactInvoer(){
@@ -66,11 +66,11 @@ public class Gebruiker extends Persoon{
         ContactDetails(userInput);
         if(userInput.equals("1")){
             id = BerichtenData.PrivatemessageLijst.size() + 1; //increment number
-            newBericht = new PrivatePrivateMessage(id,LoginController.currentUserID,onderwerp,beschrijving);
+            newBericht = new PrivatePrivateMessage(id,LoginController.getInstance().currentUserID,onderwerp,beschrijving);
             newBericht.addBericht(newBericht);
         } else if(userInput.equals("2")) {
             id = BerichtenData.EmailLijst.size() + 1; //increment number
-            newEmail = new Email(id,LoginController.currentUserID,onderwerp,beschrijving,email);
+            newEmail = new Email(id,LoginController.getInstance().currentUserID,onderwerp,beschrijving,email);
             newEmail.addEmail(newEmail);
         } else {
             out.println("Bestaat niet, terug naar Menu");
@@ -81,7 +81,7 @@ public class Gebruiker extends Persoon{
     @Override
     public void getBestellingen(){
         for(Bestelling bestelling : BestellingsData.BestellingsLijst) {
-            if(bestelling.getUserID() == LoginController.currentUserID){
+            if(bestelling.getUserID() == LoginController.getInstance().currentUserID){
                 System.out.println("Bestelnr: " + bestelling.getBestelNummer() + " | Gebruikerid: " + bestelling.getUserID() +
                         " | Product: " + bestelling.getProductNaam() + " | Aantal: " + bestelling.getAantalGekocht() +
                         " | Prijs: €" + bestelling.getPrijsBetaald());
@@ -93,7 +93,7 @@ public class Gebruiker extends Persoon{
     public void getBerichten() {
         out.println("--- Mijn Berichten ---");
         for(Bericht bericht : BerichtenData.PrivatemessageLijst) {
-            if(bericht.getUserID() == LoginController.currentUserID){
+            if(bericht.getUserID() == LoginController.getInstance().currentUserID){
                 System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
                         " | Onderwerp: " + bericht.getOnderwerp() + " | Beschrijving: " + bericht.getBeschrijving());
             }
@@ -104,7 +104,7 @@ public class Gebruiker extends Persoon{
     public static void getEmails(){
         out.println("--- Mijn Emails ---");
         for(Email email : BerichtenData.EmailLijst) {
-            if(email.getUserID() == LoginController.currentUserID){
+            if(email.getUserID() == LoginController.getInstance().currentUserID){
                 System.out.println("Emailnr: " + email.getId() + " | Gebruikerid: " + email.getUserID() +
                         " | Onderwerp: " + email.getOnderwerp() + " | Beschrijving: " + email.getBeschrijving());
             }

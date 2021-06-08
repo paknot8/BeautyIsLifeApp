@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import static java.lang.System.in;
@@ -33,8 +32,8 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
     /// TODO: Wijzigen van de rij van het product
     @Override
     public void wijzigProduct(){
-        DetailsInput();
         System.out.println("--- Product wijzigen: ---");
+        DetailsInput();
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             tempProductID = ProductData.ProductenLijst.get(i).getProductId();
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
@@ -42,7 +41,7 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
             tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
 
             if (tempProductNaam.equals(productNaam)) {
-                Product wijzigProduct = new Product(i, productNaam.toLowerCase(), productPrijs, productAantal);
+                Product wijzigProduct = new Product(i+1, productNaam.toLowerCase(), productPrijs, productAantal);
                 ProductData.ProductenLijst.set(i,wijzigProduct); // i is de index, waar het product wordt gewijzigd
                 System.out.println("Product succesvol gewijzigd in de maggazijn.");
                 succesControl = true;
@@ -100,27 +99,22 @@ public class ProductController implements IProductMedewerkerControls, IProduct {
 
     // Input voor de producten
     private static void DetailsInput() {
-        System.out.println("Voer productnaam in:");
-        productNaam = scanner.nextLine();
-        isNumeric();
-    }
-
-    private static void isNumeric(){
         boolean isNumeric = false;
         while(!isNumeric) // Controle of het cijfers zijn.
             try {
-                //System.out.println("Druk nogmaals op ENTER om door te gaan."); // Tussen breaker, zodat endless-loop eindigd.
-                scanner.nextLine();
+                System.out.println("Productnaam: ");
+                productNaam = scanner.nextLine();
                 System.out.println("Prijs: ");
                 productPrijs = scanner.nextDouble();
                 System.out.println("Aantal: ");
                 productAantal = scanner.nextInt();
-                isNumeric = true; //numeric value entered, so break the while loop
+                scanner.nextLine();
+                isNumeric = true;
             } catch(InputMismatchException ime) {
                 System.out.println("Invoer mag alleen cijfers bevatten, begin opnieuw.");
+                scanner.nextLine();
             }
     }
-
 
     // extract method gebruik voor duplicate code and long methods
     private static void productLoop(Product newProduct) {

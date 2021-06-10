@@ -13,9 +13,7 @@ public class Bericht {
     public int getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
-    }
+    public void setId(int id) { this.id = id; }
     public int getUserID() { return userID; }
     public void setUserID(int userID) { this.userID = userID; }
     public String getOnderwerp() {

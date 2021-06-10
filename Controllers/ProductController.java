@@ -65,7 +65,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
     @Override
     public void wijzigProduct(){
         System.out.println("--- Product wijzigen: ---");
-        DetailsInput();
+        DetailsInputControle();
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             tempProductID = ProductData.ProductenLijst.get(i).getProductId();
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
@@ -118,8 +118,8 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
         System.out.println("Kies 1) Nieuwe Product toevoegen of 0) om terug te gaan.");
         userInput = scanner.nextLine();
         switch (userInput) {
-            case "0" -> insertProduct();
-            case "1" -> {
+            case "1" -> insertProduct();
+            case "0" -> {
                 System.out.println("Terug gaan naar Hoofdmenu...\n");
                 KeuzeMenu.MenuKeuze_Medewerker();
             }
@@ -131,23 +131,27 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
     }
 
     // Input voor de producten
-    private void DetailsInput() {
+    private void DetailsInputControle() {
         boolean isNumeric = false;
         while(!isNumeric){ // Controle of het cijfers zijn.
             try {
-                System.out.println("Productnaam: ");
-                productNaam = scanner.nextLine();
-                System.out.println("Prijs: ");
-                productPrijs = scanner.nextDouble();
-                System.out.println("Aantal: ");
-                productAantal = scanner.nextInt();
-                scanner.nextLine();
+                DetailsInput();
                 isNumeric = true;
             } catch(InputMismatchException ime) {
                 System.out.println("Invoer mag alleen cijfers bevatten, begin opnieuw.");
                 scanner.nextLine();
             }
         }
+    }
+
+    public void DetailsInput(){
+        System.out.println("Productnaam: ");
+        productNaam = scanner.nextLine();
+        System.out.println("Prijs: ");
+        productPrijs = scanner.nextDouble();
+        System.out.println("Aantal: ");
+        productAantal = scanner.nextInt();
+        scanner.nextLine();
     }
 
     // extract method gebruik voor duplicate code and long methods
@@ -157,7 +161,6 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
-
             if (productNaam.equals(tempProductNaam)) {
                 System.out.println("Product bestaat al, vul een nieuw product in! \n");
                 insertProduct();
@@ -171,7 +174,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
 
     // Product toevoegen
     private void insertProduct(){
-        DetailsInput();
+        DetailsInputControle();
         userInput = scanner.nextLine();
         int id = ProductData.ProductenLijst.size() + 1; //increment number
         Product newProduct = new Product(id, productNaam.toLowerCase(), productPrijs, productAantal);

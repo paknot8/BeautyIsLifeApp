@@ -66,16 +66,6 @@ public class RegistratieController {
         System.out.println("email: ");              email = scanner.nextLine();
     }
 
-    private void GebruikersDataLoop(){
-        Details();
-        id = GebruikersData.GebruikersLijst.size() + 1;
-        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-            tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-            if(userCheckExist()) break;
-        }
-        succesControl();
-    }
-
     private void succesControl(){
         if(!succesControl){
             System.out.println("Niet succesvol, probeer nogmaals...");
@@ -89,6 +79,16 @@ public class RegistratieController {
             }
             System.out.println(gebruikersnaam + " is nu geregistreerd!");
         }
+    }
+
+    private void GebruikersDataLoop(){
+        Details();
+        id = GebruikersData.GebruikersLijst.size() + 1;
+        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+            tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+            if(userCheckExist()) break;
+        }
+        succesControl();
     }
 
     private void MedewerkersDataLoop(){

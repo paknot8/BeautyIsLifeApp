@@ -1,10 +1,5 @@
-import java.util.Scanner;
-
-import static java.lang.System.out;
-
 public class Medewerker extends Persoon implements IProduct
 {
-    private static final Scanner scanner = new Scanner(System.in);
     private static final ProductController productControl = new ProductController();
 
     public Medewerker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
@@ -32,19 +27,19 @@ public class Medewerker extends Persoon implements IProduct
             System.out.println("Productnr: " + product.getProductId() + " | Product: " + product.getProductNaam() +
                     " | Prijs: " + product.getProductPrijs() + " | Op voorraad: " + product.getProductVoorraad());
         }
-        betalingVraag();
+        productOpties();
     }
 
-    public void betalingVraag(){
-        out.println("0) terug | 1) Product Toevoegen | 2) Product Wijzigen | 3) Product Verwijderen");
-        String userInput = scanner.nextLine();
-        switch (userInput) {
+    private void productOpties(){
+        System.out.println("0) terug | 1) Product Toevoegen | 2) Product Wijzigen | 3) Product Verwijderen");
+        TempField.userInput = TempField.scanner.nextLine();
+        switch (TempField.userInput) {
             case "0" -> KeuzeMenu.MenuKeuze_Medewerker();
             case "1" -> productControl.addProduct();
             case "2" -> productControl.wijzigProduct();
             case "3" -> productControl.verwijderProduct();
             default -> {
-                out.println("Onbekende invoer, probeer nogmaals");
+                System.out.println("Onbekende invoer, probeer nogmaals");
                 KeuzeMenu.MenuKeuze_Medewerker();
             }
         }
@@ -69,8 +64,8 @@ public class Medewerker extends Persoon implements IProduct
         getEmails();
     }
 
-    public void getEmails(){
-        out.println("--- Emails ---");
+    private void getEmails(){
+        System.out.println("--- Emails ---");
         for (Email email : BerichtenData.EmailLijst) {
             System.out.println("Emailnr: " + email.getId() + " | Gebruikerid: " + email.getUserID() +
                     " | Onderwerp: " + email.getOnderwerp() + " | Beschrijving: " + email.getBeschrijving());

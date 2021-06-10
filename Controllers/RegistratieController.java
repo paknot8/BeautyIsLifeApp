@@ -1,11 +1,4 @@
-import java.util.Scanner;
-import static java.lang.System.in;
-
 public class RegistratieController {
-    private final Scanner scanner = new Scanner(in);
-    private String tempUser;
-    private boolean succesControl = false;
-
     // User details
     private int id;
     private String gebruikersnaam;
@@ -42,14 +35,14 @@ public class RegistratieController {
 
     private void Registration() {
         System.out.println("Maak een keuze: 1) Gebruiker, 2) Medewerker");
-        String userInput = scanner.nextLine();
-        switch (userInput) {
+        TempField.userInput = TempField.scanner.nextLine();
+        switch (TempField.userInput) {
             case "1" -> {
-                LoginController.getInstance().isMedewerker = false;
+                TempField.isMedewerker = false;
                 GebruikersDataLoop();
             }
             case "2" -> {
-                LoginController.getInstance().isMedewerker = true;
+                TempField.isMedewerker = true;
                 MedewerkersDataLoop();
             }
         }
@@ -58,19 +51,19 @@ public class RegistratieController {
 
     private void Details() {
         System.out.println("--- Voer uw gegevens in ---");
-        System.out.println("gebruikersnaam: ");     gebruikersnaam = scanner.nextLine();
-        System.out.println("wachtwoord: ");         wachtwoord = scanner.nextLine();
-        System.out.println("naam: ");               naam = scanner.nextLine();
-        System.out.println("achternaam: ");         achternaam = scanner.nextLine();
-        System.out.println("telefoonnummer: ");     telefoonnummer = scanner.nextLine();
-        System.out.println("email: ");              email = scanner.nextLine();
+        System.out.println("gebruikersnaam: ");     gebruikersnaam = TempField.scanner.nextLine();
+        System.out.println("wachtwoord: ");         wachtwoord = TempField.scanner.nextLine();
+        System.out.println("naam: ");               naam = TempField.scanner.nextLine();
+        System.out.println("achternaam: ");         achternaam = TempField.scanner.nextLine();
+        System.out.println("telefoonnummer: ");     telefoonnummer = TempField.scanner.nextLine();
+        System.out.println("email: ");              email = TempField.scanner.nextLine();
     }
 
     private void succesControl(){
-        if(!succesControl){
+        if(!TempField.succesControl){
             System.out.println("Niet succesvol, probeer nogmaals...");
         } else {
-            if(LoginController.getInstance().isMedewerker){
+            if(TempField.isMedewerker){
                 Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
                 Medewerker.addNewMedewerker(newMedewerker);
             } else {
@@ -85,7 +78,7 @@ public class RegistratieController {
         Details();
         id = GebruikersData.GebruikersLijst.size() + 1;
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-            tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+            TempField.tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
             if(userCheckExist()) break;
         }
         succesControl();
@@ -94,18 +87,18 @@ public class RegistratieController {
     private void MedewerkersDataLoop(){
         id = MedewerkersData.MedewerkersLijst.size() + 1;
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
-            tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
+            TempField.tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
             if(userCheckExist()) break;
         }
         succesControl();
     }
 
     private boolean userCheckExist(){
-        if (tempUser.equals(gebruikersnaam)) {
-            succesControl = false;
+        if (TempField.tempUser.equals(gebruikersnaam)) {
+            TempField.succesControl = false;
             return true;
         } else {
-            succesControl = true;
+            TempField.succesControl = true;
             return false;
         }
     }

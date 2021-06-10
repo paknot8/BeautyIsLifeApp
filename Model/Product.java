@@ -12,9 +12,7 @@ public class Product {
     }
 
     public int getProductId() { return productId; }
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+    public void setProductId(int productId) { this.productId = productId; }
     public String getProductNaam() {
         return productNaam;
     }
@@ -26,7 +24,5 @@ public class Product {
     public int getProductVoorraad() {
         return productVoorraad;
     }
-    public void setProductVoorraad(int productVoorraad) {
-        this.productVoorraad = productVoorraad;
-    }
+    public void setProductVoorraad(int productVoorraad) { this.productVoorraad = productVoorraad; }
 }

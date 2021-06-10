@@ -1,12 +1,5 @@
-import java.util.Scanner;
-import static java.lang.System.*;
-import static java.lang.System.out;
-
-public class KeuzeMenu{
-    private static final Scanner scanner = new Scanner(in);
-    private static String input;
-
-    // Objecten initiliseren accessable in KeuzeMenu
+public class KeuzeMenu
+{
     private static final Medewerker medewerkerKeuze = new Medewerker();
     private static final Gebruiker gebruikerKeuze = new Gebruiker();
     private static final ProductController productControl = new ProductController();
@@ -20,9 +13,9 @@ public class KeuzeMenu{
      */
 
     public static void LoginScherm() {
-        out.println("\n--- Welkom op de BeautyIsLife App ---");
+        System.out.println("\n--- Welkom op de BeautyIsLife App ---");
         if (LoginController.getInstance().isAuthenticated()) {
-            if(LoginController.getInstance().isMedewerker){
+            if(TempField.isMedewerker){
                 MenuKeuze_Medewerker();
             } else {
                 MenuKeuze();
@@ -33,34 +26,34 @@ public class KeuzeMenu{
     }
 
     private static void MenuText(){
-        out.println("\n--- Menu ---");
-        out.println(" 1) Zie catalogus");
-        out.println(" 2) Zoek item");
-        out.println(" 3) Bestellingen inzien");
-        out.println(" 4) Profiel inzien");
-        out.println(" 5) Mijn Berichten");
-        out.println(" 6) Neem Contact");
-        out.println(" 0) Uitloggen");
-        out.println("Uw keuze:");
+        System.out.println("\n--- Menu ---");
+        System.out.println(" 1) Zie catalogus");
+        System.out.println(" 2) Zoek item");
+        System.out.println(" 3) Bestellingen inzien");
+        System.out.println(" 4) Profiel inzien");
+        System.out.println(" 5) Mijn Berichten");
+        System.out.println(" 6) Neem Contact");
+        System.out.println(" 0) Uitloggen");
+        System.out.println("Uw keuze:");
     }
 
     public static void MenuKeuze(){
         MenuText();
-        input = scanner.nextLine();
-        switch (input) {
+        TempField.userInput = TempField.scanner.nextLine();
+        switch (TempField.userInput) {
             case "1" -> {
-                out.println("Catalogus Laden...");
+                System.out.println("Catalogus Laden...");
                 productControl.getProducten();
                 Bestelling.VraagBestellingPlaatsen();
                 MenuKeuze();
             }
             case "2" -> {
-                out.println("--- Zoeken ---");
+                System.out.println("--- Zoeken ---");
                 productControl.zoekProduct();
                 MenuKeuze();
             }
             case "3" -> {
-                out.println("Mijn bestellingen inzien");
+                System.out.println("Mijn bestellingen inzien");
                 gebruikerKeuze.getBestellingen();
                 MenuKeuze();
             }
@@ -69,74 +62,73 @@ public class KeuzeMenu{
                 MenuKeuze();
             }
             case "5" -> {
-                out.println("Mijn berichten");
+                System.out.println("Mijn berichten");
                 gebruikerKeuze.getBerichten();
                 MenuKeuze();
             }
             case "6" -> {
-                out.println("Neem Contact");
+                System.out.println("Neem Contact");
                 gebruikerKeuze.Contact();
                 MenuKeuze();
             }
             case "0" -> {
-                out.println("Uitloggen...");
+                System.out.println("Uitloggen...");
                 LoginScherm();
             }
             default -> {
-                out.println("Maak opnieuw een keuze...");
+                System.out.println("Maak opnieuw een keuze...");
                 MenuKeuze();
             }
         }
     }
 
     private static void MenuText_Medewerker(){
-        out.println("\n--- Admin Menu ---");
-        out.println(" 1) Klantenlijst overzicht");
-        out.println(" 2) Klanten berichten");
-        out.println(" 3) Zoek Producten");
-        out.println(" 4) Producten overzicht");
-        out.println(" 5) Klanten Bestellings overzicht");
-        out.println(" 0) Uitloggen");
-        out.println("Uw keuze:");
+        System.out.println("\n--- Admin Menu ---");
+        System.out.println(" 1) Klantenlijst overzicht");
+        System.out.println(" 2) Klanten berichten");
+        System.out.println(" 3) Zoek Producten");
+        System.out.println(" 4) Producten overzicht");
+        System.out.println(" 5) Klanten Bestellings overzicht");
+        System.out.println(" 0) Uitloggen");
+        System.out.println("Uw keuze:");
     }
 
     public static void MenuKeuze_Medewerker() {
         MenuText_Medewerker();
-        input = scanner.nextLine();
-        switch (input) {
+        TempField.userInput = TempField.scanner.nextLine();
+        switch (TempField.userInput) {
             case "1" -> {
-                out.println("Klantenlijst wordt opgehaald");
+                System.out.println("Klantenlijst wordt opgehaald");
                 medewerkerKeuze.getGebruikers();
-                out.println("\n");
+                System.out.println("\n");
                 MenuKeuze_Medewerker();
             }
             case "2" -> {
-                out.println("Alle klantenberichten inzien");
+                System.out.println("Alle klantenberichten inzien");
                 medewerkerKeuze.getBerichten();
                 MenuKeuze_Medewerker();
             } case "3" -> {
-                out.println("Zoek item");
+                System.out.println("Zoek item");
                 productControl.zoekProduct();
                 MenuKeuze_Medewerker();
             }
             case "4" -> {
-                out.println("Productenlijst overzicht");
-                productControl.getProducten();
-                productControl.addProduct();
+                System.out.println("Productenlijst overzicht");
+                medewerkerKeuze.getProducten();
                 MenuKeuze_Medewerker();
             }
             case "5" -> {
-                out.println("Alle bestellingen inzien");
+                System.out.println("Alle bestellingen inzien");
                 medewerkerKeuze.getBestellingen();
                 MenuKeuze_Medewerker();
             }
             case "0" -> {
-                out.println("Uitloggen...");
-                out.println("U bent met succes uigelogd!");
+                System.out.println("Uitloggen...");
+                System.out.println("U bent met succes uigelogd!");
                 LoginScherm();
             }
             default -> {
-                out.println("Maak opnieuw een keuze...");
+                System.out.println("Maak opnieuw een keuze...");
                 MenuKeuze_Medewerker();
             }
         }

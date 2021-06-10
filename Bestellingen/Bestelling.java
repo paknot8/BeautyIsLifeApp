@@ -1,14 +1,7 @@
 import java.util.InputMismatchException;
-import java.util.Scanner;
-import static java.lang.System.in;
 
 public class Bestelling{
-    private static final Scanner scanner = new Scanner(in);
-    private static String userInput;
     private static int userInputAantalBesteld;
-    private static String tempProductNaam;
-    private static double tempProductPrijs;
-    private static int tempProductVoorraad;
     private static int newVoorraad;
 
     // Constructor Data
@@ -35,8 +28,8 @@ public class Bestelling{
     // Vragen voor het bestellen
     public static void VraagBestellingPlaatsen(){
         System.out.println("Wilt u een bestelling plaatsen? (1) ja / (0) nee");
-        userInput = scanner.nextLine();
-        switch (userInput) {
+        TempField.userInput = TempField.scanner.nextLine();
+        switch (TempField.userInput) {
             case "1" -> bestellingPlaatsen();
             case "0" -> {
                 System.out.println("Terug naar Keuze Menu...\n");
@@ -52,12 +45,12 @@ public class Bestelling{
     // na zoek resultaat bestelling kunnen plaatsen
     public static void gezochteProductBestellingPlaatsen(String productNaam){
         System.out.println("Wilt u " + productNaam + " bestellen? 1) ja 0) nee");
-        userInput = scanner.nextLine();
-        switch (userInput) {
+        TempField.userInput = TempField.scanner.nextLine();
+        switch (TempField.userInput) {
             case "1" -> {
                 System.out.println("Hoeveel wilt u van " + productNaam + " bestellen?");
-                userInput = productNaam;
-                userInputAantalBesteld = scanner.nextInt();
+                TempField.userInput = productNaam;
+                userInputAantalBesteld = TempField.scanner.nextInt();
                 loopProductenLijst();
             }
             case "0" -> {
@@ -77,13 +70,13 @@ public class Bestelling{
         while(!isNumeric){ // Controle of het cijfers zijn.
             try {
                 System.out.println("Vul productnaam in:");
-                userInput = scanner.nextLine();
+                TempField.userInput = TempField.scanner.nextLine();
                 System.out.println("Vul aantal bestellingen:");
-                userInputAantalBesteld = scanner.nextInt();
+                userInputAantalBesteld = TempField.scanner.nextInt();
                 isNumeric = true;
             } catch(InputMismatchException ime) {
                 System.out.println("Invoer voor het aantal mag alleen cijfers bevatten, begin opnieuw.");
-                scanner.nextLine();
+                TempField.scanner.nextLine();
             }
         }
         loopProductenLijst();
@@ -93,12 +86,12 @@ public class Bestelling{
     private static void loopProductenLijst(){
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             int tempProductID = ProductData.ProductenLijst.get(i).getProductId();
-            tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-            tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-            tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
-            if(tempProductNaam.equals(userInput)){
+            TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
+            TempField.tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
+            if(TempField.tempProductNaam.equals(TempField.userInput)){
                 newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
-                Product product = new Product(tempProductID, tempProductNaam,tempProductPrijs,newVoorraad);
+                Product product = new Product(tempProductID, TempField.tempProductNaam,TempField.tempProductPrijs,newVoorraad);
                 ProductData.ProductenLijst.set(i,product); // i is de index, waar het product wordt gewijzigd
                 addToMijnBestelLijst(); // Voegt in mijn bestellijst
             }
@@ -108,20 +101,20 @@ public class Bestelling{
     // Voegt in bestellijst toe.
     private static void addToMijnBestelLijst(){
         int incrementedID = BestellingsData.BestellingsLijst.size() + 1;
-        Bestelling bestelling = new Bestelling(incrementedID,LoginController.getInstance().currentUserID,tempProductNaam,
-                userInputAantalBesteld, Korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,tempProductPrijs));
+        Bestelling bestelling = new Bestelling(incrementedID,LoginController.getInstance().id,TempField.tempProductNaam,
+                userInputAantalBesteld, Korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,TempField.tempProductPrijs));
         PaymentProcessor.betaalMethode();
         BestellingsData.BestellingsLijst.add(bestelling);
     }
 
     // aantal bestelde producten min voorraad
     private static void newVoorraadBerekenen(){
-        if(tempProductVoorraad > 0){
-            newVoorraad = tempProductVoorraad - userInputAantalBesteld;
+        if(TempField.tempProductVoorraad > 0){
+            newVoorraad = TempField.tempProductVoorraad - userInputAantalBesteld;
             if(newVoorraad < 0){
                 System.out.println(">>> Het aantal dat u wilt bestellen hebben wij niet op voorraad, voer een ander aantal in.");
                 System.out.println("Vul aantal bestellingen:");
-                userInputAantalBesteld = scanner.nextInt();
+                userInputAantalBesteld = TempField.scanner.nextInt();
                 newVoorraadBerekenen();
             }
         } else {

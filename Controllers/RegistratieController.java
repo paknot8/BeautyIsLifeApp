@@ -45,11 +45,11 @@ public class RegistratieController {
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1" -> {
-                Details();
+                DetailsInput();
                 GebruikersDataLoop();
             }
             case "2" -> {
-                Details();
+                DetailsInput();
                 MedewerkersDataLoop();
             }
         }
@@ -88,7 +88,7 @@ public class RegistratieController {
         }
     }
 
-    private void Details() {
+    private void DetailsInput() {
         System.out.println("Voer uw gegevens in...");
         System.out.println("gebruikersnaam: ");     gebruikersnaam = scanner.nextLine();
         System.out.println("wachtwoord: ");         wachtwoord = scanner.nextLine();

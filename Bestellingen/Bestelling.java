@@ -1,9 +1,9 @@
 import java.util.InputMismatchException;
 
-public class Bestelling{
-    private static int userInputAantalBesteld;
-    private static int newVoorraad;
-
+public class Bestelling
+{
+    public static int newVoorraad;
+    public static int userInputAantalBesteld;
     // Constructor Data
     private final int bestelNummer;
     private final int userID;
@@ -90,7 +90,7 @@ public class Bestelling{
             TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             TempField.tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
             if(TempField.tempProductNaam.equals(TempField.userInput)){
-                newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
+                Voorraad.newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
                 Product product = new Product(tempProductID, TempField.tempProductNaam,TempField.tempProductPrijs,newVoorraad);
                 ProductData.ProductenLijst.set(i,product); // i is de index, waar het product wordt gewijzigd
                 addToMijnBestelLijst(); // Voegt in mijn bestellijst
@@ -105,20 +105,5 @@ public class Bestelling{
                 userInputAantalBesteld, Korting.kortingOpTotaalAantalProducten(userInputAantalBesteld,TempField.tempProductPrijs));
         PaymentProcessor.betaalMethode();
         BestellingsData.BestellingsLijst.add(bestelling);
-    }
-
-    // aantal bestelde producten min voorraad
-    private static void newVoorraadBerekenen(){
-        if(TempField.tempProductVoorraad > 0){
-            newVoorraad = TempField.tempProductVoorraad - userInputAantalBesteld;
-            if(newVoorraad < 0){
-                System.out.println(">>> Het aantal dat u wilt bestellen hebben wij niet op voorraad, voer een ander aantal in.");
-                System.out.println("Vul aantal bestellingen:");
-                userInputAantalBesteld = TempField.scanner.nextInt();
-                newVoorraadBerekenen();
-            }
-        } else {
-            System.out.println("Product niet op voorraad.");
-        }
     }
 }

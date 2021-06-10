@@ -3,7 +3,7 @@ public class Medewerker extends Persoon implements IProduct
     private static final ProductController productControl = new ProductController();
 
     public Medewerker(int id, String naam, String achternaam, UserAccount userAccount) {
-        super(id, naam, achternaam,userAccount);
+        super(id, naam, achternaam, userAccount);
     }
 
     public Medewerker(){}

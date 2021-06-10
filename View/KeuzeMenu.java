@@ -49,13 +49,13 @@ public class KeuzeMenu{
         input = scanner.nextLine();
         switch (input) {
             case "1" -> {
-                out.println("Zie catalogus");
+                out.println("Catalogus Laden...");
                 productControl.getProducten();
                 Bestelling.VraagBestellingPlaatsen();
                 MenuKeuze();
             }
             case "2" -> {
-                out.println("Zoek item");
+                out.println("--- Zoeken ---");
                 productControl.zoekProduct();
                 MenuKeuze();
             }

@@ -6,12 +6,13 @@ import static java.lang.System.out;
 // Seperatie gedaan tussen Medewerker methods en General Methods
 // Zo klein mogelijk de interface implementeren, zodat je weinig veranderingen hoeft te doen.
 // voor uitbreidingen voor de toekomst.
-public class ProductController implements IProductMedewerkerControls, IProductZoekFunctie{
-    public String productNaam;
-    public double productPrijs;
-    public int productAantal;
-
-    public ArrayList<String> tempSearchedList = new ArrayList<>() {};
+public class ProductController implements IProductMedewerkerControls, IProductZoekFunctie
+{
+    private int i;
+    private String productNaam;
+    private double productPrijs;
+    private int productAantal;
+    private final ArrayList<String> tempSearchedList = new ArrayList<>(){};
 
     @Override // Get all data from producten ( General Use)
     public void getProducten() {
@@ -33,15 +34,19 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
         }
     }
 
+    private void productTemporary(){
+        TempField.tempProductID = ProductData.ProductenLijst.get(i).getProductId();
+        TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+        TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
+        TempField.tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
+    }
+
     @Override
     public void zoekProduct(){
         System.out.println("Productnaam :");
         TempField.userInput = TempField.scanner.nextLine();
-        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
-            TempField.tempProductID = ProductData.ProductenLijst.get(i).getProductId();
-            TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-            TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-            TempField.tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
+        for (i = 0; i < ProductData.ProductenLijst.size(); i++) {
+            productTemporary();
             tempSearchedList.add(TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam());
             controleProductExist();
         }
@@ -55,11 +60,8 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
     public void wijzigProduct(){
         System.out.println("--- Product wijzigen: ---");
         DetailsInputControle();
-        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
-            TempField.tempProductID = ProductData.ProductenLijst.get(i).getProductId();
-            TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-            TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-            TempField.tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
+        for (i = 0; i < ProductData.ProductenLijst.size(); i++) {
+            productTemporary();
             if (TempField.tempProductNaam.equals(productNaam)) {
                 Product wijzigProduct = new Product(i+1, productNaam.toLowerCase(), productPrijs, productAantal);
                 ProductData.ProductenLijst.set(i,wijzigProduct); // i is de index, waar het product wordt gewijzigd
@@ -79,17 +81,11 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
     public void verwijderProduct(){
         System.out.println("Voer productnaam in om te verwijderen:");
         productNaam = TempField.scanner.nextLine();
-        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
-            TempField.tempProductID = ProductData.ProductenLijst.get(i).getProductId();
-            TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-            TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-            TempField.tempProductAantal = ProductData.ProductenLijst.get(i).getProductVoorraad();
-
+        for (i = 0; i < ProductData.ProductenLijst.size(); i++) {
+            productTemporary();
             if (TempField.tempProductNaam.equals(productNaam)){
                 ProductData.ProductenLijst.remove(i);
                 System.out.println("Product succesvol verwijderd van de maggazijn.");
-                System.out.println("ID: " + TempField.tempProductID + " | Productnaam: " + TempField.tempProductNaam +
-                        " | Prijs: " + TempField.tempProductPrijs + " | Aantal: " + TempField.tempProductAantal);
                 TempField.succesControl = true;
                 break;
             } else {

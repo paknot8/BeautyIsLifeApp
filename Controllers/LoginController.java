@@ -1,11 +1,12 @@
 import static java.lang.System.exit;
 
-public class LoginController {
+public class LoginController
+{
     // Controle checks
     public boolean userPassCheck = false;
 
     // Get gegevens van current user (saves for use)
-    public int id;
+    public int id, i;
     public String username;
     public String password;
     public String naam;
@@ -88,15 +89,9 @@ public class LoginController {
     }
 
     private void GebruikersDataLoop(){
-        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+        for (i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             TempField.currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
-            id = GebruikersData.GebruikersLijst.get(i).getId();
-            username = GebruikersData.GebruikersLijst.get(i).userAccount.getGebruikersnaam();
-            password = GebruikersData.GebruikersLijst.get(i).userAccount.getWachtwoord();
-            naam = GebruikersData.GebruikersLijst.get(i).getNaam();
-            achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
-            telefoonnummer = GebruikersData.GebruikersLijst.get(i).userAccount.getTelefoonnummer();
-            email = GebruikersData.GebruikersLijst.get(i).userAccount.getEmail();
+            gebruikerTemporary();
             if (userAndPassCheck()) {
                 TempField.isMedewerker = false;
                 return;
@@ -104,21 +99,36 @@ public class LoginController {
         }
     }
 
+    private void gebruikerTemporary(){
+        TempField.currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
+        id = GebruikersData.GebruikersLijst.get(i).getId();
+        username = GebruikersData.GebruikersLijst.get(i).userAccount.getGebruikersnaam();
+        password = GebruikersData.GebruikersLijst.get(i).userAccount.getWachtwoord();
+        naam = GebruikersData.GebruikersLijst.get(i).getNaam();
+        achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
+        telefoonnummer = GebruikersData.GebruikersLijst.get(i).userAccount.getTelefoonnummer();
+        email = GebruikersData.GebruikersLijst.get(i).userAccount.getEmail();
+    }
+
     private void MedewerkersDataLoop(){
-        for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
-            TempField.currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
-            id = MedewerkersData.MedewerkersLijst.get(i).getId();
-            username = MedewerkersData.MedewerkersLijst.get(i).userAccount.getGebruikersnaam();
-            password = MedewerkersData.MedewerkersLijst.get(i).userAccount.getWachtwoord();
-            naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
-            achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
-            telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).userAccount.getTelefoonnummer();
-            email = MedewerkersData.MedewerkersLijst.get(i).userAccount.getEmail();
+        for (i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
+            medewerkerTemporary();
             if (userAndPassCheck()) {
                 TempField.isMedewerker = true;
                 return;
             }
         }
+    }
+
+    private void medewerkerTemporary(){
+        TempField.currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
+        id = MedewerkersData.MedewerkersLijst.get(i).getId();
+        username = MedewerkersData.MedewerkersLijst.get(i).userAccount.getGebruikersnaam();
+        password = MedewerkersData.MedewerkersLijst.get(i).userAccount.getWachtwoord();
+        naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
+        achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
+        telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).userAccount.getTelefoonnummer();
+        email = MedewerkersData.MedewerkersLijst.get(i).userAccount.getEmail();
     }
 
     private boolean inputInfo() {

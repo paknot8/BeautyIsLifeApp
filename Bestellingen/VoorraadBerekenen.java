@@ -1,4 +1,4 @@
-public class Voorraad
+public class VoorraadBerekenen
 {
     // aantal bestelde producten min voorraad
     public static void newVoorraadBerekenen(){

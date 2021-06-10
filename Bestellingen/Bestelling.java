@@ -90,7 +90,7 @@ public class Bestelling
             TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
             TempField.tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
             if(TempField.tempProductNaam.equals(TempField.userInput)){
-                Voorraad.newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
+                VoorraadBerekenen.newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
                 Product product = new Product(tempProductID, TempField.tempProductNaam,TempField.tempProductPrijs,newVoorraad);
                 ProductData.ProductenLijst.set(i,product); // i is de index, waar het product wordt gewijzigd
                 addToMijnBestelLijst(); // Voegt in mijn bestellijst

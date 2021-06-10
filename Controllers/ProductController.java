@@ -9,20 +9,20 @@ import static java.lang.System.out;
 // Zo klein mogelijk de interface implementeren, zodat je weinig veranderingen hoeft te doen.
 // voor uitbreidingen voor de toekomst.
 public class ProductController implements IProductMedewerkerControls, IProductZoekFunctie{
-    private static final Scanner scanner = new Scanner(in);
-    private static String userInput;
-    private static boolean succesControl = false;
+    private final Scanner scanner = new Scanner(in);
+    private String userInput;
+    private boolean succesControl = false;
 
-    public static String productNaam;
-    public static double productPrijs;
-    public static int productAantal;
+    public String productNaam;
+    public double productPrijs;
+    public int productAantal;
 
-    public static int tempProductID;
-    public static String tempProductNaam;
-    public static double tempProductPrijs;
-    public static int tempProductAantal;
+    public int tempProductID;
+    public String tempProductNaam;
+    public double tempProductPrijs;
+    public int tempProductAantal;
 
-    public static ArrayList<String> tempSearchedList = new ArrayList<>() {};
+    public ArrayList<String> tempSearchedList = new ArrayList<>() {};
 
     @Override // Get all data from producten ( General Use)
     public void getProducten() {
@@ -131,7 +131,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
     }
 
     // Input voor de producten
-    private static void DetailsInput() {
+    private void DetailsInput() {
         boolean isNumeric = false;
         while(!isNumeric){ // Controle of het cijfers zijn.
             try {
@@ -152,7 +152,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
 
     // extract method gebruik voor duplicate code and long methods
     // Toevoegen van new producten
-    private static void productLoop(Product newProduct) {
+    private void productLoop(Product newProduct) {
         for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
             tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
@@ -170,7 +170,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
     }
 
     // Product toevoegen
-    private static void insertProduct(){
+    private void insertProduct(){
         DetailsInput();
         userInput = scanner.nextLine();
         int id = ProductData.ProductenLijst.size() + 1; //increment number

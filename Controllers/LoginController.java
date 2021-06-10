@@ -4,7 +4,7 @@ import static java.lang.System.exit;
 import static java.lang.System.in;
 
 public class LoginController {
-    private static final Scanner scanner = new Scanner(in);
+    private final Scanner scanner = new Scanner(in);
 
     // user inputs
     public String userChoice;

@@ -16,7 +16,7 @@ public class KeuzeMenu{
         erick123        123
 
         > Medewerker
-        bella123        321
+        bella123        123
      */
 
     public static void LoginScherm() {

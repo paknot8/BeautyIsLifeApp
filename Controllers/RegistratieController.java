@@ -2,17 +2,18 @@ import java.util.Scanner;
 import static java.lang.System.in;
 
 public class RegistratieController {
-    private static final Scanner scanner = new Scanner(in);
-    private static String tempUser;
+    private final Scanner scanner = new Scanner(in);
+    private String tempUser;
+    private boolean succesControl = false;
 
     // User details
-    private static int id;
-    private static String gebruikersnaam;
-    private static String wachtwoord;
-    private static String naam;
-    private static String achternaam;
-    private static String telefoonnummer;
-    private static String email;
+    private int id;
+    private String gebruikersnaam;
+    private String wachtwoord;
+    private String naam;
+    private String achternaam;
+    private String telefoonnummer;
+    private String email;
 
     // Singleton
     private static RegistratieController singleton;
@@ -40,61 +41,72 @@ public class RegistratieController {
     }
 
     private void Registration() {
-        System.out.println("Maak een keuze...");
-        System.out.println("1) Gebruiker, 2) Medewerker");
+        System.out.println("Maak een keuze: 1) Gebruiker, 2) Medewerker");
         String userInput = scanner.nextLine();
         switch (userInput) {
             case "1" -> {
-                DetailsInput();
+                LoginController.getInstance().isMedewerker = false;
                 GebruikersDataLoop();
             }
             case "2" -> {
-                DetailsInput();
+                LoginController.getInstance().isMedewerker = true;
                 MedewerkersDataLoop();
             }
         }
+        KeuzeMenu.LoginScherm();
     }
 
-    private void GebruikersDataLoop(){
-        id = GebruikersData.GebruikersLijst.size() + 1; //increment number
-        Gebruiker newGebruiker = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
-        Medewerker.addNewGebruiker(newGebruiker);
-        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-            tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-            LoginController.getInstance().currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
-            userCheckExist();
-        }
-    }
-
-    private void MedewerkersDataLoop(){
-        id = MedewerkersData.MedewerkersLijst.size() + 1;
-        Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
-        Medewerker.addNewMedewerker(newMedewerker);
-        for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
-            tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-            LoginController.getInstance().currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
-            userCheckExist();
-        }
-    }
-
-    private void userCheckExist(){
-        if (!gebruikersnaam.equals(tempUser)) {
-            System.out.println("U bent nu geregistreerd!");
-            LoginController.getInstance().userPassCheck = true;
-            KeuzeMenu.LoginScherm();
-        } else {
-            System.out.println("Gebruikersnaam: " + gebruikersnaam + " bestaat al!, probeer opnieuw...");
-            Registration();
-        }
-    }
-
-    private void DetailsInput() {
-        System.out.println("Voer uw gegevens in...");
+    private void Details() {
+        System.out.println("--- Voer uw gegevens in ---");
         System.out.println("gebruikersnaam: ");     gebruikersnaam = scanner.nextLine();
         System.out.println("wachtwoord: ");         wachtwoord = scanner.nextLine();
         System.out.println("naam: ");               naam = scanner.nextLine();
         System.out.println("achternaam: ");         achternaam = scanner.nextLine();
         System.out.println("telefoonnummer: ");     telefoonnummer = scanner.nextLine();
         System.out.println("email: ");              email = scanner.nextLine();
+    }
+
+    private void GebruikersDataLoop(){
+        Details();
+        id = GebruikersData.GebruikersLijst.size() + 1;
+        for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
+            tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+            if(userCheckExist()) break;
+        }
+        succesControl();
+    }
+
+    private void succesControl(){
+        if(!succesControl){
+            System.out.println("Niet succesvol, probeer nogmaals...");
+        } else {
+            if(LoginController.getInstance().isMedewerker){
+                Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
+                Medewerker.addNewMedewerker(newMedewerker);
+            } else {
+                Gebruiker newUser = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
+                Medewerker.addNewGebruiker(newUser);
+            }
+            System.out.println(gebruikersnaam + " is nu geregistreerd!");
+        }
+    }
+
+    private void MedewerkersDataLoop(){
+        id = MedewerkersData.MedewerkersLijst.size() + 1;
+        for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
+            tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
+            if(userCheckExist()) break;
+        }
+        succesControl();
+    }
+
+    private boolean userCheckExist(){
+        if (tempUser.equals(gebruikersnaam)) {
+            succesControl = false;
+            return true;
+        } else {
+            succesControl = true;
+            return false;
+        }
     }
 }

@@ -3,12 +3,22 @@ import static java.lang.System.in;
 import static java.lang.System.out;
 
 public class Gebruiker extends Persoon{
-    private static final Scanner scanner = new Scanner(in);
+    private final Scanner scanner = new Scanner(in);
+    private boolean  succesControl = false;
+    private String userInput;
 
     // Berichten
-    public static String onderwerp;
-    public static String beschrijving;
-    public static String email;
+    private String onderwerp;
+    private String beschrijving;
+    private String email;
+
+    //Gebruiker
+    private int id;
+    private String naam;
+    private String achternaam;
+    private String telefoonnummer;
+    private String gebruikersnaam;
+    private String wachtwoord;
 
     public static PrivatePrivateMessage newBericht;
     public static Email newEmail;
@@ -19,7 +29,6 @@ public class Gebruiker extends Persoon{
 
     public Gebruiker(){}
 
-    /// TODO: Gebruiker moet dit nog kunnen wijzigen
     public void mijnProfiel(){
         out.println("--- Mijn Profiel ---");
         out.println("ID nummer       | " + LoginController.getInstance().currentUserID);
@@ -28,6 +37,7 @@ public class Gebruiker extends Persoon{
         out.println("Achternaam      | " + LoginController.getInstance().achternaam);
         out.println("Telefoonnummer  | " + LoginController.getInstance().telefoonnummer);
         out.println("Emailadres      | " + LoginController.getInstance().email);
+        out.println("Password        | " + LoginController.getInstance().targetPassword);
     }
 
     public void ContactInvoer(){

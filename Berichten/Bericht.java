@@ -23,7 +23,5 @@ public class Bericht {
     public String getBeschrijving() {
         return beschrijving;
     }
-    public void setBeschrijving(String beschrijving) {
-        this.beschrijving = beschrijving;
-    }
+    public void setBeschrijving(String beschrijving) { this.beschrijving = beschrijving; }
 }

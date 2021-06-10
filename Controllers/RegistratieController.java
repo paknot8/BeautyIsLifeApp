@@ -64,10 +64,12 @@ public class RegistratieController {
             System.out.println("Niet succesvol, probeer nogmaals...");
         } else {
             if(TempField.isMedewerker){
-                Medewerker newMedewerker = new Medewerker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
+                UserAccount userAccountMedewerker = new UserAccount(gebruikersnaam, wachtwoord, telefoonnummer, email);
+                Medewerker newMedewerker = new Medewerker(id, naam, achternaam, userAccountMedewerker);
                 Medewerker.addNewMedewerker(newMedewerker);
             } else {
-                Gebruiker newUser = new Gebruiker(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
+                UserAccount userAccount = new UserAccount(gebruikersnaam, wachtwoord, telefoonnummer, email);
+                Gebruiker newUser = new Gebruiker(id, naam, achternaam, userAccount);
                 Medewerker.addNewGebruiker(newUser);
             }
             System.out.println(gebruikersnaam + " is nu geregistreerd!");
@@ -78,7 +80,7 @@ public class RegistratieController {
         Details();
         id = GebruikersData.GebruikersLijst.size() + 1;
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
-            TempField.tempUser = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
+            TempField.tempUser = GebruikersData.GebruikersLijst.get(i).userAccount.getGebruikersnaam();
             if(userCheckExist()) break;
         }
         succesControl();
@@ -87,7 +89,7 @@ public class RegistratieController {
     private void MedewerkersDataLoop(){
         id = MedewerkersData.MedewerkersLijst.size() + 1;
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
-            TempField.tempUser = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
+            TempField.tempUser = MedewerkersData.MedewerkersLijst.get(i).userAccount.getGebruikersnaam();
             if(userCheckExist()) break;
         }
         succesControl();

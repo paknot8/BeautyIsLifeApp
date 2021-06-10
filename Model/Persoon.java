@@ -2,19 +2,14 @@ public abstract class Persoon {
     private int id;
     private String naam;
     private String achternaam;
-    private String telefoonnummer;
-    private String email;
-    private String gebruikersnaam;
-    private String wachtwoord;
 
-    public Persoon(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
+    public UserAccount userAccount;
+
+    public Persoon(int id, String naam, String achternaam, UserAccount userAccount) {
         this.id = id;
         this.naam = naam;
         this.achternaam = achternaam;
-        this.telefoonnummer = telefoonnummer;
-        this.email = email;
-        this.gebruikersnaam = gebruikersnaam;
-        this.wachtwoord = wachtwoord;
+        this.userAccount = userAccount;
     }
 
     public Persoon(){}
@@ -36,30 +31,6 @@ public abstract class Persoon {
     }
     public void setAchternaam(String achternaam) {
         this.achternaam = achternaam;
-    }
-    public String getTelefoonnummer() {
-        return telefoonnummer;
-    }
-    public void setTelefoonnummer(String telefoonnummer) {
-        this.telefoonnummer = telefoonnummer;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getGebruikersnaam() {
-        return gebruikersnaam;
-    }
-    public void setGebruikersnaam(String gebruikersnaam) {
-        this.gebruikersnaam = gebruikersnaam;
-    }
-    public String getWachtwoord() {
-        return wachtwoord;
-    }
-    public void setWachtwoord(String wachtwoord) {
-        this.wachtwoord = wachtwoord;
     }
 
     public abstract void getBerichten();

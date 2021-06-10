@@ -6,8 +6,8 @@ public class Gebruiker extends Persoon{
     public PrivatePrivateMessage newBericht;
     public Email newEmail;
 
-    public Gebruiker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
-        super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
+    public Gebruiker(int id, String naam, String achternaam, UserAccount userAccount) {
+        super(id, naam, achternaam, userAccount);
     }
 
     public Gebruiker(){}

@@ -91,12 +91,12 @@ public class LoginController {
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             TempField.currentUserID = GebruikersData.GebruikersLijst.get(i).getId();
             id = GebruikersData.GebruikersLijst.get(i).getId();
-            username = GebruikersData.GebruikersLijst.get(i).getGebruikersnaam();
-            password = GebruikersData.GebruikersLijst.get(i).getWachtwoord();
+            username = GebruikersData.GebruikersLijst.get(i).userAccount.getGebruikersnaam();
+            password = GebruikersData.GebruikersLijst.get(i).userAccount.getWachtwoord();
             naam = GebruikersData.GebruikersLijst.get(i).getNaam();
             achternaam = GebruikersData.GebruikersLijst.get(i).getAchternaam();
-            telefoonnummer = GebruikersData.GebruikersLijst.get(i).getTelefoonnummer();
-            email = GebruikersData.GebruikersLijst.get(i).getEmail();
+            telefoonnummer = GebruikersData.GebruikersLijst.get(i).userAccount.getTelefoonnummer();
+            email = GebruikersData.GebruikersLijst.get(i).userAccount.getEmail();
             if (userAndPassCheck()) {
                 TempField.isMedewerker = false;
                 return;
@@ -108,12 +108,12 @@ public class LoginController {
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
             TempField.currentUserID = MedewerkersData.MedewerkersLijst.get(i).getId();
             id = MedewerkersData.MedewerkersLijst.get(i).getId();
-            username = MedewerkersData.MedewerkersLijst.get(i).getGebruikersnaam();
-            password = MedewerkersData.MedewerkersLijst.get(i).getWachtwoord();
+            username = MedewerkersData.MedewerkersLijst.get(i).userAccount.getGebruikersnaam();
+            password = MedewerkersData.MedewerkersLijst.get(i).userAccount.getWachtwoord();
             naam = MedewerkersData.MedewerkersLijst.get(i).getNaam();
             achternaam = MedewerkersData.MedewerkersLijst.get(i).getAchternaam();
-            telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).getTelefoonnummer();
-            email = MedewerkersData.MedewerkersLijst.get(i).getEmail();
+            telefoonnummer = MedewerkersData.MedewerkersLijst.get(i).userAccount.getTelefoonnummer();
+            email = MedewerkersData.MedewerkersLijst.get(i).userAccount.getEmail();
             if (userAndPassCheck()) {
                 TempField.isMedewerker = true;
                 return;

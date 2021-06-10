@@ -2,17 +2,17 @@ public class Medewerker extends Persoon implements IProduct
 {
     private static final ProductController productControl = new ProductController();
 
-    public Medewerker(int id, String naam, String achternaam, String telefoonnummer, String email, String gebruikersnaam, String wachtwoord) {
-        super(id, naam, achternaam, telefoonnummer, email, gebruikersnaam, wachtwoord);
+    public Medewerker(int id, String naam, String achternaam, UserAccount userAccount) {
+        super(id, naam, achternaam,userAccount);
     }
 
     public Medewerker(){}
 
     public void getGebruikers() {
         for (Gebruiker gebruiker : GebruikersData.GebruikersLijst) {
-            System.out.println(gebruiker.getId() + ", " + gebruiker.getGebruikersnaam() +
+            System.out.println(gebruiker.getId() + ", " + gebruiker.userAccount.getGebruikersnaam() +
                     ", " + gebruiker.getNaam() + ", " + gebruiker.getAchternaam() + ", " +
-                    gebruiker.getTelefoonnummer() + ", " + gebruiker.getEmail());
+                    gebruiker.userAccount.getTelefoonnummer() + ", " + gebruiker.userAccount.getEmail());
         }
     }
 

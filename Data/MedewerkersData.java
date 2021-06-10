@@ -4,12 +4,13 @@ public class MedewerkersData {
     public static Medewerker medewerkersLijst;
     public static ArrayList<Medewerker> MedewerkersLijst = new ArrayList<>() {
         {
-            add(medewerkersLijst = new Medewerker(1,"superuser voornaam","superuser achternaam", "06123678","superuser@email.nl",
-                    "admin","admin"));
-            add(medewerkersLijst = new Medewerker(2,"tim","van beek", "06123678","tim@email.nl",
-                    "tim123","123"));
-            add(medewerkersLijst = new Medewerker(3,"bella","kerkhof", "06123678","bella@email.nl",
-                    "bella123","123"));
+            UserAccount admin = new UserAccount("admin","admin","06123678","superuser@email.nl");
+            UserAccount tim = new UserAccount("tim123","123", "06123678","tim@email.nl");
+            UserAccount bella = new UserAccount("bella123","123", "06123678","bella@email.nl");
+
+            add(medewerkersLijst = new Medewerker(1,"admin","admin",admin));
+            add(medewerkersLijst = new Medewerker(2,"tim","van beek",tim));
+            add(medewerkersLijst = new Medewerker(3,"bella","kerkhof",bella));
         }
     };
 }

@@ -64,8 +64,8 @@ public class Medewerker extends Persoon implements IProduct
         getEmails();
     }
 
-    private void getEmails(){
-        System.out.println("--- Emails ---");
+    @Override
+    public void getEmails(){
         for (Email email : BerichtenData.EmailLijst) {
             System.out.println("Emailnr: " + email.getId() + " | Gebruikerid: " + email.getUserID() +
                     " | Onderwerp: " + email.getOnderwerp() + " | Beschrijving: " + email.getBeschrijving());

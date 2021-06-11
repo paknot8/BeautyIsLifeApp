@@ -79,7 +79,6 @@ public class Gebruiker extends Persoon{
 
     @Override
     public void getBerichten() {
-        System.out.println("--- Mijn Berichten ---");
         for(Bericht bericht : BerichtenData.PrivatemessageLijst) {
             if(bericht.getUserID() == LoginController.getInstance().id){
                 System.out.println("Berichtnr: " + bericht.getId() + " | Gebruikerid: " + bericht.getUserID() +
@@ -89,8 +88,8 @@ public class Gebruiker extends Persoon{
         getEmails();
     }
 
-    private void getEmails(){
-        System.out.println("--- Mijn Emails ---");
+    @Override
+    public void getEmails(){
         for(Email email : BerichtenData.EmailLijst) {
             if(email.getUserID() == LoginController.getInstance().id){
                 System.out.println("Emailnr: " + email.getId() + " | Gebruikerid: " + email.getUserID() +

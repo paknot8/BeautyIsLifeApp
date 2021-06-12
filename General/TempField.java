@@ -25,5 +25,5 @@ public class TempField {
 
     // Registratie
     public static String tempUser;
-    public static boolean succesControl = false;
+    public static boolean succesControl;
 }

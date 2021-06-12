@@ -45,7 +45,6 @@ public class LoginController
     }
 
     private void Login() {
-        //RegistratieController registration = new RegistratieController();
         System.out.println("Wilt u: 1) inloggen of 2) registreren | 0) Exit Application");
         TempField.userInput = TempField.scanner.nextLine();
         switch (TempField.userInput)
@@ -116,7 +115,7 @@ public class LoginController
             medewerkerTemporary();
             if (userAndPassCheck()) {
                 TempField.isMedewerker = true;
-                break;
+                return;
             }
         }
     }
@@ -146,6 +145,9 @@ public class LoginController
             System.out.println("\nHallo, " + naam + " " + achternaam);
             userPassCheck = true;
         } else if (!TempField.targetUserName.equals(username) && !TempField.targetPassword.equals(password)){
+            userPassCheck = false;
+        } else {
+            System.out.println("Fout probeer opnieuw...\n");
             userPassCheck = false;
         }
         return userPassCheck;

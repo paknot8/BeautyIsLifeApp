@@ -7,10 +7,15 @@ public class RegistratieController {
     private String achternaam;
     private String telefoonnummer;
     private String email;
+
+    // Singleton
     private static RegistratieController singleton;
+    private final Gebruiker registeredUser;
+    private final Medewerker registeredMedewerker;
 
     private RegistratieController(){
-        singleton = null;
+        registeredUser = null;
+        registeredMedewerker = null;
     }
 
     public static RegistratieController getInstance(){
@@ -20,15 +25,11 @@ public class RegistratieController {
         return singleton;
     }
 
-    private boolean userIsAuthenticated() {
-        return singleton != null;
-    }
+    private boolean userIsAuthenticated() { return registeredUser != null & registeredMedewerker != null; }
 
     public void isAuthenticated(){
-        if (userIsAuthenticated()) {
+        if (!userIsAuthenticated()){
             Registration();
-        } else {
-            KeuzeMenu.LoginScherm();
         }
     }
 
@@ -60,8 +61,7 @@ public class RegistratieController {
 
     private void succesControl(){
         if(!TempField.succesControl){
-            System.out.println(TempField.userInput + " " + gebruikersnaam);
-            System.out.println("Gebruiksnaam bestaat al, probeer nogmaals...");
+            System.out.println("Niet succesvol, probeer nogmaals...");
         } else {
             if(TempField.isMedewerker){
                 UserAccount userAccountMedewerker = new UserAccount(gebruikersnaam, wachtwoord, telefoonnummer, email);
@@ -72,7 +72,6 @@ public class RegistratieController {
                 Gebruiker newUser = new Gebruiker(id, naam, achternaam, userAccount);
                 Medewerker.addNewGebruiker(newUser);
             }
-            System.out.println(TempField.userInput + " " + gebruikersnaam);
             System.out.println(gebruikersnaam + " is nu geregistreerd!");
         }
     }
@@ -82,21 +81,16 @@ public class RegistratieController {
         id = GebruikersData.GebruikersLijst.size() + 1;
         for (int i = 0; i < GebruikersData.GebruikersLijst.size(); i++) {
             TempField.tempUser = GebruikersData.GebruikersLijst.get(i).userAccount.getGebruikersnaam();
-            if(userCheckExist()){
-                break;
-            }
+            if(userCheckExist()) break;
         }
         succesControl();
     }
 
     private void MedewerkersDataLoop(){
-        Details();
         id = MedewerkersData.MedewerkersLijst.size() + 1;
         for (int i = 0; i < MedewerkersData.MedewerkersLijst.size(); i++) {
             TempField.tempUser = MedewerkersData.MedewerkersLijst.get(i).userAccount.getGebruikersnaam();
-            if(userCheckExist()){
-                break;
-            }
+            if(userCheckExist()) break;
         }
         succesControl();
     }

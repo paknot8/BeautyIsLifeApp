@@ -38,7 +38,6 @@ public class KeuzeMenu
     }
 
     public static void MenuKeuze(){
-        Persoon mijnBerichten = new Gebruiker();
         MenuText();
         TempField.userInput = TempField.scanner.nextLine();
         switch (TempField.userInput) {
@@ -64,7 +63,7 @@ public class KeuzeMenu
             }
             case "5" -> {
                 System.out.println("Mijn berichten");
-                mijnBerichten.getMessages();
+                gebruikerKeuze.getBerichten();
                 MenuKeuze();
             }
             case "6" -> {
@@ -95,7 +94,6 @@ public class KeuzeMenu
     }
 
     public static void MenuKeuze_Medewerker() {
-        Persoon Berichten = new Medewerker();
         MenuText_Medewerker();
         TempField.userInput = TempField.scanner.nextLine();
         switch (TempField.userInput) {
@@ -107,7 +105,7 @@ public class KeuzeMenu
             }
             case "2" -> {
                 System.out.println("Alle klantenberichten inzien");
-                Berichten.getMessages();
+                medewerkerKeuze.getBerichten();
                 MenuKeuze_Medewerker();
             } case "3" -> {
                 System.out.println("Zoek item");

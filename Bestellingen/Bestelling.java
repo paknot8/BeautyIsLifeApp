@@ -2,7 +2,6 @@ import java.util.InputMismatchException;
 
 public class Bestelling
 {
-    private static int i;
     public static int newVoorraad;
     public static int userInputAantalBesteld;
     // Constructor Data
@@ -85,9 +84,11 @@ public class Bestelling
 
     // Door de lijst van producten gaan
     private static void loopProductenLijst(){
-        for (i = 0; i < ProductData.ProductenLijst.size(); i++) {
+        for (int i = 0; i < ProductData.ProductenLijst.size(); i++) {
             int tempProductID = ProductData.ProductenLijst.get(i).getProductId();
-            productTemporary();
+            TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
+            TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
+            TempField.tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
             if(TempField.tempProductNaam.equals(TempField.userInput)){
                 VoorraadBerekenen.newVoorraadBerekenen(); // bereken de nieuwe voorraad (oud voorraad - aantal besteld = new vooraad)
                 Product product = new Product(tempProductID, TempField.tempProductNaam,TempField.tempProductPrijs,newVoorraad);
@@ -95,12 +96,6 @@ public class Bestelling
                 addToMijnBestelLijst(); // Voegt in mijn bestellijst
             }
         }
-    }
-
-    private static void productTemporary(){
-        TempField.tempProductNaam = ProductData.ProductenLijst.get(i).getProductNaam();
-        TempField.tempProductPrijs = ProductData.ProductenLijst.get(i).getProductPrijs();
-        TempField.tempProductVoorraad = ProductData.ProductenLijst.get(i).getProductVoorraad();
     }
 
     // Voegt in bestellijst toe.

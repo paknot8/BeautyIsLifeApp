@@ -8,7 +8,7 @@ public class LoginControllerGebruikerTest
     Gebruiker gebruiker = new Gebruiker(1,"tom","kramer",tom);
 
     @Test // Test om te kijken of een gebruiker bestaat op gebruikersnaam
-    public void LoginControleGebruikerTest() {
+    public void LoginControle() {
         String expected = "tom123";
         Assert.assertEquals(expected,tom.getGebruikersnaam());
     }

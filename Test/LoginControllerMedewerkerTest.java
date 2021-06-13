@@ -8,7 +8,7 @@ public class LoginControllerMedewerkerTest
     Medewerker medewerker = new Medewerker(2,"bella","kerkhof",bella);
 
     @Test // Test om te kijken of een gebruiker bestaat op gebruikersnaam
-    public void loginControleMedewerkerTest() {
+    public void LoginControle() {
         String expected = "bella123";
         Assert.assertEquals(expected,bella.getGebruikersnaam());
     }

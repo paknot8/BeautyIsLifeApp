@@ -129,7 +129,7 @@ public class ProductController implements IProductMedewerkerControls, IProductZo
         }
     }
 
-    public void DetailsInput(){
+    private void DetailsInput(){
         System.out.println("Productnaam: ");
         productNaam = TempField.scanner.nextLine();
         System.out.println("Prijs: ");

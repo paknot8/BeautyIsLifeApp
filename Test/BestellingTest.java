@@ -3,6 +3,9 @@ import org.junit.Test;
 
 public class BestellingTest
 {
+    //Mock Data
+    Bestelling bestelling = new Bestelling(13,7,"facial",2,5);
+
    @Test
     public void kortingOpTotaalAantalProductenTest(){
        // 15% korting
@@ -36,5 +39,29 @@ public class BestellingTest
                bestelling4.getAantalGekocht(),
                bestelling4.getPrijsBetaald()),
                0.01);
+    }
+
+    @Test
+    public void testGetBestelNummer() {
+       int expected = 13;
+       Assert.assertEquals(expected,bestelling.getBestelNummer());
+    }
+
+    @Test
+    public void testGetUserID() {
+        int expected = 7;
+        Assert.assertEquals(expected,bestelling.getUserID());
+    }
+
+    @Test
+    public void testGetProductNaam() {
+        String expected = "facial";
+        Assert.assertEquals(expected,bestelling.getProductNaam());
+    }
+
+    @Test
+    public void testGetAantalGekocht() {
+        int expected = 2;
+        Assert.assertEquals(expected,bestelling.getAantalGekocht());
     }
 }

@@ -1,4 +1,5 @@
-public class Product {
+public class Product
+{
     private int productId;
     private String productNaam;
     private double productPrijs;

@@ -1,4 +1,5 @@
-public class UserAccount {
+public class UserAccount
+{
     private String gebruikersnaam;
     private String wachtwoord;
     private String telefoonnummer;
